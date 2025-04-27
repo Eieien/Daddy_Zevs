@@ -12,7 +12,7 @@
 		- git Init -> Initialize the Git
 	3. Cloning a directory or an entire github page
 		- git clone {src url} -> src url can be found when u press  the drop done on code
-		  ![[Git-clone.png]]
+		  ![[images/Git-clone.png]]
 	4. Check the status of your git
 		- git status
 	5.  Adding a file for your next commit or when your modifying
