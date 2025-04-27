@@ -31,3 +31,4 @@
     11. Remembering Credentials (since every time you push, git will ask for your credentials)
         - git config --global credential.helper 'cache -- timeout={seconds}'
 5. ![[CHEATSHEET]](https://education.github.com/git-cheat-sheet-education.pdf)
+
