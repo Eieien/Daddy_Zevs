@@ -1,0 +1,62 @@
+:root{
+    --primary_blue: #3464DD;
+    --primary_white: #FBFCEC;
+    --accent_orange: #F22C16;
+    --text_dark_teal: #0B2027;
+    --primary_font: 'Poppins', Arial;
+    --secondary_font: 'Bolota', sans-serif;
+    /* get them using var(--{name}) */
+}
+@font-face{
+    font-family: "Poppins";
+    src: url("./fonts/Poppins-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "Poppins";
+    src: url("./fonts/Poppins-Medium.ttf") format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face{
+    font-family: "Poppins";
+    src: url("./fonts/Poppins-SemiBold.ttf") format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face{
+    font-family: "Poppins";
+    src: url("./fonts/Poppins-Bold.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "Bolota";
+    src: url("./fonts/bolota-bold.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary_white);
+}
+
+#content{
+    font-family: var(--primary_font);
+    width: 90vw;
+    margin: auto;
+    z-index: 10;
+}
+
+img{
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast; /* For Safari/Chrome */
+    image-rendering: pixelated;
+}
+
+
