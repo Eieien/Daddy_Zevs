@@ -28,8 +28,8 @@
                 <form>
                     <h1 id="form-msg">Log in.</h1>
                     <div>
-                        <input type="text" value="Email" class="textbox"><br>
-                        <input type="text" value="Password" class="textbox"><br>
+                        <input type="text" placeholder="Email" class="textbox"><br>
+                        <input type="text" placeholder="Password" class="textbox"><br>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <div>
