@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
-    <link rel="stylesheet" href="./styles//header_footer.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./styles//menu.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./styles/menu.css?v=<?php echo time(); ?>">
     <title>Daddy Zev's Menu</title>
 </head>
 <body>
