@@ -1,6 +1,6 @@
 @import "./constants.css";
 
-body{
+main{
     display: grid;
     grid-template-columns: 500px 1fr;
     height: 100vh;
@@ -137,10 +137,5 @@ body{
                 column-gap: 10px;
             }
         }
-    }
-
-    /* For some reason, these tags appeared in the html elements */
-    veepn-lock-screen, veepn-guard-alert{
-        display: none;
     }
 }
