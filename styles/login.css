@@ -138,4 +138,9 @@ body{
             }
         }
     }
+
+    /* For some reason, these tags appeared in the html elements */
+    veepn-lock-screen, veepn-guard-alert{
+        display: none;
+    }
 }
