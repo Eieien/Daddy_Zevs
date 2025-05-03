@@ -119,6 +119,7 @@ body{
                 margin-bottom: 12px;
                 font-size: 48px;
                 font-weight: 1000;
+                margin-top: 0;
             }
             #remember{
                 display: flex; 
