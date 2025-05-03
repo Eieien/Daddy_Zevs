@@ -1,11 +1,12 @@
 @import "./constants.css";
 
 main{
-    height: 75vh;
+    height: 70vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
     font-family: var(--primary_font);
+    padding-top: 5%;
 
     #product-image{
         justify-self: right;
