@@ -13,7 +13,7 @@
         include "./guest_nav.php";
     ?>
 
-    <main id="content">
+    <main class="content">
         <div id="menu">
             <div>
                 <ul id="categories">
