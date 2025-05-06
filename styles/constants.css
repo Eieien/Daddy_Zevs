@@ -46,7 +46,7 @@ body{
     background-color: var(--primary_white);
 }
 
-#content{
+.content{
     font-family: var(--primary_font);
     width: 90vw;
     margin: auto;

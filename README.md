@@ -30,5 +30,8 @@
         - git checkout origin/main -- {file1} {filepath/file2}
     11. Remembering Credentials (since every time you push, git will ask for your credentials)
         - git config --global credential.helper 'cache -- timeout={seconds}'
+	12. Replacing your local file with the file with the new changes
+		- git fetch origin
+		- git diff origin/branch-name -- path/to/your/file
 5. [[CHEATSHEET]](https://education.github.com/git-cheat-sheet-education.pdf)
 

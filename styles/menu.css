@@ -1,7 +1,7 @@
 @import './constants.css';
 #menu{
     display: grid;
-    grid-template-columns: 200px 980px;
+    grid-template-columns: 200px 1fr;
     gap: 20px;
 
     #categories{
@@ -18,7 +18,7 @@
     .product-selecton{
         display: flex;
         flex-direction: column;
-        
+        gap: 20px;
         .navigation-tab{
             display: flex;
             flex-direction: row;
@@ -26,50 +26,67 @@
             a{
                 color: var(--dark_teal_text);
                 text-decoration: none;
+                font-size: 1.1rem;
+                font-weight: 300;
             }
 
         }
 
         #product-list{
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* grid-template-rows: repeat(auto-fit, 280px); */
+            margin-bottom: 40px;
             gap: 20px;
             .product-card{
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                height: 300px;
                 padding: 15px;
                 border-radius: 10px;
                 background-color: #ECEDE9;
                 position: relative;
                 
-                .add-to-favorite path{
-                    cursor: pointer;
-                    fill: none !important;
-                    transition: all 1s ease;
-                    stroke: var(--primary_blue);
-                }
-                .add-to-favorite:hover path:hover{
-                    fill: var(--accent_orange);
-                    stroke: var(--accent_orange);
-
-                    
-                }
-
-                .product-image{
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
+                .favorite-icon{
                     position: absolute;
+                    padding: 10px;
+                    top: 0;
+                    right: 0;
+                   
+                    path{
+                        fill: none ;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        stroke: var(--primary_blue);
+                    }
+                 
+                    path:hover{
+                        fill: var(--accent_orange);
+                        stroke: var(--accent_orange);
+    
+                    }
+                }
+                
+
+
+
+                .image-container{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    img{
+                        user-select: none;
+                        pointer-events: none;
+                        width: 170%;
+                    }
                 }
 
                 .details-container{
 
                     .product-name{
-                        font-size: 1.2rem;
-                        font-weight: 700;
+                        font-size: 1.1rem;
+                        font-weight: 600;
                         line-height: 1.2;
                         color: var(--primary_blue);
                     }
@@ -80,7 +97,7 @@
                         align-items: end;
                         
                         .price{
-                            font-size: 1.4rem;
+                            font-size: 1.2rem;
                             font-weight: 700;
                             color: var(--text_dark_teal);
                         }
