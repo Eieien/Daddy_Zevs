@@ -1,4 +1,15 @@
 @import './constants.css';
+#featured-banner{
+    border-radius: 20px;
+    background-image: url('../images/backgrounds/Golden\ Glazed\ Donuts\ Banner.svg');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 370px;
+    max-width: none;
+    margin-bottom: 20px;
+}
+
 #menu{
     display: grid;
     grid-template-columns: 200px 1fr;

@@ -14,6 +14,9 @@
     ?>
 
     <main class="content">
+        <div id="featured-banner">
+            
+        </div>
         <div id="menu">
             <div>
                 <ul id="categories">
