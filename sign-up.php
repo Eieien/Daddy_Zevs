@@ -28,13 +28,13 @@
                 <form>
                     <h1 id="form-msg">Sign up.</h1>
                     <div class="full-name">
-                        <input type="text" value="First Name" class="name-textbox">
-                        <input type="text" value="Last Name" class="name-textbox">
+                        <input type="text" placeholder="First Name" class="name-textbox">
+                        <input type="text" placeholder="Last Name" class="name-textbox">
                     </div>    
                     <div>
-                        <input type="text" value="Email" class="textbox"><br>
-                        <input type="text" value="Password" class="textbox"><br>
-                        <input type="text" value="Confirm Password" class="textbox"><br>
+                        <input type="text" placeholder="Email" class="textbox"><br>
+                        <input type="text" placeholder="Password" class="textbox"><br>
+                        <input type="text" placeholder="Confirm Password" class="textbox"><br>
                     </div>
                     <input type="checkbox" name="terms-conditions">
                     <label for="terms-conditions">Agree to terms and conditions</label><br><br>
