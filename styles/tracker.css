@@ -1,0 +1,80 @@
+@import 'constants.css';
+
+body{
+    background-color: var(--primary_white);
+}
+
+#status{
+    color: var(--primary_blue);
+
+    #status_bar{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        hr{
+            width: 20%;
+            height:50%;
+        }
+        .icon_status{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+            
+            text-align: center;
+            img{
+                max-width: 24px;
+                max-height: 24px;
+            }
+            
+        }
+    }
+}
+
+#summary{
+    display: flex;
+    flex-direction: column;
+    color: var(--primary_blue);
+
+    #summary_list{
+        color:black;
+        background-color: aquamarine;
+        border-radius: 12px;
+        background-color: rgb(221, 221, 221);
+        .summary_item{
+            margin: 3vh;
+            background-color: rgb(238, 238, 238);
+            .summary_content{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding:2vh;
+                .image_text{
+                    display: flex;
+                    flex-direction: row;
+                    .summary_img{
+                        max-width: 48px;
+                        max-height: 48px;
+                    }
+                    .summary_text{
+                        h2{
+                            color: var(--primary_blue);
+                        }
+                        .summary_quantity{
+                            color: var(--primary_blue);
+                        }
+                    }
+                }
+                .summary_price{
+                    align-self: flex-end;
+                    justify-self: flex-end;
+                    color: var(--primary_blue)
+                }
+            }
+        }
+    }
+    #summary_total{
+        color:black;
+        align-self: flex-end;
+    }
+}
