@@ -36,14 +36,15 @@ main{
         #log-in-tagline, #sign-up-tagline{
             display: flex;
             flex-direction: column;
-            width: 60vh;
             font-size: 30px;
             color: var(--primary_white);
-            position: absolute;
-            top: 40%;
+            align-items: center;
+            justify-content: center;
+            height: 80%;
 
             h1, h4{
-                margin: 5px;
+                width: 100%;
+                margin: 5px 0;
             }
         }
     }
@@ -108,7 +109,7 @@ main{
             justify-content: center;
             margin-left: auto;
             margin-right: auto;
-            width: 60%;
+            width: min(500px, 60%);
             margin-bottom: 30px;
 
             p, a{ 
@@ -136,6 +137,21 @@ main{
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 column-gap: 10px;
             }
+        }
+    }
+}
+
+/* Mobile view */
+@media(max-width: 1080px){
+    main{
+        display: flex;
+        justify-content: center;
+
+        #banner{
+            display: none;
+        }
+        #credentials{
+            width: 100%;
         }
     }
 }
