@@ -81,7 +81,6 @@
                             <div id="quantity">0</div>
                             <div id="add" onclick="updateQuantity(1)">+</div>
                         </div>
-                        <div class="input-design" id="cart-input">Add to Cart</div>
                     </div>
                 </section>
             </div>
