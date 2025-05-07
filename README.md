@@ -33,5 +33,10 @@
 	12. Replacing your local file with the file with the new changes
 		- git fetch origin
 		- git diff origin/branch-name -- path/to/your/file
+	13. Creating Branches
+		-git checkout -b {branch}
+		-git checkout {branch} // Goes to that specific Branch
+	14. Merging Branches
+		-git merge {branch}
 5. [[CHEATSHEET]](https://education.github.com/git-cheat-sheet-education.pdf)
 
