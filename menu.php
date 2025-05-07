@@ -15,11 +15,13 @@
 
     <main class="content">
         <div id="featured-banner">
-            
+            <div class="button-container">
+                <button>Check it out!</button>
+            </div>
         </div>
         <div id="menu">
-            <div>
-                <ul id="categories">
+            <div id="categories">
+                <ul id="baked-goods">
                     <h1>
                         Baked Goods
                     </h1>
@@ -40,6 +42,35 @@
                     </li>
                     <li>
                         Filipino Classics
+                    </li>
+                </ul>
+                <ul id="pastries">
+                    <h1>
+                        Pastries
+                    </h1>
+                    <li>
+                        Tarts
+                    </li>
+                    <li>
+                        Cupcakes
+                    </li>
+                    <li>
+                        Beignets
+                    </li>
+                    <li>
+                        Shortcakes
+                    </li>
+                    <li>
+                        Pudding
+                    </li>
+                    <li>
+                        Cinnamon Roll
+                    </li>
+                    <li>
+                        Pies
+                    </li>
+                    <li>
+                        Croissants
                     </li>
                 </ul>
             </div>

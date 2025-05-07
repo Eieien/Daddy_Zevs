@@ -4,10 +4,29 @@
     background-image: url('../images/backgrounds/Golden\ Glazed\ Donuts\ Banner.svg');
     background-position: center;
     background-size: cover;
-    width: 100%;
-    height: 370px;
-    max-width: none;
+    max-width: 100%;
+    aspect-ratio: 3 / 0.9;
     margin-bottom: 20px;
+    
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding: 15px;
+
+    button{
+        color: var(--primary_blue);
+        background-color: var(--primary_white);
+        border: none;
+        border-radius: 20px;
+        padding: 5px 25px;
+        cursor: pointer;
+        font-size: 1.1rem;
+    }
+
+    button:hover{
+        background-color: #ECEDE9;
+        transition: all 0.3s ease;
+    }
 }
 
 #menu{
@@ -16,13 +35,26 @@
     gap: 20px;
 
     #categories{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #baked-goods, #pastries{
         padding-left: 0;
         list-style: none;
-        
+        margin: 0;
 
         h1{
             color: var(--primary_blue);
             margin: 0;
+            font-size: 1.8rem;
+        }
+
+        li{
+            margin: 10px 0;
+            font-weight: 500;
+            font-size: 1.2rem;
         }
     }
 
@@ -64,16 +96,24 @@
                     top: 0;
                     right: 0;
                    
-                    path{
+                    svg{
                         fill: none ;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                        stroke: var(--primary_blue);
+
+                        path{
+                            stroke: var(--primary_blue);
+
+                        }
                     }
                  
-                    path:hover{
+                    svg:hover{
                         fill: var(--accent_orange);
-                        stroke: var(--accent_orange);
+                        
+                        path{
+                            stroke: var(--accent_orange);
+
+                        }
     
                     }
                 }
