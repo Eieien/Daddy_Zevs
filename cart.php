@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cart</title>
-    <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="css/constants.css">
-    <link rel="stylesheet" href="css/header_footer.css">
+    <link rel="stylesheet" href="./styles/cart.css">
+    <link rel="stylesheet" href="./styles/constants.css">
+    <link rel="stylesheet" href="./styles/header_footer.css">
 </head>
 <body style="background-color: var(--primary_white);">
     <nav id="user-nav">

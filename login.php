@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
 
-    <link rel="stylesheet" href="./styles/constants.css">
-    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./styles/login.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <main>
@@ -21,7 +24,7 @@
                 <h4>Ready for a delicious experience?</h4>
             </div>
 
-            <div id="sign-up-tagline" style="display: none;">
+            <div id="sign-up-tagline">
                 <h1>Freshly baked,</h1>
                 <h1>just for you.</h1>
                 <h4>Sign up & savor the experience!</h4>
@@ -31,53 +34,63 @@
         <section id="credentials">
             <div id="back">
                 <!-- placeholder image -->
-                <img src="images/logos/Daddy_zev_enhanced_new 1.svg"> 
+                <img src="images/logos/Daddy_zev_enhanced_new 1.svg">
                 <p>Back to Main</p>
             </div>
 
             <div id="log-in-container">
                 <h1>Log in</h1>
-                <form>
+
+                <form action="./data/register.php" method="post" name="log-in">
                     <div class="input-fields">
-                        <input type="text" placeholder="Email" class="textbox">
-                        <input type="password" placeholder="Password" class="textbox">
+                        <input type="text" name="email" placeholder="Email" class="textbox" required>
+                        <input type="password" name="password" placeholder="Password" class="textbox" required>
                     </div>
                     <div id="remember">
                         <span>
-                            <input type="checkbox" name="terms-conditions">
-                            <label for="terms-conditions">Remember Me</label>
+                            <input type="checkbox" name="remember-me" id="remember-me">
+                            <label for="remember-me">Remember Me</label>
                         </span>
-                        <a>Forgot Password?</a>
+                        <a href="#">Forgot Password?</a>
                     </div>
-                    <input type="button" value="Log In"><br>
-                    <p>Don't have an account? <span class="form-switch" onclick="switchForms()">Create one</span></p>
+                    <input type="submit" value="Log In" class="submit-credentials">
+                </form>
+
+                <form action="./data/register.php" method="post" name="switch-form">
+                    <input type="hidden" name="switch-form" value="true">
+                    <p>Don't have an account? <input type="submit" value="Create one"></p>
                 </form>
             </div>
 
-            <div id="sign-up-container" style="display: none;">
+            <div id="sign-up-container">
                 <h1>Sign up</h1>
-                <form>
+
+                <form action="./data/register.php" method="post" name="sign-up">
                     <div class="input-fields">
                         <div id="names">
-                            <input type="text" placeholder="First Name" class="textbox">
-                            <input type="text" placeholder="Last Name" class="textbox">
+                            <input type="text" name="first_name" placeholder="First Name" class="textbox" required>
+                            <input type="text" name="last_name" placeholder="Last Name" class="textbox" required>
                         </div>
-                        <input type="text" placeholder="Email" class="textbox">
-                        <input type="password" placeholder="Password" class="textbox">
-                        <input type="password" placeholder="Confirm Password" class="textbox">
+                        <input type="text" name="email" placeholder="Email" class="textbox" required>
+                        <input type="password" name="password" placeholder="Password" class="textbox" required>
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" class="textbox" required>
                     </div>
                     <div id="remember">
                         <span>
-                            <input type="checkbox" name="terms-conditions">
+                            <input type="checkbox" name="terms-conditions" required>
                             <label for="terms-conditions">Agree to terms and conditions</label>
                         </span>
                     </div>
-                    <input type="button" value="Sign Up"><br>
-                    <p>Already have an account? <span class="form-switch" onclick="switchForms()">Sign In</span></p>
+                    <input type="submit" value="Sign Up" class="submit-credentials">
+                </form>
+                
+                <form action="./data/register.php" method="post" name="switch-form">
+                    <input type="hidden" name="switch-form" value="true">
+                    <p>Already have an account? <input type="submit" value="Sign In"></p>
                 </form>
             </div>
 
-            <p id="copyright">@2025 Daddy Zev's. All rights reserved.</div>
+            <p id="copyright">@2025 Daddy Zev's. All rights reserved.</p>
         </section>
     </main>
 
@@ -88,19 +101,34 @@
         const signUpTag = document.getElementById("sign-up-tagline");
 
         function switchForms(){
-            if(signUpForm.style.display === "none"){
-                logInForm.style.display = "none";
-                logInTag.style.display = "none";
-                signUpForm.style.display = "flex";
-                signUpTag.style.display = "flex";
+            if(signUpForm.style.display === 'none'){
+                logInForm.style.display = 'none';
+                logInTag.style.display = 'none';
+                signUpForm.style.display = 'flex';
+                signUpTag.style.display = 'flex';
             }
-            else if(logInForm.style.display === "none"){
-                signUpForm.style.display = "none";
-                signUpTag.style.display = "none";
-                logInForm.style.display = "flex";
-                logInTag.style.display = "flex";
+            else if(logInForm.style.display === 'none'){
+                signUpForm.style.display = 'none';
+                signUpTag.style.display = 'none';
+                logInForm.style.display = 'flex';
+                logInTag.style.display = 'flex';
             }
         }
+
+        <?php
+            if (isset($_SESSION["login"])) {
+                switch($_SESSION["login"]){
+                    case true:
+                        echo "signUpForm.style.display = 'none';
+                              signUpTag.style.display = 'none';";
+                        break;
+                    case false:
+                        echo "logInForm.style.display = 'none';
+                              logInTag.style.display = 'none';";
+                        break;
+                }
+            }
+        ?>
     </script>
 </body>
 </html>
