@@ -1,0 +1,27 @@
+<div id="setting-nav">
+    <h1>Settings</h1>
+    <ul>
+        <li>
+            <a href="./account.php">My Account</a>
+        </li>
+        <li>
+            <a href="#">My Addresses</a>
+        </li>
+        <li>
+            <a href="#">Order History</a>
+        </li>
+        <li>
+            <a href="./feedback.php">Feedback</a>
+        </li>
+        <li>
+            <a href="./logout.php">
+                Log out 
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 4H18.5C19.6046 4 20.5 4.89543 20.5 6L20.5 18C20.5 19.1046 19.6046 20 18.5 20H15.5M11.5 16L15.5 12M15.5 12L11.5 8M15.5 12H3.5" stroke="#F22C16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </a>
+        </li>
+    </ul>
+        
+</div>
