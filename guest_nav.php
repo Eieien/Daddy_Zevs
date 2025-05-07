@@ -8,7 +8,6 @@
 
                 </div>
             </div>
-
         </a>
         <div class="menu-icons">
             <a href="#">
@@ -20,7 +19,7 @@
         </div>
     </div>
     <div class="right">
-        <form action="#" method="post">
+        <form action="login.php" method="post">
             <button name="login" class="log-in">Log in</button>
             <button name="signup" class="sign-up">Sign up</button>
             <!-- adding an onclick soon -->

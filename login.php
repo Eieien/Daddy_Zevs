@@ -1,12 +1,28 @@
 <?php
     session_start();
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST["login"])){
+            $_SESSION["login"] = true;
+        }
+        else if(isset($_POST["signup"])){
+            $_SESSION["login"] = false;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <?php
+        if(empty($_SESSION["login"])){
+            echo "<title>Sign Up</title>";
+        }
+        else{
+            echo "<title>Log In</title>";
+        }
+    ?>
 
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/login.css?v=<?php echo time(); ?>">
@@ -41,7 +57,7 @@
             <div id="log-in-container">
                 <h1>Log in</h1>
 
-                <form action="./data/register.php" method="post" name="log-in">
+                <form action="./data/register.php" method="post">
                     <div class="input-fields">
                         <input type="text" name="email" placeholder="Email" class="textbox" required>
                         <input type="password" name="password" placeholder="Password" class="textbox" required>
@@ -53,19 +69,18 @@
                         </span>
                         <a href="#">Forgot Password?</a>
                     </div>
-                    <input type="submit" value="Log In" class="submit-credentials">
+                    <input type="submit" name="log-in" value="Log In" class="submit-credentials">
                 </form>
 
-                <form action="./data/register.php" method="post" name="switch-form">
-                    <input type="hidden" name="switch-form" value="true">
-                    <p>Don't have an account? <input type="submit" value="Create one"></p>
+                <form action="./data/register.php" method="get">
+                    <p>Don't have an account? <input type="submit" name="switch-form" value="Create one"></p>
                 </form>
             </div>
 
             <div id="sign-up-container">
                 <h1>Sign up</h1>
 
-                <form action="./data/register.php" method="post" name="sign-up">
+                <form action="./data/register.php" method="post">
                     <div class="input-fields">
                         <div id="names">
                             <input type="text" name="first_name" placeholder="First Name" class="textbox" required>
@@ -81,12 +96,11 @@
                             <label for="terms-conditions">Agree to terms and conditions</label>
                         </span>
                     </div>
-                    <input type="submit" value="Sign Up" class="submit-credentials">
+                    <input type="submit" name="sign-up" value="Sign Up" class="submit-credentials">
                 </form>
                 
-                <form action="./data/register.php" method="post" name="switch-form">
-                    <input type="hidden" name="switch-form" value="true">
-                    <p>Already have an account? <input type="submit" value="Sign In"></p>
+                <form action="./data/register.php" method="get">
+                    <p>Already have an account? <input type="submit" name="switch-form" value="Sign In"></p>
                 </form>
             </div>
 

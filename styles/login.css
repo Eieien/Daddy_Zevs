@@ -84,16 +84,14 @@ main{
         p, a{ 
             font-size: 12px; 
         }
-        form[name="switch-form"]{
-            input[type="submit"]{
-                border: none;
-                padding: 0 3px;
-                color: var(--primary_blue);
-                text-decoration: underline;
-                font-weight: 600;
-                font-size: 15px;
-                cursor: pointer;
-            }
+        input[name="switch-form"]{
+            border: none;
+            padding: 0 3px;
+            color: var(--primary_blue);
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
         }
 
         #back{

@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    
+    // comment out for now to remove logged in account
+    // unset($_SESSION["email"]);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +16,12 @@
 </head>
 <body>
     <?php
-        include "./guest_nav.php";
+        if(empty($_SESSION["email"])){
+            include "./guest_nav.php";
+        }
+        else{
+            include "./user_nav.php";
+        }
     ?>
 
     <main class="content">
@@ -105,7 +116,7 @@
         function displayProducts(type){
             document.getElementById("product-list").innerHTML = "";
 
-            fetch("backend/products.json")
+            fetch("data/products.json")
                 .then(response => response.json())
                 .then(products => products.forEach((item) => {
                     let check = false;
@@ -142,7 +153,7 @@
 
                         </div>
                         <div class="image-container">
-                            <img src="./images/products/3.svg">
+                            <img src=${item.image}>
                         </div>
                         
                         <div class="details-container">
