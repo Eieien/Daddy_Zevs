@@ -1,3 +1,35 @@
+@font-face{
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Medium.ttf") format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face{
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-SemiBold.ttf") format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face{
+    font-family: "Poppins";
+    src: url("../fonts/Poppins-Bold.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "Bolota";
+    src: url("../fonts/bolota-bold.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
 :root{
     --primary_blue: #3464DD;
     --primary_white: #FBFCEC;
@@ -7,43 +39,12 @@
     --secondary_font: 'Bolota', sans-serif;
     /* get them using var(--{name}) */
 }
-@font-face{
-    font-family: "Poppins";
-    src: url("./fonts/Poppins-Regular.ttf") format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face{
-    font-family: "Poppins";
-    src: url("./fonts/Poppins-Medium.ttf") format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face{
-    font-family: "Poppins";
-    src: url("./fonts/Poppins-SemiBold.ttf") format('truetype');
-    font-weight: 600;
-    font-style: normal;
-}
-@font-face{
-    font-family: "Poppins";
-    src: url("./fonts/Poppins-Bold.ttf") format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face{
-    font-family: "Bolota";
-    src: url("./fonts/bolota-bold.ttf") format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
 
 body{
     margin: 0;
     padding: 0;
     background-color: var(--primary_white);
+    overflow-x: hidden;
 }
 
 .content{
