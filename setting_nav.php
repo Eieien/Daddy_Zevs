@@ -8,7 +8,7 @@
             <a href="#">My Addresses</a>
         </li>
         <li>
-            <a href="#">Order History</a>
+            <a href="./order_history.php">Order History</a>
         </li>
         <li>
             <a href="./feedback.php">Feedback</a>
