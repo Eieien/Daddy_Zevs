@@ -1,0 +1,197 @@
+@import "constants.css";
+
+*{
+    font: var(--primary_font);
+}
+
+/*--HERO SECTION--*/
+
+.hero-section{
+    height: 600px;
+    width: 100%;
+    background-image: url('https://www.restroworks.com/blog/wp-content/uploads/2024/11/How-to-Start-a-Bakery.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}        
+
+h5{
+    font-size: 70px;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: bolder;
+}
+
+#hero-logIn{
+    background-color: transparent;
+    font-weight: bold;
+    border: 0.5px solid var(--accent_orange);
+    border-radius: 20px;
+    padding: 5px 20px;
+    background-color: var(--accent_orange);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#hero-logIn:hover{
+    transition: 0.3s;
+    border-radius: 25px;
+    padding: 10px 25px;
+}
+/*--FEATURES SECTION--*/
+.featured-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    background-color: #3464DD;
+    text-align: center;
+}
+
+.featured-content{
+    width: 80%;
+    margin-inline: auto;
+}
+
+#featured-content{
+    h1, p, button{
+        color: white;
+        margin-top: 20px;
+    }
+
+    h1{
+        font-size: 50px;
+        font-weight: 700;
+    }
+
+}
+
+#menu-goldenGlaze{
+    background-color: var(--primary_blue);
+    font-weight: bold;
+    border: 0.5px solid white;
+    border-radius: 20px;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#menu-goldenGlaze:hover{
+    border-radius: 25px;
+    padding: 10px 25px;
+    transition: 0.3s;
+}
+
+.featured-img{
+    height: 100%;
+    width: 100%;
+    background-image: url('https://www.allrecipes.com/thmb/DdbHoViRwvk2x9VMtpgyHWy10xA=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/45921-crispy-and-creamy-doughnuts-DDMFS-4x3-4266734872014eeebaeddbe56452e18d.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*--CAROUSEL SECTION-- */
+
+.featured-carouselSection{
+    height: 45rem;
+    text-align: center;
+    width: 100%;
+}
+
+.featured-container{
+    width: 90%;
+    margin-inline: auto;
+}
+
+#featured-carouselDes{
+    h1{
+        margin-top: 50px;
+        color: var(--primary_blue);
+        font-size: 50px;
+        font-weight: 700;
+    }
+
+    p{
+        color: var(--text_dark_teal);
+        font-weight: 550;
+    }
+}
+
+.featured-carouselSlide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+
+}
+
+.card-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.card-item {
+list-style: none;
+}
+.card-link {
+width: 90%;
+height: 350px;
+display: block;
+background-color: var(--primary_blue);
+padding: 18px;
+border-radius: 12px;
+text-decoration: none;
+border: 2px solid transparent;
+box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+transition: 0.2s ease;
+}
+
+.card-image {
+width: 100%;
+aspect-ratio: 16/9;
+object-fit: cover;
+border-radius: 10px;
+}
+
+.card-title {
+color: var(--primary_white);
+font: var(--primary_font);
+font-weight: 600;
+font-size: 40px;
+margin-top: 16px;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after{
+    color: var(--text_dark_teal); 
+}
+
+.swiper-button-prev::after{
+    margin-left: 10px;
+}
+
+.swiper-button-next::after{
+    margin: 0px 25px 0 0;
+}
+
+#menu{
+    background-color: var(--primary_blue);
+    color: var(--primary_white);
+    border: 1px solid var(--primary_blue);
+    border-radius: 20px;
+    padding: 5px 20px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#menu:hover{
+    transition: 0.3s;
+    align-self: center;
+    border-radius: 30px;
+    padding: 5px 30px;
+}
