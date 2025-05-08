@@ -1,6 +1,6 @@
 <nav id="user-nav">
     <div class="left">
-        <a href="#">
+        <a href="./menu.php">
             <div class="logo">
                 <img src="./images/logos/Daddy_zev_enhanced_new 1.svg" width="70px">
                 <div>

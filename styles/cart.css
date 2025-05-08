@@ -1,29 +1,46 @@
 @import 'constants.css';
 
-#contain{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        justify-content: space-evenly;
+main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-        width: 90%;
-        height: 50vh;
-        margin: 5vh 10vh 10vh 10vh;/*Make sure to remove for the header later*/
-
-        #cart{
+    #cart{
         align-self: flex-start;
         width: 120vh;
-        height: 100vh;
         font-family: var(--primary_font);
+        margin-bottom: 50px;
+
         h1{
             color: var(--primary_blue);
         }
+
         .item{
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: 30px 225px 1fr;
+            column-gap: 20px;
             padding: 24px;
-            #product-description{
+            align-items: center;
+
+            input[type="checkbox"]{
+                width: 20px;
+                height: 20px;
+            }
+            .img-box{
+                background-color: #ECEDE9;
+                position: relative;
+                height: 100%;
+                border-radius: 20px;
+
+                img{
+                    width: 200px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .product-description{
                 width: 75%;
 
                 h1{
@@ -67,30 +84,38 @@
             }
         }
     }
-}
-#payment{
-    
-    align-self: flex-start;
-    width: 40vh;
-    height: auto;
+    #payment{
+        align-self: flex-start;
+        width: 40vh;
+        height: auto;
+        padding: 20px 24px;
+        margin-left: 10vh;
+        background-color: gainsboro;
+        border-radius: 12px;
+        font-family: var(--primary_font);
+        color: var(--primary_blue);
 
-    padding: 0px 24px 12px 24px;
-    margin-left: 10vh;
-
-    background-color: gainsboro;
-    border-radius: 12px;
-    font-family: var(--primary_font);
-
-    color: var(--primary_blue);
-
-
-    #checkout{
-        background-color: var(--primary_blue);
-        color: var(--primary_white);
-        font-size: 2em;
-
-        padding: 3px 90px;
-        border-radius: 24px;
-        border: none;
+        h3, h2, h1{
+            margin: 0;
+        }
+        .black{
+            color: var(--text_dark_teal);
+        }
+        .payment-div{
+            display: flex;
+            justify-content: space-between;
+        }
+        #checkout{
+            background-color: var(--primary_blue);
+            color: var(--primary_white);
+            font-size: 1.5rem;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 20px;
+            padding: 3px 90px;
+            border-radius: 24px;
+            border: none;
+            cursor: pointer;
+        }
     }
 }

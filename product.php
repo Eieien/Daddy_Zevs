@@ -2,7 +2,8 @@
     session_start();
 
     if(isset($_GET["product-info"])){
-        $item = json_decode($_GET["product-info"]);
+        $item_json = $_GET["product-info"];
+        $item = json_decode($item_json);
 
         $product = $item->product_name;
         $description = $item->description;
@@ -31,6 +32,14 @@
         }
     ?>
 
+    <!-- hidden form -->
+    <form action="./data/user-data.php" method="post" id="add-to-cart">
+        <?php echo 
+            "<input type='hidden' name='item-data' value='$item_json'>
+            <input type='hidden' name='quantity' id='quantity'>"; 
+        ?>
+    </form>
+
     <main>
         <section id="product-image">
             <?php echo "<img src=$image>"; ?>
@@ -45,10 +54,10 @@
             <div id="inputs">
                 <div class="input-design" id="quantity-input">
                     <div id="minus" onclick="updateQuantity(0)">-</div>
-                    <div id="quantity">0</div>
+                    <div id="text-quantity">0</div>
                     <div id="add" onclick="updateQuantity(1)">+</div>
                 </div>
-                <div class="input-design" id="cart-input">Add to Cart</div>
+                <div class="input-design" id="cart-input" onclick="addToCart()">Add to Cart</div>
             </div>
         </section>
     </main>
@@ -58,14 +67,24 @@
     ?>
 
     <script>
-        function updateQuantity(x){
-            let quantity = parseInt(document.getElementById("quantity").textContent);
+        let quantity;
 
+        function updateQuantity(x){
+            quantity = parseInt(document.getElementById("text-quantity").textContent);
             if(x) quantity++;
             else if(!x && quantity > 0) quantity--;
             console.log(quantity);
 
-            document.getElementById("quantity").textContent = quantity;
+            document.getElementById("text-quantity").textContent = quantity;
+        }
+
+        function addToCart(){
+            quantity = parseInt(document.getElementById("text-quantity").textContent);
+            document.getElementById("quantity").value = quantity;
+
+            if(quantity > 0){
+                document.getElementById("add-to-cart").submit();
+            }
         }
     </script>
 </body>
