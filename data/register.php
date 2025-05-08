@@ -4,10 +4,10 @@ session_start();
 if($_SERVER["REQUEST_METHOD"] == "GET"){
     // switch between log in & sign in forms
     if(isset($_GET["switch-form"])){
-        if(!isset($_SESSION["login"]) || $_SESSION["login"] === false){
+        if($_SESSION["login"] === false){
             $_SESSION["login"] = true;
         } 
-        else{
+        else if(empty($_SESSION["login"]) && $_SESSION["login"] !== false || $_SESSION["login"] === true){
             $_SESSION["login"] = false;
         }
 

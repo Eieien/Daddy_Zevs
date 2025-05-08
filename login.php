@@ -9,7 +9,7 @@
     if(isset($_POST["signup"])){
         $_SESSION["login"] = false;
     }
-    else{
+    else if(isset($_POST["login"])){
         $_SESSION["login"] = true;
     }
 ?>
@@ -19,8 +19,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        if(empty($_SESSION["login"])){
-            echo "<title>Sign Up</title>";
+        if(isset($_SESSION["login"])){
+            if($_SESSION["login"]){
+                echo "<title>Log In</title>";
+            }
+            else{
+                echo "<title>Sign Up</title>";
+            }
         }
         else{
             echo "<title>Log In</title>";
@@ -133,17 +138,21 @@
         }
 
         <?php
-            if (isset($_SESSION["login"])) {
+            if(isset($_SESSION["login"])){
                 switch($_SESSION["login"]){
                     case true:
                         echo "signUpForm.style.display = 'none';
-                              signUpTag.style.display = 'none';";
+                                signUpTag.style.display = 'none';";
                         break;
                     case false:
                         echo "logInForm.style.display = 'none';
-                              logInTag.style.display = 'none';";
+                                logInTag.style.display = 'none';";
                         break;
                 }
+            }
+            else{
+                echo "signUpForm.style.display = 'none';
+                    signUpTag.style.display = 'none';";
             }
         ?>
     </script>
