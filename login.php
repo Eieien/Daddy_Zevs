@@ -1,13 +1,16 @@
 <?php
     session_start();
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(isset($_POST["login"])){
-            $_SESSION["login"] = true;
-        }
-        else if(isset($_POST["signup"])){
-            $_SESSION["login"] = false;
-        }
+    if(isset($_SESSION["email"])){
+        header("location: ./menu.php");
+        exit();
+    }
+
+    if(isset($_POST["signup"])){
+        $_SESSION["login"] = false;
+    }
+    else{
+        $_SESSION["login"] = true;
     }
 ?>
 <!DOCTYPE html>

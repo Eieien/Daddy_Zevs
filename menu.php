@@ -30,11 +30,16 @@
     </form>
 
     <main class="content">
-        <div id="featured-banner">
-            <div class="button-container">
-                <button>Check it out!</button>
-            </div>
-        </div>
+        <?php
+            if(isset($_SESSION["email"])){
+                echo
+                "<div id='featured-banner'>
+                    <div class='button-container'>
+                        <button>Check it out!</button>
+                    </div>
+                </div>";
+            }
+        ?>
         <div id="menu">
             <div id="categories">
                 <ul id="baked-goods">
