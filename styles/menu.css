@@ -89,6 +89,7 @@
                 border-radius: 10px;
                 background-color: #ECEDE9;
                 position: relative;
+                cursor: pointer;
                 
                 .favorite-icon{
                     position: absolute;

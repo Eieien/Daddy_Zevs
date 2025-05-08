@@ -24,6 +24,11 @@
         }
     ?>
 
+    <!-- hidden form -->
+    <form action="./product.php" method="get" id="product-form">
+        <input type='hidden' name='product-info'>
+    </form>
+
     <main class="content">
         <div id="featured-banner">
             <div class="button-container">
@@ -33,61 +38,25 @@
         <div id="menu">
             <div id="categories">
                 <ul id="baked-goods">
-                    <h1>
-                        Baked Goods
-                    </h1>
-                    <li>
-                        Breadloaf
-                    </li>
-                    <li>
-                        Donuts
-                    </li>
-                    <li>
-                        Cakes
-                    </li>
-                    <li>
-                        Cookies
-                    </li>
-                    <li>
-                        Brownies
-                    </li>
-                    <li>
-                        Filipino Classics
-                    </li>
+                    <h1>Baked Goods</h1>
+                    <li onclick="displayProducts(1)">Breadloaf</li>
+                    <li onclick="displayProducts(2)">Cake</li>
+                    <li onclick="displayProducts(3)">Cookies</li>
+                    <li onclick="displayProducts(4)">Filipino Classics</li>
+                    <li onclick="displayProducts(5)">Cupcakes</li>
+                    <li onclick="displayProducts(6)">Others</li>
                 </ul>
                 <ul id="pastries">
-                    <h1>
-                        Pastries
-                    </h1>
-                    <li>
-                        Tarts
-                    </li>
-                    <li>
-                        Cupcakes
-                    </li>
-                    <li>
-                        Beignets
-                    </li>
-                    <li>
-                        Shortcakes
-                    </li>
-                    <li>
-                        Pudding
-                    </li>
-                    <li>
-                        Cinnamon Roll
-                    </li>
-                    <li>
-                        Pies
-                    </li>
-                    <li>
-                        Croissants
-                    </li>
+                    <h1>Pastries</h1>
+                    <li onclick="displayProducts(7)">Donut</li>
+                    <li onclick="displayProducts(8)">Tart</li>
+                    <li onclick="displayProducts(9)">Pie</li>
+                    <li onclick="displayProducts(10)">Croissants</li>
                 </ul>
             </div>
             <div class="product-selecton">
                 <div class="navigation-tab">
-                    <a href="#">
+                    <a href="./menu.php">
                         Menu
                     </a>
                     <a href="#">
@@ -126,13 +95,31 @@
                             if(item.category === "Bread") check = true;
                             break;
                         case 2:
-                            if(item.category === "Donut") check = true;
-                            break;
-                        case 3:
                             if(item.category === "Cake") check = true;
                             break;
-                        case 4:
+                        case 3:
                             if(item.category === "Cookies") check = true;
+                            break;
+                        case 4:
+                            if(item.category === "Filipino Classics") check = true;
+                            break;
+                        case 5:
+                            if(item.category === "Cupcakes") check = true;
+                            break;
+                        case 6:
+                            if(item.category === "Others") check = true;
+                            break;
+                        case 7:
+                            if(item.category === "Donut") check = true;
+                            break;
+                        case 8:
+                            if(item.category === "Tarts") check = true;
+                            break;
+                        case 9:
+                            if(item.category === "Pies") check = true;
+                            break;
+                        case 10:
+                            if(item.category === "Croissants") check = true;
                             break;
                         default:
                             check = true;
@@ -179,6 +166,11 @@
                 .catch(error => console.error('Error:', error));
         }
         displayProducts();
+
+        function getProduct(item){
+            document.querySelector("input[name='product-info']").value = item;
+            document.getElementById("product-form").submit();
+        }
     </script>
 </body>
 </html>

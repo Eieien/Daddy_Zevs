@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+
+    if(isset($_GET["product-info"])){
+        $item = json_decode($_GET["product-info"]);
+
+        $product = $item->product_name;
+        $description = $item->description;
+        $price = $item->price;
+        $image = $item->image;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +23,25 @@
 </head>
 <body>
     <?php
-        include "./guest_nav.php";
+        if(empty($_SESSION["email"])){
+            include "./guest_nav.php";
+        }
+        else{
+            include "./user_nav.php";
+        }
     ?>
 
     <main>
         <section id="product-image">
-            <img src="./images/products/CroissantChocolate-removebg 1.svg">
+            <?php echo "<img src=$image>"; ?>
         </section>
 
         <section id="product-description">
-            <h1>Product Name</h1>
-            <h3>Php 69.00</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis temporibus molestiae totam nam a, id veritatis labore illo odio officia tempora hic ullam nisi! Quo voluptatum at incidunt expedita sit?</p>
+            <?php echo 
+                "<h1>$product</h1>
+                <h3>Php ".sprintf("%.2f", $price)."</h3>
+                <p>$description</p>"; 
+            ?>
             <div id="inputs">
                 <div class="input-design" id="quantity-input">
                     <div id="minus" onclick="updateQuantity(0)">-</div>

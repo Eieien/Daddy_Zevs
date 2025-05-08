@@ -18,9 +18,9 @@
             <p>
                 Thanks for stopping by our little corner of sweetness. Whether you came for the vibes, the treats, or just a moment of sugar-coated joy, we’re always here, mixing up something fresh.
             </p>
-            <form id="log-out-form">
-                <button class="log-out">Log out</button>
-                <button class="cancel">Cancel</button>
+            <form action="./data/register.php" method="post" id="log-out-form">
+                <button class="log-out" name="logout">Log out</button>
+                <button class="cancel" name="cancel">Cancel</button>
             </form>
 
         </div>

@@ -26,5 +26,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header("location: ../menu.php");
         exit();
     }
+
+    // log out
+    if(isset($_POST["logout"])){
+        session_unset();
+        session_destroy();
+        header("location: ../menu.php");
+    }
+    if(isset($_POST["cancel"])){
+        header("location: ../account.php");
+    }
 }
 ?>

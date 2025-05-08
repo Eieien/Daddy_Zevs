@@ -38,7 +38,7 @@
             </div>
         </a>
         
-        <a href="#">
+        <a href="./account.php">
             <div class="menu-icon">
                 <img src="./images/icons/user.svg">
                 <span>Account</span>
