@@ -1,0 +1,118 @@
+@import './constants.css';
+
+#about-us-hero{
+    background-image: url('../images/backgrounds/temp.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .content h1, p{
+        text-align: center;
+        color: var(--primary_white);
+        margin: 0;
+        
+    }
+
+    h1{
+        font-size: 3.5rem;
+    }
+
+    p{
+        font-size: 2rem;
+    }
+}
+
+#story{
+    margin-bottom: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .content{
+        text-align: center;
+        font-size: 1.3rem;
+        width: 70vw;
+    }
+
+    /* img{
+        height: 50%;
+    } */
+
+    h1{
+        color: var(--primary_blue);
+    }
+
+    p{
+        margin: 0;
+    }
+
+ 
+    
+}
+
+#mission-vision{
+    background-color: var(--primary_blue);
+    height: 50vh;
+    padding: 50px;
+    .mission-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .mission-vision-content{
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary_white);
+        }
+    }
+}
+
+#staff{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    
+    h1, p{
+        margin: 0;
+    }
+
+    p{
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .team-grid{
+        display: grid;
+        grid-template-columns: 500px 500px;
+        justify-content: space-around;
+        column-gap: 20px;
+        row-gap: 100px;
+
+        .profile{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 20px;
+
+            .pfp{
+                width: 200px;
+                height: 200px;
+                border-radius: 100%;
+                border: none;
+                object-fit: cover;
+            }
+
+            .name{
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                flex-direction: column;
+                max-width: 230px;
+            }
+        }
+    }
+}
