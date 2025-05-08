@@ -10,7 +10,7 @@
             </div>
         </a>
         <div class="menu-icons">
-            <a href="./about.php">About</a>
+            <a href="./about_us.php">About</a>
             <a href="./menu.php">Menu</a>
         </div>
     </div>
