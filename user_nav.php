@@ -5,12 +5,10 @@
                 <img src="./images/logos/Daddy_zev_enhanced_new 1.svg" width="70px">
                 <div>
                     DADDY ZEV<span>'</span>S
-
                 </div>
             </div>
-
         </a>
-        <div >
+        <div>
             <form action="#" method="post" class="search-wrapper">
                 <img class="search-icon" src="./images/icons/search.svg">
                 <input type="text" name="search-bar" class="search" placeholder="What are you craving today?">
@@ -25,7 +23,7 @@
                 <span>Favorites</span>
             </div>
         </a>
-        <a href="#">
+        <a href="./cart.php">
             <div class="menu-icon">
                 <img src="./images/icons/cart.svg">
                 <span>Cart</span>

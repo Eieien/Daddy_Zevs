@@ -1,74 +1,70 @@
 @import 'constants.css';
 
 #contain{
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-justify-content: space-evenly;
-
-width: 90%;
-height: 50vh;
-margin: 5vh 10vh 10vh 10vh;/*Make sure to remove for the header later*/
-
-#cart{
-    align-self: flex-start;
-    width: 120vh;
-    height: 100vh;
-    font-family: var(--primary_font);
-    h1{
-        color: var(--primary_blue);
-    }
-    .item{
         display: flex;
         flex-direction: row;
-        padding: 24px;
-        #product-description{
-            width: 75%;
-    
-            h1{
-                font-size: 40px;
-                color: var(--primary_blue);
-                margin: 10px 0 10px 0;
-            }
-            h3{
-                font-size: 30px;
-                color: var(--text_dark_teal);
-                margin: 10px 0 10px 0;
-            }
-            p{
-                text-align: justify;
-            }
-            #inputs{
-                display: flex;
-                gap: 10px;
-                align-items: center;
-                font-size: 20px;
-    
-                #quantity-input{
+        justify-content: center;
+        align-items: center;
+        justify-content: space-evenly;
+
+        width: 90%;
+        height: 50vh;
+        margin: 5vh 10vh 10vh 10vh;/*Make sure to remove for the header later*/
+
+        #cart{
+        align-self: flex-start;
+        width: 120vh;
+        height: 100vh;
+        font-family: var(--primary_font);
+        h1{
+            color: var(--primary_blue);
+        }
+        .item{
+            display: flex;
+            flex-direction: row;
+            padding: 24px;
+            #product-description{
+                width: 75%;
+
+                h1{
+                    font-size: 40px;
+                    color: var(--primary_blue);
+                    margin: 10px 0 10px 0;
+                }
+                h3{
+                    font-size: 30px;
+                    color: var(--text_dark_teal);
+                    margin: 10px 0 10px 0;
+                }
+                p{
+                    text-align: justify;
+                }
+                .inputs{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    font-size: 20px;
+
+                    .minus, .add{
+                        cursor: pointer;
+                    }
+                    #cart-input{
+                        padding: 5px 20px 5px 20px;
+                        cursor: pointer;
+                    }
+                }
+                .input-design{
+                    background-color: var(--primary_blue);
+                    color: var(--primary_white);
+                    font-size: 15px;
+                    font-weight: 600;
+                    border-radius: 20px;
                     width: 50px;
                     display: flex;
                     justify-content: space-between;
                     padding: 5px 10px 5px 10px;
-    
-                    #minus, #add{
-                        cursor: pointer;
-                    }
-                }
-                #cart-input{
-                    padding: 5px 20px 5px 20px;
-                    cursor: pointer;
                 }
             }
-            .input-design{
-                background-color: var(--primary_blue);
-                color: var(--primary_white);
-                font-size: 15px;
-                font-weight: 600;
-                border-radius: 20px;
-                display: flex;
-            }
-        }
         }
     }
 }

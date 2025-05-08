@@ -35,6 +35,7 @@
         <div class="featured-img"></div>
     </div>
 
+    <!-- Fix for dynamic display -->
     <div class="featured-carouselSection">
         <div class="featured-container">
 

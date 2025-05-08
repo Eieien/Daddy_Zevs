@@ -90,7 +90,7 @@
         function displayProducts(type){
             document.getElementById("product-list").innerHTML = "";
 
-            fetch("data/products.json")
+            fetch("data/products-json.php")
                 .then(response => response.json())
                 .then(products => products.forEach((item) => {
                     let check = false;

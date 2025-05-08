@@ -91,12 +91,12 @@
                 <form action="./data/register.php" method="post">
                     <div class="input-fields">
                         <div id="names">
-                            <input type="text" name="first_name" placeholder="First Name" class="textbox" required>
-                            <input type="text" name="last_name" placeholder="Last Name" class="textbox" required>
+                            <input type="text" name="fname" placeholder="First Name" class="textbox" required>
+                            <input type="text" name="lname" placeholder="Last Name" class="textbox" required>
                         </div>
                         <input type="text" name="email" placeholder="Email" class="textbox" required>
                         <input type="password" name="password" placeholder="Password" class="textbox" required>
-                        <input type="password" name="confirm_password" placeholder="Confirm Password" class="textbox" required>
+                        <input type="password" name="confirm-password" placeholder="Confirm Password" class="textbox" required>
                     </div>
                     <div id="remember">
                         <span>

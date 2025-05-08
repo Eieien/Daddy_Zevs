@@ -1,6 +1,6 @@
 <nav id="guest-nav">
     <div class="left">
-        <a href="#">
+        <a href="./index.php">
             <div class="logo">
                 <img src="./images/logos/Daddy_zev_enhanced_new 1.svg" width="70px">
                 <div>
@@ -10,12 +10,8 @@
             </div>
         </a>
         <div class="menu-icons">
-            <a href="#">
-                About
-            </a>
-            <a href="#">
-                Menu
-            </a>
+            <a href="./about.php">About</a>
+            <a href="./menu.php">Menu</a>
         </div>
     </div>
     <div class="right">
