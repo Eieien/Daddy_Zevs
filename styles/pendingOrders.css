@@ -1,0 +1,199 @@
+@import './constants.css';
+
+a{
+    text-decoration: none;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    section{
+        h1{
+            color: var(--primary_blue);
+            font-weight: 1000;
+            font-size: 30px;
+        }
+
+        .filter{
+            color: var(--primary_blue);
+            font-weight: 600;
+            font-size: 26px;
+            margin-left: 5px;
+        }
+    }
+}
+
+/*--ORDER AND THE FILTER--*/
+
+.order-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.order-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.filter-a{
+    border: 0px;
+    background-color: var(--primary_white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.filter-dropdown {
+    display: none;
+    position: absolute;
+    top: 75%;
+    background-color: var(--primary_blue);
+    z-index: 100;
+    width: 150px;
+    border-radius: 15px;
+  }
+
+  .filter-dropdown.show {
+    display: block;
+}
+
+.filter-ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-li{
+    text-align: center;
+    font-size: 16px;
+    margin: 20px 0px;
+
+    .filter-complete{
+        background-color: #29F667;
+        border: 1px solid #29F667;
+    }
+
+    .filter-deliver{
+        background-color: #FFC628;
+        border: 1px solid #FFC628;
+    }
+
+    .filter-making{
+        background-color: #F27D16;
+        border: 1px solid #F27D16;
+    }
+
+}
+
+.filter-pending{
+    background-color: var(--accent_orange);
+    border: 1px solid var(--accent_orange);
+}
+
+.filter-complete, .filter-deliver, .filter-making, .filter-pending{
+    padding: 10px;
+    width: 100px;
+    color: var(--primary_white);
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/*--THE CARD AND THE OTHER STUFF--*/
+
+.pending-card{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(500px, 1fr));
+    gap: 50px;
+    justify-content: center;
+}
+
+.pending-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: #ECEDE9;
+    border-radius: 10px;
+}
+
+.pending-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 30px;
+
+    h1{
+
+        margin: 10px 0px 0px 0px;
+    }
+
+    .pending-topContent-up{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .pending-topContent-up-p{
+        margin: 20px 0px 0px 15px;
+    }
+    
+    .pending-topContent-down-p{
+        margin: 10px 0 0 0;
+    }
+
+    .pending-topButton, .pending-topIcon{
+        margin-top: 15px;
+    }
+
+    .pending-topIconButton{
+        margin: 3px 0px 0px 20px;
+        border: 1px solid #ECEDE9;
+        background-color: #ECEDE9;
+        cursor: pointer;
+    }
+}
+
+.pending-order{
+    padding: 0rem 2rem;
+}
+
+.pending-orderList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pending-total{
+    margin: 0 30px;
+    border-top: 1px solid var(--text_dark_teal);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*--Pending Orders--*/
+
+.pending-orderName, .pending-orderPrice, .pending-totalPrice{
+    font-size: 20px;
+}
+
+.pending-orderQuantity, .pending-orderPrice, .pending-totalPrice{
+    color: var(--primary_blue);
+}
+
+.pending-orderQuantity, .pending-totalWord{
+    font-size: 24px;
+}
+
+.pending-totalPrice, .pending-totalWord{
+    font-weight: 800;
+}

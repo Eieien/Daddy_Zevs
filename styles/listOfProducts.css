@@ -1,0 +1,74 @@
+@import './constants.css';
+
+main{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    section{
+        h1{
+            color: var(--primary_blue);
+            font-weight: 1000;
+            font-size: 30px;
+        }
+    }
+}
+
+.list-card{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 80px;
+    justify-content: center;
+}
+
+.list-item{
+    height: 325px;
+    background-color: #ECEDE9;
+    border-radius: 10px;
+}
+
+.list-content{
+    padding: 0rem 2rem;
+    height: 33%;
+}
+
+.list-productName{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary_blue);
+    margin-right: 50px;
+}
+
+.list-productPrice{
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text_dark_teal);
+}
+
+button{
+    float: right;
+    font-size: 20px;
+    padding: 3px 15px;
+    background-color: var(--primary_blue);
+    color: var(--primary_white);
+    border-radius: 10px;
+    border: var(--primary_blue);
+    cursor: pointer;
+}
+
+.list-imageProduct{
+    height: 165px;
+    width: 100%;
+}
+
+label{
+    margin: 10px 0px 0px 0px;
+    float: right;
+    color: var(--accent_orange);
+    font-weight: 700;
+}
+
+input{
+    float: right;
+    margin: 12px 10px 0px 10px;
+}
