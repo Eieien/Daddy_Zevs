@@ -58,12 +58,9 @@
                                 <h1>$product</h1>
                                 <h3>".sprintf("%.2f", $price)."</h3>
                                 <p>$description</p>
-                                <div class='inputs'>
-                                    <div class='input-design'>
-                                        <div class='minus' onclick='updateQuantity(0)'>-</div>
-                                        <div class='quantity'>$quantity</div>
-                                        <div class='add' onclick='updateQuantity(1)'>+</div>
-                                    </div>
+                                <div class='quantity-design'>
+                                    <p>Quantity:</p> 
+                                    <p>$quantity</p>
                                 </div>
                             </div>
                         </div><hr>";
@@ -89,11 +86,19 @@
                 <h1 class="black">Total</h1>
                 <h1>Php <?php echo sprintf("%.2f", $total) ?></h1>
             </div>
+            <!-- To be continued -->
             <form action="./data/user-data.php" method="post">
                 <input type="hidden">
                 <input type="submit" id="checkout" value="Checkout">
             </form>
         </div>
+
+        <div id="remove" onclick="removeItems()"><p>Remove Items</p></div>
+
+        <!-- hidden form -->
+        <form action="./data/user-data.php" method="post" id="remove-items">
+            <input type="hidden" name="checked-boxes" id="checked-boxes">
+        </form>
     </main>
     
     <?php
@@ -101,17 +106,30 @@
     ?>
 
     <script>
+        const checkboxes = document.querySelectorAll('input[type=checkbox]');
+        const removeButton = document.getElementById("remove");
+
         function checkState(){
-            const checkboxes = document.querySelectorAll('input[type=checkbox]');
             let check = false;
 
             for (let i = 0; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) check = true;
             }
 
-            // debug
-            if(check) console.log("checked");
-            else console.log("not checked");
+            if(check){
+                removeButton.style.display = "flex";
+            }
+            else{
+                removeButton.style.display = "none";
+            }
+        }
+
+        function removeItems(){
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) document.getElementById("checked-boxes").value += '1';
+                else document.getElementById("checked-boxes").value += '0';
+            }
+            document.getElementById("remove-items").submit();
         }
     </script>
 </body>

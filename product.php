@@ -19,8 +19,7 @@
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/product.css?v=<?php echo time(); ?>">
-    <!-- Placeholder Title -->
-    <title><?php echo "Product Name" ?> </title>
+    <title><?php echo $product ?> </title>
 </head>
 <body>
     <?php
@@ -73,7 +72,6 @@
             quantity = parseInt(document.getElementById("text-quantity").textContent);
             if(x) quantity++;
             else if(!x && quantity > 0) quantity--;
-            console.log(quantity);
 
             document.getElementById("text-quantity").textContent = quantity;
         }

@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $item = json_decode($_POST["item-data"]);
         $item->quantity = $_POST["quantity"]; // new quantity key
 
-        // checks if item is already in array to updated quantity
+        // checks if item is already in array to update quantity
         foreach($_SESSION['cart'] as $cart_item){
             if($item->product_id == $cart_item->product_id){
                 $cart_item->quantity += $item->quantity;
@@ -68,19 +68,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // removing items from cart
-    if(isset($_POST["product-id"])){
-        $product_id = $_POST["product-id"];
-        $i = 0;
+    if(isset($_POST["checked-boxes"])){
+        $check = $_POST["checked-boxes"];
 
-        foreach($_SESSION['cart'] as $item){
-            if($item->product_id == $product_id){
+        for($i = 0; $i < strlen($check); $i++){
+            if($check[$i]){
                 unset($_SESSION['cart'][$i]);
-                $_SESSION['cart'] = array_values($_SESSION['cart']); // reorganizes indices in array
-                header("location: ../cart.php");
-                exit();
             }
-            $i++;
         }
+
+        $_SESSION['cart'] = array_values($_SESSION['cart']); // reorganizes indices in array
+        header("location: ../cart.php");
+        exit();
     }
 
     // adding user address
@@ -135,6 +134,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit();
     }
 
+    // check if order is complete
     if(isset($_POST["order-complete"])){
         $order_id = getOrderID();
         deletePrevOrders($order_id);
