@@ -5,7 +5,7 @@
             <a href="./account.php">My Account</a>
         </li>
         <li>
-            <a href="#">My Addresses</a>
+            <a href="./address.php">My Addresses</a>
         </li>
         <li>
             <a href="./order_history.php">Order History</a>

@@ -131,6 +131,49 @@ main{
             }
         }
 
+        /* Address */
+        #address-card{
+            background-color: #ECEDE9;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 50px;
+
+            .name{
+                display: flex;
+                justify-content: space-between;
+                
+                h2{
+                    color: var(--primary_blue);
+                    margin: 0;
+                    font-weight: 700;
+                    font-size: 1.7rem;
+                }
+
+                .phone-num{
+                    font-weight: 500;
+                    font-size: 1rem;
+                }
+                img{
+                    width: 20px;
+                }
+            }
+
+            .address{
+                width: 60%;
+            }
+
+            
+        }
+        #add-address{
+            display: flex;
+            gap: 10px;
+            color: var(--accent_orange);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
         /* Order History */
         #order-history-list{
             display: flex;
