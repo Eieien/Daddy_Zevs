@@ -27,7 +27,6 @@
                             <div class="details-container">
                                 <div class="product-name">
                                     <h2>Croissant</h2>
-                                    <img src="./images/icons/menu-vertical.svg">
     
                                 </div>
                                 <div class="description">
@@ -40,27 +39,7 @@
         
                             </div>
                         </div>
-                        <div class="order-card">
-                            <div class="image-container">
-                                <img class="product-image" src="./images/products/3.svg">
-    
-                            </div>
-                            <div class="details-container">
-                                <div class="product-name">
-                                    <h2>Croissant</h2>
-                                    <img src="./images/icons/menu-vertical.svg">
-    
-                                </div>
-                                <div class="description">
-                                    A yeast donut filled with creamy custard and topped with a rich chocolate glaze
-                                </div>
-                                <div class="quantity-price">
-                                    <div class="quantity">x1</div>
-                                    <div class="price">P25.00</div>
-                                </div>
-        
-                            </div>
-                        </div>
+                       
     
                     </div>
 
@@ -76,7 +55,6 @@
                             <div class="details-container">
                                 <div class="product-name">
                                     <h2>Croissant</h2>
-                                    <img src="./images/icons/menu-vertical.svg">
     
                                 </div>
                                 <div class="description">
@@ -97,7 +75,6 @@
                             <div class="details-container">
                                 <div class="product-name">
                                     <h2>Croissant</h2>
-                                    <img src="./images/icons/menu-vertical.svg">
     
                                 </div>
                                 <div class="description">

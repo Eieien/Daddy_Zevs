@@ -14,41 +14,134 @@
     <main class="content" style="width: 75vw;">
         <?php include('./setting_nav.php') ?>
         <section id="setting">
-            <h1>My Account</h1>
-            <div class="account-details-container">
-                <div>
-                    <h3>Name</h3>
-                    <div class="username">
-                        <div class="name">John dow</div>
-                        <button class="change">Change</button>
-                    </div>
-                </div>
-                <div>
-                    <h3>Account</h3>
-                    <div class="account">
-                        <div class="email">
-                            Johndoe204@gmail.com
+            <div id="account-container">
+                <h1>My Account</h1>
+                <div class="account-details-container">
+                    <div>
+                        <h3>Name</h3>
+                        <div class="username">
+                            <div class="name">John dow</div>
+                            <button id="button-name" class="change">Edit</button>
                         </div>
-                        <button class="change">Change</button>
                     </div>
-                </div>
-                <div class="password-container">
-                    <div class="heading">
+                    <div>
+                        <h3>Account</h3>
+                        <div class="account">
+                            <div class="email">
+                                Johndoe204@gmail.com
+                            </div>
+                            <button id="button-email" class="change">Edit</button>
+                        </div>
+                    </div>
+                    <div>
                         <h3>Password</h3>
-                        <button class="show">Show</button>
-                    </div>
-                    <div class="password">
-                        <div id="password">******************</div>
-                        <button class="change">Change</button>
+                        <div class="password">
+                            <div id="password">******************</div>
+                            <button id="button-password" class="change">Change Password</button>
+                        </div>
                     </div>
                 </div>
+                <div id="remove-account">
+                    <h3>Account Removal!</h3>
+                    <p>This action is irreversible. Once deleted, you will no longer be able to access your order history, favourites, or any personal information tied to your account.</p>
+                    <button class="delete-account">Delete Account</button>
+                </div>
+
             </div>
-            <div id="remove-account">
-                <h3>Account Removal!</h3>
-                <p>This action is irreversible. Once deleted, you will no longer be able to access your order history, favourites, or any personal information tied to your account.</p>
-                <button class="delete-account">Delete Account</button>
-            </div>
+            
+            <form id="edit-name" class="editing-form hidden">
+                <h2>Change fullname</h2>
+                <div class="field-container">
+                    <div>
+                        <p>Last Name</p>
+                        <input type="text" placeholder="e.g. Doe">
+                    </div>
+                    <div>
+                        <p>First Name</p>
+                        <input type="text" placeholder="e.g. John">
+                    </div>
+
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="cancel">Cancel</button>
+                    <button type="submit" class="submit">Submit</button>
+
+                </div>
+            </form>
+            <form id="edit-email" class="editing-form hidden">
+                <h2>Change Email</h2>
+                <div class="field-container">
+                    <div>
+                        <p>Email</p>
+                        <input type="text" placeholder="e.g. Johndoe25@gmail.com">
+                    </div>
+
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="cancel">Cancel</button>
+                    <button type="submit" class="submit">Submit</button>
+
+                </div>
+            </form>
+
+            <form id="edit-password" class="editing-form hidden">
+                <h2>Change Password</h2>
+                <div class="field-container password">
+                    <div>
+                        <div class="show-pass">
+                            <p>New Password</p>
+                            <p id="toggle-real-password">show</p>
+                        </div>
+                        <input id="new-password" type="password">
+                    </div>
+                    <div>
+                        <p>Confirm Password</p>
+                        <input type="password">
+                    </div>
+
+                </div>
+                <div class="button-container" class="hidden">
+                    <button type="submit" class="cancel">Cancel</button>
+                    <button type="submit" class="submit">Submit</button>
+
+                </div>
+            </form>
+            
         </section>
     </main>
+
+    <script>
+        document.getElementById("button-name").addEventListener("click", () => {
+            document.getElementById("edit-name").classList.remove("hidden");
+            document.getElementById("account-container").classList.add("hidden");
+        })
+
+        document.getElementById("button-email").addEventListener("click", () => {
+            document.getElementById("edit-email").classList.remove("hidden");
+            document.getElementById("account-container").classList.add("hidden");
+        })
+
+        document.getElementById("button-password").addEventListener("click", () => {
+            document.getElementById("edit-password").classList.remove("hidden");
+            document.getElementById("account-container").classList.add("hidden");
+        })
+
+        //Show password
+        const passwordinput = document.getElementById("new-password");
+        const showpassword = document.getElementById("toggle-real-password");
+        showpassword.addEventListener("mousedown", () => {
+            passwordinput.type = "text";
+
+            const hidePassword = () => {
+                passwordinput.type = "password";
+                document.removeEventListener("mouseup", hidePassword);
+                document.removeEventListener("mouseleave", hidePassword);
+            };
+
+            document.addEventListener("mouseup", hidePassword);
+            document.addEventListener("mouseleave", hidePassword);
+        })
+       
+    </script>
 </body>
 </html>
