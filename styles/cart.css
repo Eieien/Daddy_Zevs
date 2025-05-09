@@ -1,13 +1,13 @@
 @import 'constants.css';
 
 main{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 300px;
     justify-content: space-between;
-
+    gap: 20px;
+    min-height: 100vh;
     #cart{
         align-self: flex-start;
-        width: 120vh;
         font-family: var(--primary_font);
         margin-bottom: 50px;
 
@@ -81,10 +81,10 @@ main{
     }
     #payment{
         align-self: flex-start;
-        width: 40vh;
+        /* width: 40vh; */
         height: auto;
         padding: 20px 24px;
-        margin-left: 10vh;
+        /* margin-left: 10vh; */
         background-color: gainsboro;
         border-radius: 12px;
         font-family: var(--primary_font);
@@ -107,7 +107,7 @@ main{
             font-weight: 600;
             width: 100%;
             margin-top: 20px;
-            padding: 10px 90px;
+            padding: 10px 0;
             border-radius: 24px;
             border: none;
             cursor: pointer;
@@ -130,5 +130,23 @@ main{
         font-size: 1.5rem;
         font-weight: 600;
         cursor: pointer;
+    }
+}
+
+@media(max-width: 850px){
+    main{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        #payment{
+            order: 1;
+        }
+        #cart{
+            order: 2;
+        }
+        #remove-items{
+            order: 3;
+        }
     }
 }

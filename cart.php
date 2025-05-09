@@ -13,9 +13,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cart</title>
-    <link rel="stylesheet" href="./styles/cart.css">
-    <link rel="stylesheet" href="./styles/constants.css">
-    <link rel="stylesheet" href="./styles/header_footer.css">
+    <link rel="stylesheet" href="./styles/cart.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -89,7 +89,7 @@
             <!-- To be continued -->
             <form action="./data/user-data.php" method="post">
                 <input type="hidden">
-                <input type="submit" id="checkout" value="Checkout">
+                <button type="submit" id="checkout">Checkout</button>
             </form>
         </div>
 
