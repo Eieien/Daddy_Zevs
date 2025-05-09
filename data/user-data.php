@@ -88,18 +88,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $address = $_POST["address"];
     }
 
-    // check for order
-    if(isset($_POST["order"])){
-        // checks if cart is empty
-        if(empty($_SESSION['cart'])){
-            $_SESSION['server_message'] = "No items in cart to checkout!";
-            header("location: ../cart.php");
-            exit();
-        }
-
-        // checks if order is set
+    // checkout
+    if(isset($_POST["checkout"])){
+        // check if order is set
         if($_SESSION['set_order']){
-            $_SESSION['server_message'] = "Cannot checkout because order in progress!";
             header("location: ../cart.php");
             exit();
         }      
@@ -108,7 +100,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $conn->query(
             "INSERT INTO orders (customer_id, status)
             VALUES ('$customer_id', 0)");
-
         $order_id = getOrderID();
 
         // add order items to db
@@ -129,9 +120,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             WHERE customer_id = '$customer_id' ");
 
         $conn->close();
-        unset($_SESSION['cart']);
+        unset($_SESSION['cart']); // remove items in cart after checkout
         $_SESSION['set_order'] = true;
-        header("location: ../order.php");
+        header("location: ../order_tracking.php");
         exit();
     }
 

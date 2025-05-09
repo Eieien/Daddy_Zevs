@@ -41,35 +41,35 @@
             <div id="categories">
                 <ul id="baked-goods">
                     <h1>Baked Goods</h1>
-                    <li onclick="displayProducts(1)">Breadloaf</li>
-                    <li onclick="displayProducts(2)">Cake</li>
-                    <li onclick="displayProducts(3)">Cookies</li>
-                    <li onclick="displayProducts(4)">Filipino Classics</li>
-                    <li onclick="displayProducts(5)">Cupcakes</li>
-                    <li onclick="displayProducts(6)">Others</li>
+                    <li onclick="displayProducts(1)" class="btn">Breadloaf</li>
+                    <li onclick="displayProducts(2)" class="btn">Cake</li>
+                    <li onclick="displayProducts(3)" class="btn">Cookies</li>
+                    <li onclick="displayProducts(4)" class="btn">Filipino Classics</li>
+                    <li onclick="displayProducts(5)" class="btn">Cupcakes</li>
+                    <li onclick="displayProducts(6)" class="btn">Others</li>
                 </ul>
                 <ul id="pastries">
                     <h1>Pastries</h1>
-                    <li onclick="displayProducts(7)">Donut</li>
-                    <li onclick="displayProducts(8)">Tart</li>
-                    <li onclick="displayProducts(9)">Pie</li>
-                    <li onclick="displayProducts(10)">Croissants</li>
+                    <li onclick="displayProducts(7)" class="btn">Donut</li>
+                    <li onclick="displayProducts(8)" class="btn">Tart</li>
+                    <li onclick="displayProducts(9)" class="btn">Pie</li>
+                    <li onclick="displayProducts(10)" class="btn">Croissants</li>
                 </ul>
             </div>
             <div class="product-selecton">
                 <div class="navigation-tab">
-                    <a href="./menu.php">
+                    <a href="./menu.php" class="btn active">
                         Menu
                     </a>
-                    <a href="#">
+                    <a href="#" class="btn" onclick="displayProducts(7)">
                         Featured
                     </a>
                     <?php
                         if(isset($_SESSION["email"])){
-                            echo "<a href='#' onclick='displayProducts(11)'>";
+                            echo "<a href='#product-list' onclick='displayProducts(11)' class='btn'>";
                         }
                         else{
-                            echo "<a href='./login.php'>";
+                            echo "<a href='./login.php' class='btn'>";
                         }
                     ?>
                         Favorites

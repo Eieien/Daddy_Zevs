@@ -109,7 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         session_destroy();
         header("location: ../menu.php");
     }
-    if(isset($_POST["cancel"])){
+    if(isset($_POST["cancel"]) || $_SESSION['set_order']){
         header("location: ../account.php");
     }
 }

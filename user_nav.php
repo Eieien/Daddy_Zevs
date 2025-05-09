@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="right">
-        <a href="#">
+        <a href="./menu.php#product-list">
             <div class="menu-icon">
                 <img src="./images/icons/heart.svg">
                 <span>Favorites</span>
@@ -29,7 +29,7 @@
                 <span>Cart</span>
             </div>
         </a>
-        <a href="#">
+        <a href="./order_tracking.php">
             <div class="menu-icon">
                 <img src="./images/icons/orders.svg">
                 <span>Orders</span>

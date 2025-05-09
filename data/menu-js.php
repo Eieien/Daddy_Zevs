@@ -1,4 +1,13 @@
 <script>
+var btns = document.getElementsByClassName("btn");
+for(let i = 0; i < btns.length; i++){
+    btns[i].addEventListener("click", function(){
+        let current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+    });
+}
+
 function createProductCard(item){
     let productCard = document.createElement('div');
     productCard.className = "product-card";
@@ -61,7 +70,7 @@ function createProductCard(item){
 }
     
 function displayProducts(type){
-    document.getElementById("product-list").innerHTML = "";
+    document.getElementById("product-list").innerHTML = ""; // clear list 1st
 
     fetch("./data/products-json.php")
         .then(response => response.json())
@@ -102,7 +111,6 @@ function displayProducts(type){
                     const xhttp = new XMLHttpRequest();
                     xhttp.onload = () => {
                         var fav = Number(xhttp.responseText);
-                        console.log(fav);
                         
                         if(fav) createProductCard(item);
                     }
@@ -117,6 +125,13 @@ function displayProducts(type){
         .catch(error => console.error('Error:', error));
 }
 displayProducts();
+
+document.querySelector("a[href='./menu.php#product-list']").addEventListener("click", () => {
+    let current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    btns[12].className += " active";
+    displayProducts(11); 
+});
 
 function getProduct(item){
     document.querySelector("input[name='product-info']").value = item;
@@ -147,13 +162,9 @@ function favoriteItem(product_id){
         })
         checkFav = false;
     }
-    console.log(checkFav);
 
     // saves favorites to server/db
     const xhttp = new XMLHttpRequest();
-    xhttp.onload = () => {
-        console.log(Number(xhttp.responseText));
-    }
     xhttp.open("GET", "./data/user-data.php?"+
                 "id=" + product_id +"&"+
                 "fav=" + checkFav);
