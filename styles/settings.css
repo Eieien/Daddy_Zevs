@@ -122,10 +122,24 @@ main{
             }
         }
 
+        @media(max-width: 1020px){
+            .field-container{
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+
+            .field-container.password{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+        }
+
         .field-container.password{
             display: flex;
             flex-direction: column;
-            width: 50%;
+            width: 80%;
 
             #toggle-real-password{
                 color: var(--primary_blue);
@@ -319,6 +333,15 @@ main{
                     cursor: pointer;
                     transition: all 0.3s ease;
                 }
+            }
+
+            @media(max-width: 800px){
+                .contact{
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: auto 1fr;
+                }
+    
             }
         }
         #address-card.hidden, #add-address.hidden, #edit-address.hidden{
