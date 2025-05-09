@@ -153,7 +153,6 @@ footer{
     height: 19.63rem;
     background-color: var(--primary_blue);
     position: relative;
-
     .jeb{
         position: absolute;
         right: 0;
@@ -201,5 +200,22 @@ footer{
                 height: 30px;
             }
         }
+    }
+}
+
+@media(max-width: 1120px){
+    footer{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 630px;
+        .jeb{
+            top: 50%;
+            right: 0;
+            bottom: 0;
+        }
+        
+
+       
     }
 }

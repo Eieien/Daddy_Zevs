@@ -1,5 +1,4 @@
 <footer id="footer">
-    <img class="jeb" src="./images/logos/Daddy_zev_no_outline 1.svg" draggable="false">
     <div class="footer-container">
         <div class="details">
             <h1>
@@ -29,4 +28,5 @@
             </div>
         </div>
     </div>
+    <img class="jeb" src="./images/logos/Daddy_zev_no_outline 1.svg" draggable="false">
 </footer>
