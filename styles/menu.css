@@ -96,25 +96,21 @@
                     padding: 10px;
                     top: 0;
                     right: 0;
-                   
+                    
                     svg{
-                        fill: none ;
                         cursor: pointer;
+                    }
+                    svg path{
+                        stroke: var(--primary_blue);
                         transition: all 0.3s ease;
 
-                        path{
-                            stroke: var(--primary_blue);
 
-                        }
                     }
                  
-                    svg:hover{
-                        fill: var(--accent_orange);
+                    svg:hover path{
                         
-                        path{
-                            stroke: var(--accent_orange);
+                        stroke: var(--accent_orange);
 
-                        }
     
                     }
                 }
