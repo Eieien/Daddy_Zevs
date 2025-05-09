@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,67 +65,57 @@
         <div id="summary">
             <h1>Order Summary</h1>
             <div id="order-list">
-                <div class="order-card">
-                    <div class="image-container">
-                        <img class="product-iamge" src="./images/products/1.svg">
-                    </div>
-                    <div class="details-container">
-                        <h1 class="name">
-                            Croissant
-                        </h1>
-                        <p class="description">A yeast donut filled with creamy custard and topped with a rich chocolate glaze</p>
-                        <div class="quantity-product">
-                            <div class="quantity">
-                                x1
-                            </div>
-                            <div class="product">
-                                P25.00
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-card">
-                    <div class="image-container">
-                        <img class="product-iamge" src="./images/products/1.svg">
-                    </div>
-                    <div class="details-container">
-                        <h1 class="name">
-                            Croissant
-                        </h1>
-                        <p class="description">A yeast donut filled with creamy custard and topped with a rich chocolate glaze</p>
-                        <div class="quantity-product">
-                            <div class="quantity">
-                                x1
-                            </div>
-                            <div class="product">
-                                P25.00
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-card">
-                    <div class="image-container">
-                        <img class="product-iamge" src="./images/products/1.svg">
-                    </div>
-                    <div class="details-container">
-                        <h1 class="name">
-                            Croissant
-                        </h1>
-                        <p class="description">A yeast donut filled with creamy custard and topped with a rich chocolate glaze</p>
-                        <div class="quantity-product">
-                            <div class="quantity">
-                                x1
-                            </div>
-                            <div class="product">
-                                P25.00
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    if(empty($_SESSION["order"])){
+                        echo
+                        "<p id='no-order'>No Orders found...</p>";
+                    }
+                    else{
+                        foreach($_SESSION["order"] as $item){
+                            $product = $item->product_name;
+                            $description = $item->description;
+                            $price = (float)$item->price;
+                            $quantity = (int)$item->quantity;
+                            $image = $item->image;
+
+                            echo
+                            "<div class='order-card'>
+                                <div class='image-container'>
+                                    <img class='product-iamge' src=$image>
+                                </div>
+                                <div class='details-container'>
+                                    <h1 class='name'>
+                                        $product
+                                    </h1>
+                                    <p class='description'>$description</p>
+                                    <div class='quantity-product'>
+                                        <div class='quantity'>
+                                            $quantity
+                                        </div>
+                                        <div class='product'>
+                                            Php ".sprintf("%.2f", $price)."
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>";
+                        }
+                    }
+                ?>
             </div>
-            <div id="summary_total">   
-                <h1>ALL TOTAL: <span style="color:var(--primary_blue)">Bajillion dollar</span></h1>
-            </div>
+            <?php
+                if(isset($_SESSION["order"])){
+                    echo
+                    "<div id='summary_total'>   
+                        <h1>TOTAL: <span style='color:var(--primary_blue)'>Php ".$_SESSION["total_price"]."</span></h1>
+                    </div>";
+                }
+                else{
+                    echo
+                    "<style>
+                        #order-list{ margin-bottom: 50px; }
+                    </style>";
+                }
+            ?>
         </div>
     </div>
     <?php include('./footer.php') ?>

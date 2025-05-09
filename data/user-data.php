@@ -120,6 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             WHERE customer_id = '$customer_id' ");
 
         $conn->close();
+        $_SESSION["order"] = $_SESSION['cart']; // move cart items to order
         unset($_SESSION['cart']); // remove items in cart after checkout
         $_SESSION['set_order'] = true;
         header("location: ../order_tracking.php");
