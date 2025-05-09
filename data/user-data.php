@@ -38,6 +38,7 @@ function deletePrevOrders($order_id)
         WHERE customer_id = '$customer_id' ");
 }
 
+// post requests
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // adding items to cart
     if(isset($_POST["item-data"])){
@@ -142,6 +143,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['set_order'] = false;
         header("location: ../menu.php");
         exit();
+    }
+}
+
+// get requests
+if($_SERVER["REQUEST_METHOD"] == "GET"){
+    // user favorites handling
+    if(isset($_GET["product_id"])){
+        $id = $_GET["product_id"];
+
+        // initializes fav array if empty
+        if(empty($_SESSION["fav"])){
+            // gets number of products from db
+            $result = $conn->query(
+                "SELECT * FROM product");
+            $conn->close();
+
+            $_SESSION["fav"] = array();
+            for($i = 0; $i <= $result->num_rows; $i++){
+                array_push($_SESSION["fav"], false);
+            }
+        }
+
+        if($_SESSION["fav"][$id] === false){
+            echo false;
+        }
+        else{
+            echo true;
+        }
+    }
+
+    // checks if user ticks favorite
+    if(isset($_GET["id"]) && isset($_GET["fav"])){
+        $id = $_GET["id"];
+        $fav = filter_var($_GET["fav"], FILTER_VALIDATE_BOOLEAN);
+        $_SESSION["fav"][$id] = $fav;
+        echo $_SESSION["fav"][$id];
     }
 }
 ?>

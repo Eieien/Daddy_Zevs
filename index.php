@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +14,14 @@
 
 </head>
 <body>
-
     <?php
-        include "guest_nav.php";
+        if(empty($_SESSION["email"])){
+            include "./guest_nav.php";
+        }
+        else{
+            header("location: ./menu.php");
+            exit();
+        }
     ?>
 
     <form action="./login.php" method="post" class="hero-section">
