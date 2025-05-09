@@ -39,6 +39,16 @@ main{
                     align-items: center;
                     gap: 5px;
                 }
+                .social-icons{
+                    display: flex;
+                    gap: 10px;
+                }
+                .social-icons svg{
+                    width: 15px;
+                }
+                .social-icons svg path{
+                    fill: var(--text_dark_teal);
+                }
             }
             
             
