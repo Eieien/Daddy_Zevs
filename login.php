@@ -56,10 +56,11 @@
         </section>
 
         <section id="credentials">
-            <div id="back">
-                <!-- placeholder image -->
-                <img src="images/logos/Daddy_zev_enhanced_new 1.svg">
-                <p>Back to Main</p>
+            <div id="back-container">
+                <a href="./index.php" id="back">
+                    <img src="./images/icons/Back to home.svg">
+                    <p>Back to Main</p>
+                </a>
             </div>
 
             <div id="log-in-container">

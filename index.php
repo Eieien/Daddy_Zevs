@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Daddy Zev's</title>
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/index.css?v=<?php echo time(); ?>">
@@ -16,13 +16,13 @@
         include "guest_nav.php";
     ?>
 
-    <div class="hero-section">
+    <form action="./login.php" method="post" class="hero-section">
         <h5>Big love, Big Flavor - <br>Just Like Daddy Zev</h5>
-        <button id="hero-logIn">Join now</button>
-    </div>
+        <button id="hero-logIn" name="signup">Join now</button>
+    </form>
 
     <div class="featured-section">
-        <div class="featured-content" id="featured-content">
+        <form action="./menu.php" class="featured-content" id="featured-content">
             <h1>
                 Golden Glaze Delights
             </h1>
@@ -31,7 +31,7 @@
                 each bite <strong><em>melts</em> in your mouth</strong>, making every moment <strong><em>sweeter!</em></strong>
             </p>
             <button id="menu-goldenGlaze">View the menu</button>
-        </div>
+        </form>
         <div class="featured-img"></div>
     </div>
 
@@ -45,59 +45,55 @@
             </div>
     
             <div class="featured-carouselSlide">
-
                 <div class="swiper">
-                    <ul class="card-list swiper-wrapper">
-                        <li class="card-item swiper-slide">
-                            <a href="#" class="card-link">
-                                <img src="./images/products/1.svg" alt="Croissant" class="card-image">
-                                <h2 class="card-title">Bacon and Egg Croissant</h2>
-                            </a>
-                        </li>
-                        <li class="card-item swiper-slide">
-                            <a href="#" class="card-link">
-                                <img src="./images/products/2.svg" alt="Croissant" class="card-image">
-                                <h2 class="card-title">Bacon and Egg Croissant</h2>
-                            </a>
-                        </li>
-                        <li class="card-item swiper-slide">
-                            <a href="#" class="card-link">
-                                <img src="./images/products/3.svg" alt="Croissant" class="card-image">
-                                <h2 class="card-title">Bacon and Egg Croissant</h2>
-                            </a>
-                        </li>
-                        <li class="card-item swiper-slide">
-                            <a href="#" class="card-link">
-                                <img src="./images/products/4.svg" alt="Croissant" class="card-image">
-                                <h2 class="card-title">Bacon and Egg Croissant</h2>
-                            </a>
-                        </li>
-                        <li class="card-item swiper-slide">
-                            <a href="#" class="card-link">
-                                <img src="./images/products/5.svg" alt="Croissant" class="card-image">
-                                <h2 class="card-title">Bacon and Egg Croissant</h2>
-                            </a>
-                        </li>
-                        <!-- More li.card-item swiper-slide -->
-                    </ul>
+                    <ul class="card-list swiper-wrapper" id="swiper"></ul>
                 
                     <!-- Pagination and buttons -->
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-    
-            </div>
-    
-            <div class="featured-carouselMore">
-                <button id="menu">Discover More</button>
-            </div>
 
+                 <!-- hidden form -->
+                <form action="./product.php" method="get" id="product-form">
+                    <input type='hidden' name='product-info'>
+                </form>
+            </div>
+    
+            <form action="./menu.php" class="featured-carouselMore">
+                <button id="menu">Discover More</button>
+            </form>
         </div>
     </div>
 
     <?php
         include "footer.php";
     ?>
+
+    <script>
+        fetch("./data/products-json.php")
+            .then(response => response.json())
+            .then(products => products.forEach((item) => {
+                let productCard = document.createElement('li');
+                productCard.className = "card-item swiper-slide";
+
+                let item_json = JSON.stringify(item);
+                productCard.onclick = () => getProduct(item_json);
+
+                productCard.innerHTML = 
+                `<div class="card-link">
+                    <img src=${item.image} alt=${item.product_name} class="card-image">
+                    <h2 class="card-title">${item.product_name}</h2>
+                </div>`;
+
+                document.getElementById("swiper").appendChild(productCard);
+            }))
+            .catch(error => console.error('Error:', error));
+
+        function getProduct(item){
+            document.querySelector("input[name='product-info']").value = item;
+            document.getElementById("product-form").submit();
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
