@@ -1,0 +1,77 @@
+@import './constants.css';
+
+
+main{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+
+    section{
+        h1{
+            color: var(--primary_blue);
+            font-weight: 1000;
+            font-size: 30px;
+        }
+        .user-card{
+            background-color: #e0e0de;
+            border-radius: 20px;
+            display: grid;
+            align-items: center;
+            padding: 0 25px;
+            margin-bottom: 10px;
+
+        .email{
+            font-weight: 500;
+        }
+
+        .user-date{
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text_dark_teal);
+        }
+
+            img{
+                width: 50px;
+            }
+            #user-info{
+                align-self: flex-start;
+                margin-top: 20px;
+                height: 100%;
+                padding-bottom: 40px;
+
+                h2, p{
+                    margin: 0;
+                }
+
+                #name-email{
+                    display: flex;
+                    column-gap: 15px;
+                    color: var(--primary_blue);
+                    margin-bottom: 5px;
+                }
+                .user-comments{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+.user-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user-rate{
+    display: flex;
+}
+
+.number-rate{
+    color: #FFC628;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.user-name{
+    width: 130px;
+}

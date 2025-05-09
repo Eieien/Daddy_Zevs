@@ -22,7 +22,7 @@ main{
 }
 
 .list-item{
-    height: 325px;
+    height: 100%;
     background-color: #ECEDE9;
     border-radius: 10px;
 }
@@ -49,6 +49,7 @@ button{
     float: right;
     font-size: 20px;
     padding: 3px 15px;
+    margin-top: 3px;
     background-color: var(--primary_blue);
     color: var(--primary_white);
     border-radius: 10px;
@@ -70,5 +71,5 @@ label{
 
 input{
     float: right;
-    margin: 12px 10px 0px 10px;
+    margin: 15.5px 10px 0px 10px;
 }
