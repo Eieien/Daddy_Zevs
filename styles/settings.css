@@ -302,6 +302,28 @@ main{
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+
+                .star-container{
+                    display: flex;
+
+                    .star{
+                        cursor: pointer;
+                        padding: 5px;
+                        transition: all 0.4s ease;
+                    }
+
+                    .star:hover, .star.hover{
+                        fill: #FCC900;
+                        path{
+                            stroke: #FCC900;
+                            
+                        }
+                    }
+
+                    .star.selected{
+                        color: #FCC900;
+                    }
+                }
             }
 
             .comment textarea{

@@ -42,8 +42,24 @@
                     <div>
                         How Would you rate your Experience?
                     </div>
-                    <div>
-                        Star
+                    <div class="star-container">
+                        <svg class="star" data-value="1" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 19.8333L7 23.3333L8.75 16.3333L3.5 10.5L11.0833 9.91667L14 3.5L16.9167 9.91667L24.5 10.5L19.25 16.3333L21 23.3333L14 19.8333Z" stroke="#3464DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <svg class="star" data-value="2" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 19.8333L7 23.3333L8.75 16.3333L3.5 10.5L11.0833 9.91667L14 3.5L16.9167 9.91667L24.5 10.5L19.25 16.3333L21 23.3333L14 19.8333Z" stroke="#3464DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <svg class="star" data-value="3" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 19.8333L7 23.3333L8.75 16.3333L3.5 10.5L11.0833 9.91667L14 3.5L16.9167 9.91667L24.5 10.5L19.25 16.3333L21 23.3333L14 19.8333Z" stroke="#3464DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <svg class="star" data-value="4" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 19.8333L7 23.3333L8.75 16.3333L3.5 10.5L11.0833 9.91667L14 3.5L16.9167 9.91667L24.5 10.5L19.25 16.3333L21 23.3333L14 19.8333Z" stroke="#3464DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <svg class="star" data-value="5" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 19.8333L7 23.3333L8.75 16.3333L3.5 10.5L11.0833 9.91667L14 3.5L16.9167 9.91667L24.5 10.5L19.25 16.3333L21 23.3333L14 19.8333Z" stroke="#3464DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+
+      
 
                     </div>
                 </div>
@@ -54,5 +70,42 @@
             </form>
         </section>
     </main>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        let rating = 0;
+        stars.forEach(star => {
+            star.addEventListener('mouseover', () => {
+                resetStars();
+                highlightStars(star.dataset.value);
+            });
+
+            star.addEventListener('mouseout', () => {
+                resetStars();
+                highlightStars(rating);
+            });
+
+            star.addEventListener('click', () => {
+                rating = star.dataset.value;
+                console.log(rating);
+            });
+        })
+
+        function highlightStars(count){
+            stars.forEach(star => {
+                if(star.dataset.value <= count){
+                    star.classList.add('hover');
+                }
+            });
+            
+        }
+
+        function resetStars(){
+            stars.forEach(star => {
+                star.classList.remove('hover');
+            });
+        }
+        
+    </script>
 </body>
 </html>
