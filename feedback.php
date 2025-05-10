@@ -23,19 +23,15 @@
                     Sweeten Our Day with Your Feedback! 🍰 We’d love to hear what you think, your thoughts help us bake up the best treats and serve you even better. Share your experience and help us make every bite even better!
                 </div>
             </div>
-            <form id="feedback">
+            <form id="feedback" action="./data/user-data.php" method="post">
                 <div class="form-grid">
                     <div class="name">
-                        <p>
-                            Name
-                        </p>
-                        <input type="text" placeholder="e.g. Jane Doe">
+                        <p>Name</p>
+                        <input type="text" value="<?php echo $_SESSION["fname"]." ".$_SESSION["lname"]; ?>" disabled>
                     </div>
                     <div class="email">
-                        <p>
-                            Email
-                        </p>
-                        <input type="email" placeholder="JaneDoe@email.com">
+                        <p>Email</p>
+                        <input type="email" value="<?php echo $_SESSION["email"]; ?>" disabled>
                     </div>
                 </div>
                 <div class="rating">
@@ -58,22 +54,21 @@
                         <svg class="star" data-value="5" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 19.8333L7 23.3333L8.75 16.3333L3.5 10.5L11.0833 9.91667L14 3.5L16.9167 9.91667L24.5 10.5L19.25 16.3333L21 23.3333L14 19.8333Z" stroke="#3464DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-
-      
-
                     </div>
+                    <!-- gets rating value -->
+                    <input type="hidden" name="rating">
                 </div>
                 <div class="comment">
-                    <textarea placeholder="Comments"></textarea>
+                    <textarea placeholder="Comments" name="comment"></textarea>
                 </div>
-                <button type="submit" class="submit">Submit</button>
+                <button type="submit" class="submit" name="submit-feedback">Submit</button>
             </form>
         </section>
     </main>
 
     <script>
         const stars = document.querySelectorAll('.star');
-        let rating = 0;
+        var rating = 0;
         stars.forEach(star => {
             star.addEventListener('mouseover', () => {
                 resetStars();
@@ -87,7 +82,7 @@
 
             star.addEventListener('click', () => {
                 rating = star.dataset.value;
-                console.log(rating);
+                document.querySelector("input[name='rating']").value = rating;
             });
         })
 
@@ -97,7 +92,6 @@
                     star.classList.add('hover');
                 }
             });
-            
         }
 
         function resetStars(){
@@ -105,7 +99,6 @@
                 star.classList.remove('hover');
             });
         }
-        
     </script>
 </body>
 </html>

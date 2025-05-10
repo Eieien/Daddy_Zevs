@@ -125,10 +125,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             SET total_price = $total
             WHERE customer_id = '$customer_id' ");
 
-        $conn->close();
         $_SESSION["order"] = $_SESSION['cart']; // move cart items to order
         unset($_SESSION['cart']); // remove items in cart after checkout
         $_SESSION['set_order'] = true;
+        $conn->close();
+        header("location: ../order_tracking.php");
+        exit();
+    }
+
+    // updates order status
+    if(isset($_POST["check-status"])){
+        // get order status of order
+        $result = $conn->query(
+            "SELECT * FROM orders
+            WHERE customer_id = $customer_id");
+        $order = $result->fetch_assoc();
+
+        $_SESSION['order_status'] = $order["status"]; // sets order status of user
+        $_SESSION['check_status'] = true;
+
+        $conn->close();
         header("location: ../order_tracking.php");
         exit();
     }
@@ -191,7 +207,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             "SELECT * FROM customer");
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
-                if($row["email"] === $email){
+                if($row["email"] == $email){
                     $conn->close();
                     header("location: ../account.php");
                     exit();
@@ -233,6 +249,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $conn->close();
         header("location: ../account.php");
+        exit();
+    }
+
+    // delete account
+    if(isset($_POST["delete-account"])){
+        $_SESSION["del-acc"] = true;
+        header("location: ../logout.php");
         exit();
     }
 
@@ -289,14 +312,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit();
     }
 
-    // delete account
-    if(isset($_POST["delete-account"])){
-        $_SESSION["del-acc"] = true;
-        header("location: ../logout.php");
+    // submit feedback
+    if(isset($_POST["submit-feedback"])){
+        $_POST["comment"] = filter_input(INPUT_POST, "comment", FILTER_SANITIZE_SPECIAL_CHARS);
+        
+        $rating = (int)$_POST["rating"];
+        $comment = $_POST["comment"];
+
+        $stmt = $conn->prepare(
+            "INSERT INTO feedback (customer_id, rating, comment) 
+            VALUES (?, ?, ?)");
+        $stmt->bind_param("iis", $customer_id, $rating, $comment);
+        $stmt->execute();
+
+        $stmt->close();
+        $conn->close();
+        header("location: ../feedback.php");
         exit();
     }
-
-
 
 // MISC
     if(isset($_POST["nav-fav"])){
@@ -308,71 +341,69 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 // get requests
 if($_SERVER["REQUEST_METHOD"] == "GET"){
-    // check if user is logged in
-    if(isset($_SESSION["email"])){
-        // user favorites handling
-        if(isset($_GET["product_id"])){
-            $id = (int)$_GET["product_id"];
+    // user favorites handling
+    if(isset($_GET["product_id"]) && isset($_SESSION["email"])){
+        $id = (int)$_GET["product_id"];
 
-            if(empty($_SESSION["fav"])){
-                // gets product details from db
-                $products = $conn->query(
-                    "SELECT * FROM product");
+        if(empty($_SESSION["fav"])){
+            // gets product details from db
+            $products = $conn->query(
+                "SELECT * FROM product");
 
-                // gets user favorites securely
-                $stmt = $conn->prepare(
-                    "SELECT product_id 
-                    FROM favorites 
-                    WHERE customer_id = ?");
-                $stmt->bind_param('i', $customer_id);
-                $stmt->execute();
-                $favorites = $stmt->get_result();
-                
-                $conn->close();
+            // gets user favorites securely
+            $stmt = $conn->prepare(
+                "SELECT product_id 
+                FROM favorites 
+                WHERE customer_id = ?");
+            $stmt->bind_param('i', $customer_id);
+            $stmt->execute();
+            $favorites = $stmt->get_result();
 
-                $_SESSION["fav"] = array();
-                $ticked = array();
-                
-                // stores favorited product IDs
-                while($fav = $favorites->fetch_assoc()){
-                    $ticked[$fav["product_id"]] = true;
-                }
-
-                // check products and mark favorites
-                while($item = $products->fetch_assoc()){
-                    $id = $item["product_id"];
-                    $check = isset($ticked[$id]);
-                    $_SESSION["fav"][$id] = $check;
-                }
-            }
-
-            if($_SESSION["fav"][$id]){
-                echo true;
-            } else {
-                echo false;
-            }
-        }
-
-        // checks if user ticks favorite
-        if(isset($_GET["id"]) && isset($_GET["fav"])){
-            $id = $_GET["id"];
-            $fav = filter_var($_GET["fav"], FILTER_VALIDATE_BOOLEAN);
+            $_SESSION["fav"] = array();
+            $ticked = array();
             
-            // updates favorites in db
-            if($fav){
-                $conn->query(
-                    "INSERT INTO favorites (customer_id, product_id)
-                    VALUES ('$customer_id', '$id')");
-            } else if(!$fav){
-                $conn->query(
-                    "DELETE FROM favorites
-                    WHERE customer_id = '$customer_id' AND product_id = '$id' ");
+            // stores favorited product IDs
+            while($fav = $favorites->fetch_assoc()){
+                $ticked[$fav["product_id"]] = true;
             }
+
+            // check products and mark favorites
+            while($item = $products->fetch_assoc()){
+                $id = $item["product_id"];
+                $check = isset($ticked[$id]);
+                $_SESSION["fav"][$id] = $check;
+            }
+
+            $stmt->close();
             $conn->close();
-            
-            $_SESSION["fav"][$id] = $fav;
-            echo $_SESSION["fav"][$id];
         }
+
+        if($_SESSION["fav"][$id]){
+            echo true;
+        } else {
+            echo false;
+        }
+    }
+
+    // checks if user ticks favorite
+    if(isset($_GET["id"]) && isset($_GET["fav"])){
+        $id = (int)$_GET["id"];
+        $fav = filter_var($_GET["fav"], FILTER_VALIDATE_BOOLEAN);
+        
+        // updates favorites in db
+        if($fav){
+            $conn->query(
+                "INSERT INTO favorites (customer_id, product_id)
+                VALUES ('$customer_id', '$id')");
+        } else if(!$fav){
+            $conn->query(
+                "DELETE FROM favorites
+                WHERE customer_id = '$customer_id' AND product_id = '$id' ");
+        }
+        $conn->close();
+        
+        $_SESSION["fav"][$id] = $fav;
+        echo $_SESSION["fav"][$id];
     }
 }
 ?>

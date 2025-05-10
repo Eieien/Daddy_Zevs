@@ -124,7 +124,7 @@ main{
                 border-radius: 8px;
                 border: 1px solid var(--text_dark_teal);
                 background-color: #ECEDE9;
-
+                font-family: var(--primary_font);
             }
 
             .show-pass{
@@ -313,6 +313,7 @@ main{
                 border-radius: 8px;
                 border: 1px solid var(--text_dark_teal);
                 background-color: #ECEDE9;
+                font-family: var(--primary_font);
             }
             .address{
                 display: flex;
@@ -480,6 +481,7 @@ main{
                         border-radius: 8px;
                         border: 1px solid var(--text_dark_teal);
                         background-color: #ECEDE9;
+                        font-family: var(--primary_font);
                     }
                 }
             }
@@ -522,6 +524,7 @@ main{
                 border: 1px solid var(--text_dark_teal);
                 background-color: #ECEDE9;
                 box-sizing: border-box;
+                font-family: var(--primary_font);
             }
             .submit{
                 cursor: pointer;

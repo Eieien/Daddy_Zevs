@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $row = $result->fetch_assoc();
     
                 $_SESSION['employee_email'] = $row['email'];
-                $_SESSION['employee_id'] = $row['customer_id'];
+                $_SESSION['employee_id'] = $row['employee_id'];
     
                 header("location: ../admin/userbase.php");
             }

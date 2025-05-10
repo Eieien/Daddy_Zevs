@@ -30,11 +30,14 @@
                 <span>Cart</span>
             </div>
         </a>
-        <a href="./order_tracking.php">
-            <div class="menu-icon">
-                <img src="./images/icons/orders.svg">
-                <span>Orders</span>
-            </div>
+        <a href="#">
+            <form id="check-status" action="./data/user-data.php" method="post" class="menu-icon">
+                <input type="hidden" name="check-status" value="check-status"> 
+                <button class="menu-icon" name="check-status">
+                    <img src="./images/icons/orders.svg">
+                    <span>Orders</span>
+                </button>
+            </form>
         </a>
         
         <a href="./account.php">
