@@ -18,44 +18,91 @@
         ?>
 
         <section>
-            <h1>Products</h1>
-            <div class="list-card">
-                <li class="list-item">
-                    <input type="checkbox" id="outOfStock">
-                    <label for="outOfStock">Out Of Stock?</label>
-                    <img src="../images/products/1.svg" alt="" class="list-imageProduct">
-                    <div class="list-content">
-                        <h2 class="list-productName" id="list-productName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE NAME--> 
-                        <h2 class="list-productPrice" id="list-productPrice">Php 25.00 <button id="list-productEdit1">Edit</button></h2> <!--PLACEHOLDER OF THE PRICE-->
+            <div class="heading-container">
+                <h1>Products</h1>
+                <div class="create-product">
+                    <p>Add New Product</p> 
+                    <img src="../images/icons/Add-circle.svg">
+                </div>
+            </div>
+            <div id="product-list">
+                <div class="product-card">
+                    <div class="out-of-stock-container">
+                        <div>Out of Stock?</div>
+                        <input type="checkbox">
                     </div>
-                </li>
-                <li class="list-item">
-                    <input type="checkbox" id="outOfStock">
-                    <label for="outOfStock">Out Of Stock?</label>
-                    <img src="../images/products/10.svg" alt="" class="list-imageProduct">
-                    <div class="list-content">
-                        <h2 class="list-productName" id="list-productName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE NAME--> 
-                        <h2 class="list-productPrice" id="list-productPrice">Php 25.00 <button id="list-productEdit1">Edit</button></h2> <!--PLACEHOLDER OF THE PRICE-->
+    
+                    <div class="image-container">
+                        <img src="../images/products/1.svg">
                     </div>
-                </li>
-                <li class="list-item">
-                    <input type="checkbox" id="outOfStock">
-                    <label for="outOfStock">Out Of Stock?</label>
-                    <img src="../images/products/3.svg" alt="" class="list-imageProduct">
-                    <div class="list-content">
-                        <h2 class="list-productName" id="list-productName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE NAME--> 
-                        <h2 class="list-productPrice" id="list-productPrice">Php 25.00 <button id="list-productEdit1">Edit</button></h2> <!--PLACEHOLDER OF THE PRICE-->
-                    </div> 
-                </li>
-                <li class="list-item">
-                    <input type="checkbox" id="outOfStock">
-                    <label for="outOfStock">Out Of Stock?</label>
-                    <img src="../images/products/30.svg" alt="" class="list-imageProduct">
-                    <div class="list-content">
-                        <h2 class="list-productName" id="list-productName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE NAME--> 
-                        <h2 class="list-productPrice" id="list-productPrice">Php 25.00 <button id="list-productEdit1">Edit</button></h2> <!--PLACEHOLDER OF THE PRICE-->
-                    </div> 
-                </li>
+                    
+                    <div class="details-container">
+                        <div class="product-name">
+                            Bacon and Egg Croissant
+                        </div>
+                        <div class="price-add">
+                            <div class="price">
+                                Php 25.00
+                            </div>
+                            <button class="edit">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="product-card">
+                    <div class="out-of-stock-container">
+                        <div>Out of Stock?</div>
+                        <input type="checkbox">
+                    </div>
+    
+                    <div class="image-container">
+                        <img src="../images/products/1.svg">
+                    </div>
+                    
+                    <div class="details-container">
+                        <div class="product-name">
+                            Bacon and Egg Croissant
+                        </div>
+                        <div class="price-add">
+                            <div class="price">
+                                Php 25.00
+                            </div>
+                            <button class="edit">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="product-card">
+                    <div class="out-of-stock-container">
+                        <div>Out of Stock?</div>
+                        <input type="checkbox">
+                    </div>
+    
+                    <div class="image-container">
+                        <img src="../images/products/1.svg">
+                    </div>
+                    
+                    <div class="details-container">
+                        <div class="product-name">
+                            Bacon and Egg Croissant
+                        </div>
+                        <div class="price-add">
+                            <div class="price">
+                                Php 25.00
+                            </div>
+                            <button class="edit">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                
             </div>
         </section>
     </main>
