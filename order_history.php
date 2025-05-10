@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/settings.css?v=<?php echo time(); ?>">
-    <title>Settings</title>
+    <title>History</title>
 </head>
 <body>
     <?php include('./user_nav.php') ?>

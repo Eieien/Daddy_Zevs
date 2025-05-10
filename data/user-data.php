@@ -6,7 +6,6 @@ if(isset($_SESSION['email']) && isset($_SESSION['customer_id'])){
     $email = $_SESSION['email'];
     $customer_id = $_SESSION['customer_id'];
 }
-// default address here
 
 function getOrderID()
 {
@@ -40,6 +39,8 @@ function deletePrevOrders($order_id)
 
 // post requests
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+// ORDER
     // adding items to cart
     if(isset($_POST["item-data"])){
         // check if user is logged in
@@ -83,18 +84,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit();
     }
 
-    // adding user address
-    if(isset($_POST["add-address"])){
-        $address = $_POST["address"];
-    }
-
     // checkout
     if(isset($_POST["checkout"])){
         // check if order is set
         if($_SESSION['set_order']){
             header("location: ../cart.php");
             exit();
-        }      
+        }  
+        
+        // delete prev orders if there are
+        $order_id = getOrderID();
+        deletePrevOrders($order_id);
 
         // add order to db
         $conn->query(
@@ -134,6 +134,112 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION['set_order'] = false;
         header("location: ../menu.php");
+        exit();
+    }
+
+
+
+// ACCOUNT
+    // edit name
+    if(isset($_POST["edit-name"])){
+        $_POST['fname'] = filter_input(INPUT_POST, "fname", FILTER_SANITIZE_SPECIAL_CHARS);
+        $_POST['lname'] = filter_input(INPUT_POST, "lname", FILTER_SANITIZE_SPECIAL_CHARS);
+       
+        // check if names are NOT empty
+        if(empty($_POST["fname"]) && empty($_POST["lname"])){
+            header("location: ../account.php");
+            exit();
+        }
+
+        $fname = $_POST["fname"];
+        $lname = $_POST["lname"];
+
+        $conn->query(
+            "UPDATE customer
+            SET first_name = '$fname', last_name = '$lname'
+            WHERE customer_id = '$customer_id' ");
+
+        // update account names
+        $_SESSION["fname"] = $fname;
+        $_SESSION["lname"] = $lname;
+
+        $conn->close();
+        header("location: ../account.php");
+        exit();
+    }
+
+    // edit email
+    if(isset($_POST["edit-email"])){
+        $_POST['email'] = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        // check if email is NOT empty
+        if(empty($_POST["email"])){
+            header("location: ../account.php");
+            exit();
+        }
+        
+        $email =  $_POST['email'];
+
+        // check user emails in db for dupes
+        $result = $conn->query(
+            "SELECT * FROM customer");
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                if($row["email"] === $email){
+                    $conn->close();
+                    header("location: ../account.php");
+                    exit();
+                }
+            }
+        }
+
+        $conn->query(
+            "UPDATE customer
+            SET email = '$email'
+            WHERE customer_id = '$customer_id' ");
+
+        $_SESSION["email"] = $email;
+
+        $conn->close();
+        header("location: ../account.php");
+        exit();
+    }
+
+    // edit password
+    if(isset($_POST["edit-password"])){
+        $_POST['password'] = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+        $_POST['confirm-password'] = filter_input(INPUT_POST, "confirm-password", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        // check if email is NOT empty
+        if(empty($_POST["password"]) && empty($_POST["confirm-password"]) ||
+            $_POST["password"] !== $_POST["confirm-password"]
+        ){
+            header("location: ../account.php");
+            exit();
+        }
+
+        $password = md5($_POST['password']);
+
+        $conn->query(
+            "UPDATE customer
+            SET password = '$password'
+            WHERE customer_id = '$customer_id' ");
+
+        $conn->close();
+        header("location: ../account.php");
+        exit();
+    }
+
+    // cancel account edit
+    if(isset($_POST["cancel-acc-edit"])){
+        header("location: ../account.php");
+        exit();
+    }
+
+    // delete account
+    if(isset($_POST["delete-account"])){
+        $_SESSION["del-acc"] = true;
+        header("location: ../logout.php");
         exit();
     }
 }

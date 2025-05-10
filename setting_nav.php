@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(empty($_SESSION["email"])){
+        header("location: ./login.php");
+        exit();
+    }
+?>
+
 <div id="setting-nav">
     <h1>Settings</h1>
     <ul>
@@ -5,7 +14,7 @@
             <a href="./account.php">My Account</a>
         </li>
         <li>
-            <a href="./address.php">My Addresses</a>
+            <a href="./address.php">My Address</a>
         </li>
         <li>
             <a href="./order_history.php">Order History</a>

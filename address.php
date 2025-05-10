@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/settings.css?v=<?php echo time(); ?>">
-    <title>Feedback</title>
+    <title>Address</title>
 </head>
 <body>
     <?php include('./user_nav.php') ?>
@@ -15,7 +15,7 @@
         <?php include('./setting_nav.php') ?>
         <section id="setting">
             <h1>My Address</h1>
-            <div id="address-card" >
+            <div id="address-card">
                 <div class="name">
                     <h2>John Doe <span class="phone-num">(02) 8123 4567</span></h2>
                     <img src="./images/icons/Close_Circle.svg">

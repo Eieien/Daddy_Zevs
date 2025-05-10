@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(empty($_SESSION["email"])){
+        header("location: ./login.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +15,13 @@
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/settings.css?v=<?php echo time(); ?>">
-    <title>Settings</title>
+    <title> <?php
+        if(isset($_SESSION["del-acc"])){
+            echo "Delete Account";
+        } else {
+            echo "Log Out";
+        }
+    ?> </title>
 </head>
 <body>
     <div class="log-out-container">
@@ -14,12 +29,24 @@
             <div class="logo-container">
                 <img src="./images/logos/Daddy_zev_enhanced_new 1.svg">
             </div>
-            <h1>Your logging out of Daddy Zev's...</h1>
+            <h1> <?php
+                if(isset($_SESSION["del-acc"])){
+                    echo "Your removing your account from Daddy Zev's...";
+                } else {
+                    echo "Your logging out of Daddy Zev's...";
+                }
+            ?> </h1>
             <p>
                 Thanks for stopping by our little corner of sweetness. Whether you came for the vibes, the treats, or just a moment of sugar-coated joy, we’re always here, mixing up something fresh.
             </p>
             <form action="./data/register.php" method="post" id="log-out-form">
-                <button class="log-out" name="logout">Log out</button>
+                <button class="log-out" name="logout"> <?php
+                    if(isset($_SESSION["del-acc"])){
+                        echo "Delete Account";
+                    } else {
+                        echo "Log out";
+                    }
+                ?> </button>
                 <button class="cancel" name="cancel">Cancel</button>
             </form>
 

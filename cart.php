@@ -88,7 +88,7 @@
                 <h1>Php <?php echo sprintf("%.2f", $_SESSION['total_price']) ?></h1>
             </div>
             <!-- To be continued -->
-            <form <?php if($_SESSION['total_price'] > 0 || !$_SESSION['set_order']) echo "action='./data/user-data.php' method='post' "; ?>>
+            <form <?php if($_SESSION['total_price'] > 0 || $_SESSION['set_order']) echo "action='./data/user-data.php' method='post' "; ?>>
                 <input type="hidden">
                 <button type="submit" id="checkout" name="checkout">Checkout</button>
             </form>

@@ -90,7 +90,7 @@
                                     <p class='description'>$description</p>
                                     <div class='quantity-product'>
                                         <div class='quantity'>
-                                            $quantity
+                                            x$quantity
                                         </div>
                                         <div class='product'>
                                             Php ".sprintf("%.2f", $price)."
@@ -106,7 +106,7 @@
                 if(isset($_SESSION["order"])){
                     echo
                     "<div id='summary_total'>   
-                        <h1>TOTAL: <span style='color:var(--primary_blue)'>Php ".$_SESSION["total_price"]."</span></h1>
+                        <h1>TOTAL: <span style='color:var(--primary_blue)'>Php ".sprintf("%.2f", $_SESSION['total_price'])."</span></h1>
                     </div>";
                 }
                 else{

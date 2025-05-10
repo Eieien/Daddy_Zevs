@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/settings.css?v=<?php echo time(); ?>">
-    <title>Settings</title>
+    <title>Account</title>
 </head>
 <body>
     <?php include('./user_nav.php') ?>
@@ -20,7 +20,9 @@
                     <div>
                         <h3>Name</h3>
                         <div class="username">
-                            <div class="name">John dow</div>
+                            <div class="name">
+                                <?php echo $_SESSION["fname"]." ".$_SESSION["lname"]; ?>
+                            </div>
                             <button id="button-name" class="change">Edit</button>
                         </div>
                     </div>
@@ -28,7 +30,7 @@
                         <h3>Account</h3>
                         <div class="account">
                             <div class="email">
-                                Johndoe204@gmail.com
+                                <?php echo $_SESSION["email"]; ?>
                             </div>
                             <button id="button-email" class="change">Edit</button>
                         </div>
@@ -41,50 +43,48 @@
                         </div>
                     </div>
                 </div>
-                <div id="remove-account">
+                <form id="remove-account" action="./data/user-data.php" method="post">
                     <h3>Account Removal!</h3>
                     <p>This action is irreversible. Once deleted, you will no longer be able to access your order history, favourites, or any personal information tied to your account.</p>
-                    <button class="delete-account">Delete Account</button>
-                </div>
+                    <button class="delete-account" name="delete-account">Delete Account</button>
+                </form>
 
             </div>
             
-            <form id="edit-name" class="editing-form hidden">
+            <form id="edit-name" class="editing-form hidden" action="./data/user-data.php" method="post">
                 <h2>Change fullname</h2>
                 <div class="field-container">
                     <div>
                         <p>Last Name</p>
-                        <input type="text" placeholder="e.g. Doe">
+                        <input type="text" name="lname" placeholder="e.g. Doe">
                     </div>
                     <div>
                         <p>First Name</p>
-                        <input type="text" placeholder="e.g. John">
+                        <input type="text" name="fname" placeholder="e.g. John">
                     </div>
 
                 </div>
                 <div class="button-container">
-                    <button type="submit" class="cancel">Cancel</button>
-                    <button type="submit" class="submit">Submit</button>
-
+                    <button type="submit" class="cancel" name="cancel-acc-edit">Cancel</button>
+                    <button type="submit" class="submit" name="edit-name">Submit</button>
                 </div>
             </form>
-            <form id="edit-email" class="editing-form hidden">
+
+            <form id="edit-email" class="editing-form hidden" action="./data/user-data.php" method="post">
                 <h2>Change Email</h2>
                 <div class="field-container">
                     <div>
                         <p>Email</p>
-                        <input type="text" placeholder="e.g. Johndoe25@gmail.com">
+                        <input type="email" name="email" placeholder="e.g. Johndoe25@gmail.com">
                     </div>
-
                 </div>
                 <div class="button-container">
-                    <button type="submit" class="cancel">Cancel</button>
-                    <button type="submit" class="submit">Submit</button>
-
+                    <button type="submit" class="cancel" name="cancel-acc-edit">Cancel</button>
+                    <button type="submit" class="submit" name="edit-email">Submit</button>
                 </div>
             </form>
 
-            <form id="edit-password" class="editing-form hidden">
+            <form id="edit-password" class="editing-form hidden" action="./data/user-data.php" method="post">
                 <h2>Change Password</h2>
                 <div class="field-container password">
                     <div>
@@ -92,18 +92,17 @@
                             <p>New Password</p>
                             <p id="toggle-real-password">show</p>
                         </div>
-                        <input id="new-password" type="password">
+                        <input id="new-password" type="password" name="password">
                     </div>
                     <div>
                         <p>Confirm Password</p>
-                        <input type="password">
+                        <input type="password" name="confirm-password">
                     </div>
 
                 </div>
                 <div class="button-container" class="hidden">
-                    <button type="submit" class="cancel">Cancel</button>
-                    <button type="submit" class="submit">Submit</button>
-
+                    <button type="submit" class="cancel" name="cancel-acc-edit">Cancel</button>
+                    <button type="submit" class="submit" name="edit-password">Submit</button>
                 </div>
             </form>
             

@@ -2,6 +2,11 @@
 include "./connect.php";
 session_start();
 
+if(isset($_SESSION['email']) && isset($_SESSION['customer_id'])){
+    $email = $_SESSION['email'];
+    $customer_id = $_SESSION['customer_id'];
+}
+
 if($_SERVER["REQUEST_METHOD"] == "GET"){
     // switch between log in & sign in forms
     if(isset($_GET["switch-form"])){
@@ -43,8 +48,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $result = $conn->query($checkEmail);
         if($result->num_rows > 0){
             $_SESSION['server_message'] = "Email already exists!";
-            header("location: ../login.php");
             $conn->close();
+            header("location: ../login.php");
             exit();
         }
 
@@ -52,6 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         VALUES ('$fname', '$lname', '$email', '$password')";
         if($conn->query($insertUser) == true){
             $_SESSION['server_message'] = "You have been registered!";
+            $_SESSION['login'] = true;
             header("location: ../login.php");
         }
         else{
@@ -76,10 +82,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
 
-            $_SESSION['email'] = $row['email'];
+            // account details
             $_SESSION['customer_id'] = $row['customer_id'];
-            $_SESSION['set_order'] = false;
+            $_SESSION['fname'] = $row['first_name'];
+            $_SESSION['lname'] = $row['last_name'];
+            $_SESSION['email'] = $row['email'];
 
+            $_SESSION['set_order'] = false;
             header("location: ../menu.php");
             $conn->close();
         }
@@ -103,14 +112,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $conn->close();
     }
 
+    // debug
+    $_SESSION['set_order'] = false;
+
     // log out
-    if(isset($_POST["logout"])){
+    if(isset($_POST["logout"]) && !$_SESSION['set_order']){
+        if($_SESSION["del-acc"]){
+            $conn->query(
+            "DELETE FROM customer WHERE customer_id = '$customer_id' "
+            );
+            $conn->close();
+        }
+
         session_unset();
         session_destroy();
         header("location: ../menu.php");
+        exit();
     }
-    if(isset($_POST["cancel"]) || $_SESSION['set_order']){
+    else if(isset($_POST["cancel"]) || $_SESSION['set_order']){
+        unset($_SESSION["del-acc"]);
         header("location: ../account.php");
+        exit();
     }
 }
 ?>
