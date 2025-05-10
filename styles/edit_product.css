@@ -40,7 +40,6 @@ main{
         flex-direction: column;
         gap: 10px;
 
-       
 
         .product-image-container{
             padding: 20px;
@@ -80,9 +79,29 @@ main{
         
         .heading{
             display: flex;
-            align-items: center;
+            justify-content: space-between;
             gap: 10px;
 
+            .name-stock{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+            }
+
+            .delete{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                cursor: pointer;
+                img{
+                    width: 25px;
+                }
+                p{
+                    color: var(--accent_orange);
+
+                }
+            }
             h2{
                 font-size: 1.9rem;
                 margin: 0;
@@ -93,6 +112,8 @@ main{
                 color: var(--text_dark_teal);
                 font-weight: 600;
             }
+
+
         }
        
 

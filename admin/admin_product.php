@@ -32,8 +32,14 @@
             </div>
             <div id="product-form-container">
                 <div class="heading">
-                    <h2>Edit Product</h2>
-                    <p>Stock: </p>
+                    <div class="name-stock">
+                        <h2>Edit Product</h2>
+                        <p>Stock: </p>
+                    </div>
+                    <div class="delete">
+                        <img src="../images/icons/Trash_Full.svg">
+                        <p>Delete Product</p>
+                    </div>
                 </div>
                 <form id="product-edit-form">
                     <!-- Just add values their values inside the input from the db -->
