@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Order</title>
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/tracker.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">

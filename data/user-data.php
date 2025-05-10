@@ -50,6 +50,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             exit();
         }
 
+        // check if user has order in progress
+        if($_SESSION['set_order']){
+            header("location: ../order_tracking.php");
+            exit();
+        }
+        
         if(empty($_SESSION['cart'])) $_SESSION['cart'] = array(); // sets cart as array, only if its empty
 
         $item = json_decode($_POST["item-data"]);

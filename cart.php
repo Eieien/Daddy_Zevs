@@ -33,6 +33,7 @@
                 if(empty($_SESSION['cart'])){
                     echo
                     "<p>No items in cart...</p>";
+                    if(empty($_SESSION['total_price'])) $_SESSION['total_price'] = $total;
                 }
                 else{
                     $count = 0;
@@ -67,8 +68,9 @@
 
                         $total += $price * $quantity;
                     }
+
+                    $_SESSION['total_price'] = $total;
                 }
-                $_SESSION['total_price'] = $total;
             ?>
         </div>
         
@@ -76,7 +78,7 @@
             <h1>Payment</h1>
             <div class="payment-div">
                 <h3 class="black">Subtotal:</h3>
-                <h3>Php <?php echo sprintf("%.2f", $_SESSION['total_price']) ?></h3>
+                <h3>Php <?php echo sprintf("%.2f", $total) ?></h3>
             </div>
             <div class="payment-div">
                 <h2 class="black">Shipping</h2>
@@ -85,9 +87,8 @@
             <hr>
             <div class="payment-div">
                 <h1 class="black">Total</h1>
-                <h1>Php <?php echo sprintf("%.2f", $_SESSION['total_price']) ?></h1>
+                <h1>Php <?php echo sprintf("%.2f", $total) ?></h1>
             </div>
-            <!-- To be continued -->
             <form <?php if($_SESSION['total_price'] > 0 || $_SESSION['set_order']) echo "action='./data/user-data.php' method='post' "; ?>>
                 <input type="hidden">
                 <button type="submit" id="checkout" name="checkout">Checkout</button>
