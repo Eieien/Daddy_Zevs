@@ -6,72 +6,90 @@ main{
     grid-template-columns: 200px 1fr;
 
     section{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         h1{
+            font-size: 1.8rem;
             color: var(--primary_blue);
-            font-weight: 1000;
-            font-size: 30px;
+            margin: 0;
         }
-        .user-card{
-            background-color: #e0e0de;
-            border-radius: 20px;
-            display: grid;
-            align-items: center;
-            padding: 0 25px;
-            margin-bottom: 10px;
+        
+        #feedback-list{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
 
-        .email{
-            font-weight: 500;
-        }
+            .feedback-card{
+                background-color: #ECEDE9;
+                border-radius: 15px;
+                width: 100%;            
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
 
-        .user-date{
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text_dark_teal);
-        }
+                .user-rating-container{
+                    display: grid;
+                    grid-template-columns: 1fr 300px;
+                    justify-content: space-between;
 
-            img{
-                width: 50px;
-            }
-            #user-info{
-                align-self: flex-start;
-                margin-top: 20px;
-                height: 100%;
-                padding-bottom: 40px;
+                    .user-profile{
+                        display: flex;
+                        align-items: center;
 
-                h2, p{
-                    margin: 0;
+                        img{
+                            width: 50px;
+                            margin-right: 10px;
+                        }
+
+                        .name-email{
+                            display: flex;
+                            gap: 10px;
+                            align-items: center;
+                            color: var(--primary_blue);
+                        }
+                        
+                        h2, p{
+                            margin: 0;
+                        }
+
+                        p{
+                            color: var(--text_dark_teal);
+                            font-weight: 700;
+                            font-size: 1rem;
+                        }
+                        span{
+                            font-size: 1.2rem;
+                            font-weight: 500;
+                        }
+                    }
+                    .rating{
+                        display: flex;
+                        justify-content: end;
+                        gap: 10px;
+                        color: #FCC900;
+
+                        h3{
+                            margin: 0;
+                        }
+
+                        .star-container{
+
+                            .star{
+                                fill: #FCC900;
+                                path{
+                                    stroke: #FCC900;
+                                }
+                            }
+                        }
+                        
+                    }
                 }
 
-                #name-email{
-                    display: flex;
-                    column-gap: 15px;
-                    color: var(--primary_blue);
-                    margin-bottom: 5px;
-                }
-                .user-comments{
-                    font-size: 20px;
-                }
+
+
             }
         }
     }
-}
-
-.user-flex{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.user-rate{
-    display: flex;
-}
-
-.number-rate{
-    color: #FFC628;
-    font-weight: 700;
-    font-size: 24px;
-}
-
-.user-name{
-    width: 130px;
 }
