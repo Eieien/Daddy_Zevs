@@ -123,8 +123,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST["logout"]) && !$_SESSION['set_order']){
         if($_SESSION["del-acc"]){
             $conn->query(
-            "DELETE FROM customer WHERE customer_id = '$customer_id' "
-            );
+            "DELETE FROM favorites WHERE customer_id = '$customer_id' ");
+            $conn->query(
+            "DELETE FROM customer WHERE customer_id = '$customer_id' ");
             $conn->close();
         }
 

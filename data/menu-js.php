@@ -52,6 +52,7 @@ function createProductCard(item){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = () => {
         var fav = Number(xhttp.responseText);
+        console.log(String(fav));
         
         if(fav){
             heart.style.fill = "var(--accent_orange)";
@@ -124,14 +125,26 @@ function displayProducts(type){
         }))
         .catch(error => console.error('Error:', error));
 }
-displayProducts();
 
-document.querySelector("a[href='./menu.php#product-list']").addEventListener("click", () => {
+function favoritesActive(){
     let current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     btns[12].className += " active";
-    displayProducts(11); 
-});
+}
+
+<?php
+    if(empty($_SESSION["check_fav"])){
+        echo "displayProducts();";
+    } else {
+        unset($_SESSION["check_fav"]);
+        echo 
+        "favoritesActive();
+        displayProducts(11);";
+    }
+?>
+
+let favorites = document.querySelector('a[onclick="displayProducts(11)"]');
+favorites.addEventListener('click', () => favoritesActive());
 
 function getProduct(item){
     document.querySelector("input[name='product-info']").value = item;
