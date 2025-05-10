@@ -236,9 +236,56 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit();
     }
 
-    // cancel account edit
+    // edit address
+    if(isset($_POST["edit-add"])){
+        $_POST["phone"] = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_SPECIAL_CHARS);
+        $_POST["add1"] = filter_input(INPUT_POST, "add1", FILTER_SANITIZE_SPECIAL_CHARS);
+        $_POST["add2"] = filter_input(INPUT_POST, "add2", FILTER_SANITIZE_SPECIAL_CHARS);
+        $_POST["add3"] = filter_input(INPUT_POST, "add3", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        $phone = $_POST["phone"];
+        $add1 = $_POST["add1"];
+        $add2 = $_POST["add2"];
+        $add3 = $_POST["add3"];
+        $address = "".$add1.", ".$add2.", ".$add3;
+
+        $conn->query(
+            "UPDATE customer
+            SET phone_no = '$phone', address = '$address'
+            WHERE customer_id = '$customer_id' ");
+
+        $_SESSION["phone_no"] = $phone;
+        $_SESSION["address"] = $address;
+
+        $conn->close();
+        header("location: ../address.php");
+        exit();
+    }
+    
+    // delete address
+    if(isset($_POST["del-add"])){
+        $phone = $_SESSION["phone_no"];
+        $address = $_SESSION["address"];
+
+        $conn->query(
+            "UPDATE customer
+            SET phone_no = NULL, address = NULL
+            WHERE customer_id = '$customer_id' ");
+
+        unset($_SESSION["phone_no"], $_SESSION["address"]);
+
+        $conn->close();
+        header("location: ../address.php");
+        exit();
+    }
+
+    // cancel account edits
     if(isset($_POST["cancel-acc-edit"])){
         header("location: ../account.php");
+        exit();
+    }
+    if(isset($_POST["cancel-add-edit"])){
+        header("location: ../address.php");
         exit();
     }
 

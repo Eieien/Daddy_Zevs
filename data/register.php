@@ -65,6 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             header("location: ../login.php");
         }
         $conn->close();
+        exit();
     }
 
     // log in
@@ -87,10 +88,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['fname'] = $row['first_name'];
             $_SESSION['lname'] = $row['last_name'];
             $_SESSION['email'] = $row['email'];
+            $_SESSION["phone_no"] = $row['phone_no'];
+            $_SESSION["address"] = $row['address'];
 
             $_SESSION['set_order'] = false;
-            header("location: ../menu.php");
             $conn->close();
+            header("location: ../menu.php");
+            exit();
         }
         else{
             $checkAdmin = "SELECT * FROM employee WHERE email = '$email' and password = '$password' ";

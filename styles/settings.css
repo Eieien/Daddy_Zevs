@@ -63,6 +63,7 @@ main{
             font-size: 1.8rem;
             color: var(--primary_blue);
             margin: 0;
+            margin-bottom: 20px;
         }   
         /* account section */
         .account-details-container{
@@ -248,11 +249,15 @@ main{
                     font-weight: 500;
                     font-size: 1rem;
                 }
-                img{
-                    width: 25px;
+                #delete-address{
+                    border-radius: 100%;
+                    border: none;
+                    background: none;
                     cursor: pointer;
+                    img{
+                        width: 25px;
+                    }
                 }
-
             }
             
             .change-address{
@@ -275,8 +280,6 @@ main{
             .address{
                 width: 60%;
             }
-
-            
         }
         #add-address{
             display: flex;
