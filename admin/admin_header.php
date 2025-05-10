@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="right">
-        <a href="../account.php">
+        <a href="#">
             <div class="menu-icon">
                 <img src="../images/icons/user.svg">
                 <span>Account</span>

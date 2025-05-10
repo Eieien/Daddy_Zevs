@@ -9,19 +9,20 @@
             </div>
         </a>
         <div>
-            <form action="#" method="post" class="search-wrapper">
+            <form action="./data/user-data.php" method="post" class="search-wrapper">
                 <img class="search-icon" src="./images/icons/search.svg">
                 <input type="text" name="search-bar" class="search" placeholder="What are you craving today?">
-
             </form>
         </div>
     </div>
     <div class="right">
-        <a href="./menu.php#product-list">
-            <div class="menu-icon">
-                <img src="./images/icons/heart.svg">
-                <span>Favorites</span>
-            </div>
+        <a href="#">
+            <form action="./data/user-data.php" method="post" class="menu-icon">
+                <button class="menu-icon" name="nav-fav">
+                    <img src="./images/icons/heart.svg">
+                    <span>Favorites</span>
+                </button>
+            </form>
         </a>
         <a href="./cart.php">
             <div class="menu-icon">

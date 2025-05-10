@@ -15,8 +15,7 @@
     <?php
         if(empty($_SESSION["email"])){
             include "./guest_nav.php";
-        }
-        else{
+        } else {
             include "./user_nav.php";
         }
     ?>
@@ -58,17 +57,16 @@
             </div>
             <div class="product-selecton">
                 <div class="navigation-tab">
-                    <a href="./menu.php" class="btn active">
+                    <a href="./menu.php#product-list" class="btn active" onclick="displayProducts(0)">
                         Menu
                     </a>
-                    <a href="#" class="btn" onclick="displayProducts(7)">
+                    <a href="#product-list" class="btn" onclick="displayProducts(7)">
                         Featured
                     </a>
                     <?php
                         if(isset($_SESSION["email"])){
                             echo "<a href='#product-list' onclick='displayProducts(11)' class='btn'>";
-                        }
-                        else{
+                        } else {
                             echo "<a href='./login.php' class='btn'>";
                         }
                     ?>
@@ -76,20 +74,14 @@
                     </a>
                 </div>
 
-                <div id="product-list">
-                   
-                </div>
+                <section id="product-list"></section>
             </div>
         </div>
     </main>
 
-    <?php
-        include "./footer.php";
-    ?>
+    <?php include "./footer.php"; ?>
 
     <!-- script -->
-    <?php
-        include "./data/menu-js.php";
-    ?>
+    <?php include "./data/menu-js.php"; ?>
 </body>
 </html>
