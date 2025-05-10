@@ -29,8 +29,8 @@
 
                         <div id='user-info'>
                             <div id='name-email'>
-                                <h2><b>John Doe</b></h2>
-                                <h2>Johndoe@gmail.com</h2>
+                                <h2>John Doe</h2>
+                                <span>Johndoe@gmail.com</span>
                             </div>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
