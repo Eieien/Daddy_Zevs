@@ -26,6 +26,14 @@ main{
         padding-bottom: 50px;
     }
 
+    @media(max-width: 830px){
+        .product-grid{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr;
+        }
+    }
+
 
     #product-detail{
         display: flex;
@@ -158,10 +166,3 @@ main{
     }
 }
 
-@media(max-width: 830px){
-    .product-grid{
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr;
-    }
-}
