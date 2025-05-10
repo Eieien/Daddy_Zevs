@@ -1,10 +1,19 @@
-<nav id="admin-nav">
-    <div id="nav-container">
-        <h1>Admin</h1>
-
-        <h3><a href="./userbase.php">Users</a></h3>
-        <h3><a href="./pendingOrders.php">Orders</a></h3>
-        <h3><a href="./listOfProducts.php">Products</a></h3>
-        <h3><a href="./feedback.php">Feedback</a></h3>
-    </div>
-</nav>
+<div id="admin-nav">
+    <h1>Admin</h1>
+    <ul>
+        <li>
+            <a href="./userbase.php">Users</a>
+        </li>
+        <li>
+            <a href="./pendingOrders.php">Orders</a>
+        </li>
+        <li>
+            <a href="./listOfProducts.php">Product</a>
+        </li>
+        <li>
+            <a href="./feedback.php">Feedback List</a>
+        </li>
+  
+    </ul>
+        
+</div>
