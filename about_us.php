@@ -24,8 +24,7 @@
             include "./guest_nav.php";
         }
         else{
-            header("location: ./menu.php");
-            exit();
+            include "./user_nav.php";
         }
     ?>
 
