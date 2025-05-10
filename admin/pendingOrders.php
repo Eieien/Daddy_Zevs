@@ -21,162 +21,400 @@
         <section>
             <div class="order-title">
                 <h1>Orders</h1>
-                <div class="order-right">
-                <button class="filter-a" id="filterButton" type="button">
-                    <div class="filter-image">
-                        <span class="material-symbols-outlined" style="color: #3464dd;">tune</span>
-                    </div>
-                    <span class="filter">filter</span>
-                </button>
-                <div class="filter-dropdown" id="filterDropdown">
-                    <ul class="filter-ul">
-                        <li class="filter-li"><button class="filter-complete">Complete</button></li>
-                        <li class="filter-li"><button class="filter-deliver">Delivering</button></li>
-                        <li class="filter-li"><button class="filter-making">Making</button></li>
-                        <li class="filter-li"><button class="filter-pending">Pending</button></li>
-                    </ul>
+                <div class="order-nav">
+                    <div id="pending-order" class="active">Pending Orders</div>
+                    <div id="accepted-order">Accepted Orders</div>
                 </div>
+                <div id="pending-list">
+                    <div class="order-card">
+                        <p class="order-num">
+                            Order #1
+                        </p>
+                        <div class="card-background">
+                            <div class="heading">
+                                <div class="name">
+                                    <h2>John Doe</h2>
+                                    <h3>(02) 8123 4567</h3>
+                                </div>
+                            </div>
+                            <div class="address">
+                                456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200
+                            </div>
+                            <div class="product-list">
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+    
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                            </div>
+                            <hr>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <h2>P250</h2>
+                            </div>
+                            <div class="button-container">
+                                <button class="reject">Reject</button>
+                                <button class="submit">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="order-card">
+                        <p class="order-num">
+                            Order #2
+                        </p>
+                        <div class="card-background">
+                            <div class="heading">
+                                <div class="name">
+                                    <h2>John Doe</h2>
+                                    <h3>(02) 8123 4567</h3>
+                                </div>
+                            </div>
+                            <div class="address">
+                                456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200
+                            </div>
+                            <div class="product-list">
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+    
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                            </div>
+                            <hr>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <h2>P250</h2>
+                            </div>
+                            <div class="button-container">
+                                <button class="reject">Reject</button>
+                                <button class="submit">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="order-card">
+                        <p class="order-num">
+                            Order #3
+                        </p>
+                        <div class="card-background">
+                            <div class="heading">
+                                <div class="name">
+                                    <h2>John Doe</h2>
+                                    <h3>(02) 8123 4567</h3>
+                                </div>
+                            </div>
+                            <div class="address">
+                                456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200
+                            </div>
+                            <div class="product-list">
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+    
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                            </div>
+                            <hr>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <h2>P250</h2>
+                            </div>
+                            <div class="button-container">
+                                <button class="reject">Reject</button>
+                                <button class="submit">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="pending-card">
-                <li class="pending-item">
-                    <div class="pending-itemTop">
-                        <div class="pending-top">
-                            <div class="pending-topContent">
-                                <div class="pending-topContent-up">
-                                    <h1>John Doe</h1>
-                                    <p class="pending-topContent-up-p">02 8123 4567</p>
+                <div id="accepted-list" class="hidden">
+                    <div class="order-card">
+                        <p class="order-num">
+                            Order #1
+                        </p>
+                        <div class="card-background">
+                            <div class="heading">
+                                <div class="name">
+                                    <h2>John Doe</h2>
+                                    <h3>(02) 8123 4567</h3>
                                 </div>
-                                <div class="pending-topContent-down">
-                                    <p class="pending-topContent-down-p">456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200</p>
+                                <div class="status-dropdown">
+                                    <button class="dropdown-toggle" >Status</button>
+                                    <ul class="dropdown-menu" >
+                                        <li data-value="2">Making</li>
+                                        <li data-value="3">Delivering</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="pending-topButton">
-                                <button class="filter-pending">Pending</button>
+                            <div class="address">
+                                456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200
                             </div>
-                            <div class="pending-topIcon">
-                                <button class="pending-topIconButton">
-                                    <span class="material-symbols-outlined" style="color: #3464dd;">more_vert</span>
-                                </button>
+                            <div class="product-list">
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+    
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
                             </div>
-                        </div>
-                        <div class="pending-order">
-                            <div class="pending-orderList">
-                                <h2 class="pending-orderQuantity" id="pending-orderQuantity">1x</h2> <!--PLACEHOLDER OF THE NAME--> 
-                                <h2 class="pending-orderName" id="pending-orderName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE PRICE-->
-                                <h2 class="pending-orderPrice" id="pending-orderPrice">P250</h2>
+                            <hr>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <h2>P250</h2>
                             </div>
-                            <div class="pending-orderList">
-                                <h2 class="pending-orderQuantity" id="pending-orderQuantity">1x</h2> <!--PLACEHOLDER OF THE NAME--> 
-                                <h2 class="pending-orderName" id="pending-orderName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE PRICE-->
-                                <h2 class="pending-orderPrice" id="pending-orderPrice">P250</h2>
+                            <div class="button-container">
+                                <button class="cancel">Cancel</button>
+                                <button class="submit">Complete</button>
                             </div>
-                            <div class="pending-orderList">
-                                <h2 class="pending-orderQuantity" id="pending-orderQuantity">1x</h2> <!--PLACEHOLDER OF THE NAME--> 
-                                <h2 class="pending-orderName" id="pending-orderName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE PRICE-->
-                                <h2 class="pending-orderPrice" id="pending-orderPrice">P250</h2>
-                            </div>
-                            <div class="pending-orderList">
-                                <h2 class="pending-orderQuantity" id="pending-orderQuantity">1x</h2> <!--PLACEHOLDER OF THE NAME--> 
-                                <h2 class="pending-orderName" id="pending-orderName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE PRICE-->
-                                <h2 class="pending-orderPrice" id="pending-orderPrice">P250</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pending-total">
-                        <h2 class="pending-totalWord">TOTAL</h2>
-                        <h2 class="pending-totalPrice" id="pending-totalPrice">P250</h2>
-                    </div>
-                </li>
 
-                <li class="pending-item">
-                    <div class="pending-itemTop">
-                        <div class="pending-top">
-                            <div class="pending-topContent">
-                                <div class="pending-topContent-up">
-                                    <h1>John Doe</h1>
-                                    <p class="pending-topContent-up-p">02 8123 4567</p>
-                                </div>
-                                <div class="pending-topContent-down">
-                                    <p class="pending-topContent-down-p">456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200</p>
-                                </div>
-                            </div>
-                            <div class="pending-topButton">
-                                <button class="filter-pending">Pending</button>
-                            </div>
-                            <div class="pending-topIcon">
-                                <button class="pending-topIconButton">
-                                    <span class="material-symbols-outlined" style="color: #3464dd;">more_vert</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="pending-order">
-                            <div class="pending-orderList">
-                                <h2 class="pending-orderQuantity" id="pending-orderQuantity">1x</h2> <!--PLACEHOLDER OF THE NAME--> 
-                                <h2 class="pending-orderName" id="pending-orderName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE PRICE-->
-                                <h2 class="pending-orderPrice" id="pending-orderPrice">P250</h2>
-                            </div>
                         </div>
                     </div>
-                    <div class="pending-total">
-                        <h2 class="pending-totalWord">TOTAL</h2>
-                        <h2 class="pending-totalPrice" id="pending-totalPrice">P250</h2>
-                    </div>
-                </li>
+                    <div class="order-card">
+                        <p class="order-num">
+                            Order #1
+                        </p>
+                        <div class="card-background">
+                            <div class="heading">
+                                <div class="name">
+                                    <h2>John Doe</h2>
+                                    <h3>(02) 8123 4567</h3>
+                                </div>
+                                <div class="status-dropdown">
+                                    <button class="dropdown-toggle" >Status</button>
+                                    <ul class="dropdown-menu" >
+                                        <li data-value="2">Making</li>
+                                        <li data-value="3">Delivering</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="address">
+                                456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200
+                            </div>
+                            <div class="product-list">
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+    
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                            </div>
+                            <hr>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <h2>P250</h2>
+                            </div>
+                            <div class="button-container">
+                                <button class="cancel">Cancel</button>
+                                <button class="submit">Complete</button>
+                            </div>
 
-                <li class="pending-item">
-                    <div class="pending-itemTop">
-                        <div class="pending-top">
-                            <div class="pending-topContent">
-                                <div class="pending-topContent-up">
-                                    <h1>John Doe</h1>
-                                    <p class="pending-topContent-up-p">02 8123 4567</p>
-                                </div>
-                                <div class="pending-topContent-down">
-                                    <p class="pending-topContent-down-p">456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200</p>
-                                </div>
-                            </div>
-                            <div class="pending-topButton">
-                                <button class="filter-pending">Pending</button>
-                            </div>
-                            <div class="pending-topIcon">
-                                <button class="pending-topIconButton">
-                                    <span class="material-symbols-outlined" style="color: #3464dd;">more_vert</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="pending-order">
-                            <div class="pending-orderList">
-                                <h2 class="pending-orderQuantity" id="pending-orderQuantity">1x</h2> <!--PLACEHOLDER OF THE NAME--> 
-                                <h2 class="pending-orderName" id="pending-orderName">Bacon and Egg Croissant</h2> <!--PLACEHOLDER OF THE PRICE-->
-                                <h2 class="pending-orderPrice" id="pending-orderPrice">P250</h2>
-                            </div>
                         </div>
                     </div>
-                    <div class="pending-total">
-                        <h2 class="pending-totalWord">TOTAL</h2>
-                        <h2 class="pending-totalPrice" id="pending-totalPrice">P250</h2>
+
+                    <div class="order-card">
+                        <p class="order-num">
+                            Order #1
+                        </p>
+                        <div class="card-background">
+                            <div class="heading">
+                                <div class="name">
+                                    <h2>John Doe</h2>
+                                    <h3>(02) 8123 4567</h3>
+                                </div>
+                                <div class="status-dropdown">
+                                    <button class="dropdown-toggle">Status</button>
+                                    <ul class="dropdown-menu" >
+                                        <li data-value="2">Making</li>
+                                        <li data-value="3">Delivering</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="address">
+                                456 Pandesal Ave., Brgy. Mabuhay, Makati City, Metro Manila, 1200
+                            </div>
+                            <div class="product-list">
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+    
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                                
+                                <div class="quantity">1x</div>
+                                <div class="product-name">Bacon and Egg Croissant</div>
+                                <div class="product-price">P250</div>
+                            </div>
+                            <hr>
+                            <div class="total">
+                                <h3>Total</h3>
+                                <h2>P250</h2>
+                            </div>
+                            <div class="button-container">
+                                <button class="cancel">Cancel</button>
+                                <button class="submit">Complete</button>
+                            </div>
+
+                        </div>
                     </div>
-                </li>
-                
-                
+                </div>
             </div>
         </section>
     </main>
     
+    <!-- Masonry Layout -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    
     <script>
-        document.getElementById('filterButton').addEventListener('click', function () {
-            document.getElementById('filterDropdown').classList.toggle('show');
+        var pending_masonry = document.getElementById("pending-list");
+        var pending = new Masonry(pending_masonry, {
+            itemSelector: ".order-card",
+            columnWidth: 380,
+            gutter: 16
         });
 
-        window.addEventListener('click', function (e) {
-            const dropdown = document.getElementById('filterDropdown');
-            const button = document.getElementById('filterButton');
-            if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.classList.remove('show');
-            }
+        var accepted_masonry = document.getElementById("accepted-list");
+        var accepted = new Masonry(accepted_masonry, {
+            itemSelector: ".order-card",
+            columnWidth: 380,
+            gutter: 16
+        })
+
+        var pending_order_btn = document.getElementById("pending-order");
+        var accepted_order_btn = document.getElementById("accepted-order");
+        var pending_list = document.getElementById("pending-list");
+        var accepted_list = document.getElementById("accepted-list");
+
+        pending_order_btn.addEventListener("click", () => {
+            accepted_list.classList.add("hidden");
+            pending_list.classList.remove("hidden");
+            accepted_order_btn.classList.remove("active");
+            pending_order_btn.classList.add("active");
+
+            pending.layout();
+            
         });
+
+        accepted_order_btn.addEventListener("click", () => {
+            pending_list.classList.add("hidden");
+            accepted_list.classList.remove("hidden");
+            accepted_order_btn.classList.add("active");
+            pending_order_btn.classList.remove("active");
+            
+            accepted.layout();
+
+        })
+
+        document.querySelectorAll('.status-dropdown').forEach(dropdown => {
+            const togglebtn = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+
+            togglebtn.addEventListener('click', () => {
+                menu.classList.add('show');
+            });
+
+            menu.querySelectorAll('li').forEach(item => {
+                item.addEventListener('click', () => {
+                    const selectedText = item.textContent;
+                    const selectedValue = item.getAttribute('data-value');
+
+                    togglebtn.textContent = selectedText;
+                    togglebtn.setAttribute('data-value', selectedValue);
+                    menu.classList.remove('show');
+
+                    // Default style
+                    togglebtn.style.backgroundColor = "#ECEDE9";
+                    togglebtn.style.border = "1px solid #0B2027";
+                    togglebtn.style.color = "#0B2027";
+
+                    // Custom color based on value
+                    switch (selectedValue) {
+                        case "2": // Making
+                            togglebtn.style.backgroundColor = "#FF7B28";
+                            togglebtn.style.border = "none";
+                            togglebtn.style.color = "#FBFCEC";
+                            break;
+                        case "3": // Delivering
+                            togglebtn.style.backgroundColor = "#FFC628";
+                            togglebtn.style.border = "none";
+                            togglebtn.style.color = "#FBFCEC";
+                            break;
+                    }
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!event.target.closest('.status-dropdown')) {
+                    menu.classList.remove('show');
+                }
+            });
+        });
+
+
+
+
+
+
     </script>
 </body>
 </html>
