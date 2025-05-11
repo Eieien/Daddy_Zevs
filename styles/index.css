@@ -19,6 +19,7 @@
 }        
 
 h5{
+    font-family: var(--primary_font);
     font-size: 70px;
     margin-bottom: 30px;
     color: white;
@@ -45,6 +46,8 @@ h5{
 /*--FEATURES SECTION--*/
 .featured-section{
     display: grid;
+    font-family: var(--primary_font);
+    
     grid-template-columns: 1fr 1fr;
     height: 500px;
     justify-content: center;
@@ -74,6 +77,7 @@ h5{
 #menu-goldenGlaze{
     background-color: var(--primary_blue);
     font-weight: bold;
+    font-family: var(--primary_font);
     border: 0.5px solid white;
     border-radius: 20px;
     padding: 5px 20px;
@@ -99,6 +103,7 @@ h5{
 
 .featured-carouselSection{
     height: 45rem;
+    font-family: var(--primary_font);
     text-align: center;
     width: 100%;
 }
@@ -112,6 +117,7 @@ h5{
     h1{
         margin-top: 50px;
         color: var(--primary_blue);
+        font-family: var(--primary_font);
         font-size: 50px;
         font-weight: 700;
     }
