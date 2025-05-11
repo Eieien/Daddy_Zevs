@@ -43,12 +43,17 @@
                         </div>
                     </div>
                 </div>
+                <?php
+                    if(isset($_SESSION['server_message'])){
+                        echo $_SESSION['server_message'];
+                        unset($_SESSION['server_message']);
+                    }
+                ?>
                 <form id="remove-account" action="./data/user-data.php" method="post">
                     <h3>Account Removal!</h3>
                     <p>This action is irreversible. Once deleted, you will no longer be able to access your order history, favourites, or any personal information tied to your account.</p>
                     <button class="delete-account" name="delete-account">Delete Account</button>
                 </form>
-
             </div>
             
             <form id="edit-name" class="editing-form hidden" action="./data/user-data.php" method="post">

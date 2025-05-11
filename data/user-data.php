@@ -94,6 +94,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST["checkout"])){
         // check if order is set or if no address
         if($_SESSION['set_order'] || empty($_SESSION['address'])){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>You have no address! Please set your address</span>
+            </div>";
+
             header("location: ../cart.php");
             exit();
         }  
@@ -175,7 +180,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_POST['lname'] = filter_input(INPUT_POST, "lname", FILTER_SANITIZE_SPECIAL_CHARS);
        
         // check if names are NOT empty
-        if(empty($_POST["fname"]) && empty($_POST["lname"])){
+        if(empty($_POST["fname"]) || empty($_POST["lname"])){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Names cannot be empty!</span>
+            </div>";
+
             header("location: ../account.php");
             exit();
         }
@@ -192,6 +202,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["fname"] = $fname;
         $_SESSION["lname"] = $lname;
 
+        $_SESSION['server_message'] = 
+        "<div id='server-msg' >
+            <span style='color: var(--primary_blue);'>Your name has been changed!</span>
+        </div>";
+
         $conn->close();
         header("location: ../account.php");
         exit();
@@ -203,6 +218,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // check if email is NOT empty
         if(empty($_POST["email"])){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Email cannot be empty!</span>
+            </div>";
+
             header("location: ../account.php");
             exit();
         }
@@ -229,6 +249,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION["email"] = $email;
 
+        $_SESSION['server_message'] = 
+        "<div id='server-msg' >
+            <span style='color: var(--primary_blue);'>Your email has been changed!</span>
+        </div>";
+
         $conn->close();
         header("location: ../account.php");
         exit();
@@ -239,12 +264,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_POST['password'] = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
         $_POST['confirm-password'] = filter_input(INPUT_POST, "confirm-password", FILTER_SANITIZE_SPECIAL_CHARS);
 
-        // check if email is NOT empty
-        if(empty($_POST["password"]) && empty($_POST["confirm-password"]) ||
-            $_POST["password"] !== $_POST["confirm-password"]
-        ){
+        // check if passwords are NOT empty
+        if(empty($_POST["password"]) || empty($_POST["confirm-password"])){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Password cannot be empty!</span>
+            </div>";
+
             header("location: ../account.php");
             exit();
+        }
+
+        // check if passwords dont match
+        if($_POST["password"] !== $_POST["confirm-password"]){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Password don't match!</span>
+            </div>";
+
+            header("location: ../account.php");
+            exit();    
         }
 
         $password = md5($_POST['password']);
@@ -253,6 +292,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             "UPDATE customer
             SET password = '$password'
             WHERE customer_id = '$customer_id' ");
+
+        $_SESSION['server_message'] = 
+        "<div id='server-msg' >
+            <span style='color: var(--primary_blue);'>Your password has been changed!</span>
+        </div>";
 
         $conn->close();
         header("location: ../account.php");
@@ -277,6 +321,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $add1 = $_POST["add1"];
         $add2 = $_POST["add2"];
         $add3 = $_POST["add3"];
+
+        // check if fields are empty
+        if(empty($add1) || empty($add2)|| empty($add3)){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Address fields cannot be empty!</span>
+            </div>";
+
+            header("location: ../address.php");
+            exit();
+        }
+        if(empty($phone)){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Phone number cannot be empty!</span>
+            </div>";
+
+            header("location: ../address.php");
+            exit();
+        }
+
         $address = "".$add1.", ".$add2.", ".$add3;
 
         $conn->query(
@@ -332,13 +397,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt->bind_param("iis", $customer_id, $rating, $comment);
         $stmt->execute();
 
+        $_SESSION['server_message'] = 
+        "<div id='server-msg' >
+            <span style='color: var(--primary_blue);'>Your feedback was submitted!</span>
+        </div>";
+
         $stmt->close();
         $conn->close();
         header("location: ../feedback.php");
         exit();
     }
 
-// MISC
+// USER NAV
     if(isset($_POST["nav-fav"])){
         $_SESSION["check_fav"] = true;
         header(header: "location: ../menu.php#product-list");

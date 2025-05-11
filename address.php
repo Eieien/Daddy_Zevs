@@ -73,6 +73,12 @@
                 </div>
             </form>
         
+            <?php
+                if(isset($_SESSION['server_message'])){
+                    echo $_SESSION['server_message'];
+                    unset($_SESSION['server_message']);
+                }
+            ?>
         </section>
     </main>
 

@@ -32,9 +32,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_POST['confirm-password'] = filter_input(INPUT_POST, "confirm-password", FILTER_SANITIZE_SPECIAL_CHARS);
 
         if($_POST['password'] != $_POST['confirm-password']){
-            $_SESSION['server_message'] = "Passwords don't match!";
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Passwords don't match!</span>
+            </div>";
             header("location: ../login.php");
-            $conn->close();
             exit();
         }
 
@@ -44,26 +46,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = $_POST['password'];
         $password = md5($password);
 
-        $checkEmail = "SELECT * FROM customer WHERE email = '$email' ";
-        $result = $conn->query($checkEmail);
+        $stmt = $conn->prepare(
+        "SELECT * FROM customer WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
         if($result->num_rows > 0){
-            $_SESSION['server_message'] = "Email already exists!";
+            // server message
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Email already exists!</span>
+            </div>";
+
+            $stmt->close();
             $conn->close();
             header("location: ../login.php");
             exit();
         }
 
-        $insertUser = "INSERT INTO customer (first_name, last_name, email, password)
-                        VALUES ('$fname', '$lname', '$email', '$password')";
-        if($conn->query($insertUser) == true){
-            $_SESSION['server_message'] = "You have been registered!";
+        $stmt = $conn->prepare(
+            "INSERT INTO customer (first_name, last_name, email, password)
+            VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $fname, $lname, $email, $password);
+        if($stmt->execute() == true){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span style='color: var(--primary_blue);'>You have been registered!</span>
+            </div>";
+
             $_SESSION['login'] = true;
             header("location: ../login.php");
-        }
-        else{
-            $_SESSION['server_message'] = "Error: " . $conn->error;
+        } else {
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>Couldn't sign you in! Please try again</span>
+            </div>";
             header("location: ../login.php");
         }
+
+        $stmt->close();
         $conn->close();
         exit();
     }
@@ -77,8 +99,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = $_POST['password'];
         $password = md5($password);
 
-        $checkUser = "SELECT * FROM customer WHERE email = '$email' and password = '$password' ";
-        $result = $conn->query($checkUser);
+        $stmt = $conn->prepare(
+            "SELECT * FROM customer WHERE email = ? and password = ?");
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
@@ -95,10 +120,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $conn->close();
             header("location: ../menu.php");
             exit();
-        }
-        else{ // admin log in
-            $checkAdmin = "SELECT * FROM employee WHERE email = '$email' and password = '$password' ";
-            $result = $conn->query($checkAdmin);
+        } else { // admin log in
+            $stmt = $conn->prepare(
+                "SELECT * FROM employee WHERE email = ? and password = ?");
+            $stmt->bind_param("ss", $email, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
     
             if($result->num_rows > 0){
                 $row = $result->fetch_assoc();
@@ -109,14 +136,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 header("location: ../admin/userbase.php");
             }
             else{
-                $_SESSION['server_message'] = "Incorrect email or password!";
+                $_SESSION['server_message'] = 
+                "<div id='server-msg'>
+                    <span>Incorrect email or password!</span>
+                </div>";
+
                 header("location: ../login.php");
             }
         }
+
+        $stmt->close();
         $conn->close();
+        exit();
     }
 
-    // debug
+    // debug purposes
     $_SESSION['set_order'] = false;
 
     // log out

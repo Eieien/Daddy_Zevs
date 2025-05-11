@@ -26,7 +26,6 @@
     <main class="content">
         <div id="cart">
             <h1>My Cart</h1><hr>
-
             <?php
                 $total = 0;
 
@@ -93,6 +92,13 @@
             echo "<form action='./data/user-data.php' method='post'>"; ?>
                 <button type="submit" id="checkout" name="checkout">Checkout</button>
             </form>
+
+            <?php
+                if(isset($_SESSION['server_message'])){
+                    echo $_SESSION['server_message'];
+                    unset($_SESSION['server_message']);
+                }
+            ?>
         </div>
 
         <div id="remove" onclick="removeItems()"><p>Remove Items</p></div>

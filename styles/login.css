@@ -136,6 +136,7 @@ main{
 
                 a{ 
                     color: #1d4d4a;
+                    text-align: end;
                 }
             }
             #names{

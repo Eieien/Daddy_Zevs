@@ -84,6 +84,13 @@
                 <form action="./data/register.php" method="get">
                     <p>Don't have an account? <input type="submit" name="switch-form" value="Create one"></p>
                 </form>
+
+                <?php
+                    if(isset($_SESSION['server_message']) && !empty($_SESSION["login"])){
+                        echo $_SESSION['server_message'];
+                        unset($_SESSION['server_message']);
+                    }
+                ?>
             </div>
 
             <div id="sign-up-container">
@@ -111,6 +118,13 @@
                 <form action="./data/register.php" method="get">
                     <p>Already have an account? <input type="submit" name="switch-form" value="Sign In"></p>
                 </form>
+
+                <?php
+                    if(isset($_SESSION['server_message']) && empty($_SESSION["login"])){
+                        echo $_SESSION['server_message'];
+                        unset($_SESSION['server_message']);
+                    }
+                ?>
             </div>
 
             <p id="copyright">@2025 Daddy Zev's. All rights reserved.</p>
