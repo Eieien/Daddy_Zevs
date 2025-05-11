@@ -71,8 +71,6 @@
                     <?php
                         if(isset($_SESSION["email"])){
 
-                            echo "<a onclick='displayProducts(11)' class='btn'>";
-
                             echo "<a onclick=\"displayProducts('favorite')\" class='btn'>";
 
                         } else {
