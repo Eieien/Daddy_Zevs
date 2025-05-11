@@ -4,6 +4,64 @@ body{
     background-color: var(--primary_white);
 }
 
+.order-modal-container{
+    background-color: #00000037;   
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+    position: absolute;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .modal-card{
+        background-color: var(--primary_white);
+        font-family: var(--primary_font);
+        padding: 20px;
+        border-radius: 16px;
+        display: grid;
+        grid-template-rows: 1fr 150px 1fr;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        width: 350px;
+        .rejected{
+            margin: 0;
+            color: var(--accent_orange);
+            font-weight: 700;
+        }
+
+        .delivered{
+            margin: 0;
+            color: #29F667;
+            font-weight: 700;
+        }
+
+        p{
+            margin: 0;
+            font-weight: 600;
+            color: var(--text_dark_teal);
+        }
+
+        .close{
+            cursor: pointer;
+            padding:5px 30px;
+            border: 1px solid var(--primary_blue);
+            color: var(--primary_blue);
+            background-color: var(--primary_white);
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+    }
+}
+
+.hidden{
+    display: none;
+}
+
 #status{
     color: var(--primary_blue);
 

@@ -13,6 +13,19 @@
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
 </head>
 <body>
+    <div class="order-modal-container hidden">
+        <!-- <div id="rejected-card" class="modal-card">
+            <h2 class="rejected">Order has been Rejected</h2>
+            <p>Unfortunately, we had to remove your order due to an issue with the delivery address or item availability. We apologize for the inconvenience. Please try placing a new order</p>
+            <button class="close">Close</button>
+        </div> -->
+        <div id="delivered-card" class="modal-card">
+            <h2 class="delivered">Order has been Delivered</h2>
+            <p>Thank you for your purchase! We hope everything arrived just the way you expected. If you have any questions or feedback, feel free to reach out.
+Enjoy your order, and we look forward to serving you again!</p>
+            <button class="close">Close</button>
+        </div>
+    </div>
     <?php include('./user_nav.php') ?>
     <div class="content">
         <div id="status">
@@ -120,6 +133,22 @@
     <?php include('./footer.php') ?>
 
     <script>
+
+        let modal = document.querySelector(".order-modal-container");
+
+        document.addEventListener("keydown", (event) => {
+            if(event.key === "a"){
+                document.body.style.overflow = "hidden";
+                modal.classList.remove("hidden");
+            }
+        })
+
+        modal.querySelector(".modal-card .close").addEventListener("click", () => {
+            document.body.style.overflow = "";
+            modal.classList.add("hidden");
+        })
+
+
         const stat1 = document.getElementById("stat1").querySelectorAll('path');
         const stat2 = document.getElementById("stat2").querySelectorAll('path');
         const stat3 = document.getElementById("stat3").querySelectorAll('path, circle');
