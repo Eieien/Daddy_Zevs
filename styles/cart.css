@@ -80,37 +80,38 @@ main{
         }
     }
     #payment{
-        align-self: flex-start;
-        /* width: 40vh; */
-        height: auto;
-        padding: 20px 24px;
-        /* margin-left: 10vh; */
-        background-color: gainsboro;
-        border-radius: 12px;
-        font-family: var(--primary_font);
-        color: var(--primary_blue);
+        .payment-card{
+            align-self: flex-start;
+            height: auto;
+            padding: 20px 24px;
+            background-color: #e0e0de;
+            border-radius: 12px;
+            font-family: var(--primary_font);
+            color: var(--primary_blue);
+    
+            h3, h2, h1{
+                margin: 0;
+            }
+            .black{
+                color: var(--text_dark_teal);
+            }
+            .payment-div{
+                display: flex;
+                justify-content: space-between;
+            }
+            #checkout{
+                background-color: var(--primary_blue);
+                color: var(--primary_white);
+                font-size: 1.5rem;
+                font-weight: 600;
+                width: 100%;
+                margin-top: 20px;
+                padding: 10px 0;
+                border-radius: 24px;
+                border: none;
+                cursor: pointer;
+            }
 
-        h3, h2, h1{
-            margin: 0;
-        }
-        .black{
-            color: var(--text_dark_teal);
-        }
-        .payment-div{
-            display: flex;
-            justify-content: space-between;
-        }
-        #checkout{
-            background-color: var(--primary_blue);
-            color: var(--primary_white);
-            font-size: 1.5rem;
-            font-weight: 600;
-            width: 100%;
-            margin-top: 20px;
-            padding: 10px 0;
-            border-radius: 24px;
-            border: none;
-            cursor: pointer;
         }
     }
     #remove{

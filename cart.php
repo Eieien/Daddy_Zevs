@@ -74,24 +74,27 @@
         </div>
         
         <div id="payment">
-            <h1>Payment</h1>
-            <div class="payment-div">
-                <h3 class="black">Subtotal:</h3>
-                <h3>Php <?php echo sprintf("%.2f", $total) ?></h3>
+            <div class="payment-card">
+                <h1>Payment</h1>
+                <div class="payment-div">
+                    <h3 class="black">Subtotal:</h3>
+                    <h3>Php <?php echo sprintf("%.2f", $total) ?></h3>
+                </div>
+                <div class="payment-div">
+                    <h2 class="black">Shipping</h2>
+                    <h2>free</h2>
+                </div>
+                <hr>
+                <div class="payment-div">
+                    <h1 class="black">Total</h1>
+                    <h1>Php <?php echo sprintf("%.2f", $total) ?></h1>
+                </div>
+                <?php if($total > 0 || $_SESSION['set_order']) 
+                echo "<form action='./data/user-data.php' method='post'>"; ?>
+                    <button type="submit" id="checkout" name="checkout">Checkout</button>
+                </form>
+
             </div>
-            <div class="payment-div">
-                <h2 class="black">Shipping</h2>
-                <h2>free</h2>
-            </div>
-            <hr>
-            <div class="payment-div">
-                <h1 class="black">Total</h1>
-                <h1>Php <?php echo sprintf("%.2f", $total) ?></h1>
-            </div>
-            <?php if($total > 0 || $_SESSION['set_order']) 
-            echo "<form action='./data/user-data.php' method='post'>"; ?>
-                <button type="submit" id="checkout" name="checkout">Checkout</button>
-            </form>
 
             <?php
                 if(isset($_SESSION['server_message'])){
