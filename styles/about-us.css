@@ -1,29 +1,12 @@
 @import './constants.css';
 
 #about-us-hero{
-    background-image: url('../images/backgrounds/temp.jpg');
+    background-image: url('../images/backgrounds/About us banner.svg');
     background-size: cover;
+    background-position: 0 50%;
     width: 100%;
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    .content h1, p{
-        text-align: center;
-        color: var(--primary_white);
-        margin: 0;
-        
-    }
-
-    h1{
-        font-size: 3.5rem;
-    }
-
-    p{
-        font-size: 2rem;
-    }
+    aspect-ratio: 11/5;
+    
 }
 
 #story{

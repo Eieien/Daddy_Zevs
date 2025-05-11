@@ -34,11 +34,6 @@
     ?>
 
     <div id="about-us-hero">
-        <div class="content">
-            <h1>About us</h1>
-            <p>-Only Daddy can Bake like this-</p>
-
-        </div>
     </div>
     <div id="story">
         <div class="content">
@@ -57,28 +52,28 @@ Today, I’m proud and grateful to have turned that passion into a real bakery. 
 
             <div class="team-grid">
                 <div class="profile">
-                    <img src="./images/staff/test.jpg" class="pfp">
+                    <img src="./images/staff/zev.svg" class="pfp">
                     <div class="name">
                         <h1>Zev Torrentira</h1>
                         <p>Head Chef</p>
                     </div>
                 </div>
                 <div class="profile">
-                    <img src="./images/staff/test.jpg" class="pfp">
+                    <img src="./images/staff/steven.svg" class="pfp">
                     <div class="name">
                         <h1>Arch Steven Betonio</h1>
                         <p>Pastry Designer</p>
                     </div>
                 </div>
                 <div class="profile">
-                    <img src="./images/staff/test.jpg" class="pfp">
+                    <img src="./images/staff/ivan.svg" class="pfp">
                     <div class="name">
                         <h1>Ivan Paul Ruelan</h1>
                         <p>Marketing</p>
                     </div>
                 </div>
                 <div class="profile">
-                    <img src="./images/staff/test.jpg" class="pfp">
+                    <img src="./images/staff/joe.svg" class="pfp">
                     <div class="name">
                         <h1>Joenell Conrad de Pedro</h1>
                         <p>Finance Manager</p>
