@@ -10,7 +10,7 @@
         </a>
     </div>
     <div class="right">
-        <a href="#">
+        <a href="../logout.php">
             <div class="menu-icon">
                 <img src="../images/icons/user.svg">
                 <span>Account</span>

@@ -96,14 +96,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             header("location: ../menu.php");
             exit();
         }
-        else{
+        else{ // admin log in
             $checkAdmin = "SELECT * FROM employee WHERE email = '$email' and password = '$password' ";
             $result = $conn->query($checkAdmin);
     
             if($result->num_rows > 0){
                 $row = $result->fetch_assoc();
     
-                $_SESSION['employee_email'] = $row['email'];
+                $_SESSION['email'] = $row['email'];
                 $_SESSION['employee_id'] = $row['employee_id'];
     
                 header("location: ../admin/userbase.php");
@@ -131,12 +131,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         session_unset();
         session_destroy();
-        header("location: ../menu.php");
+        header("location: ../index.php");
         exit();
     }
     else if(isset($_POST["cancel"]) || $_SESSION['set_order']){
         unset($_SESSION["del-acc"]);
-        header("location: ../account.php");
+        if(isset($_SESSION['customer_id'])) 
+            header("location: ../account.php");
+        else if(isset($_SESSION['employee_id'])) 
+            header("location: ../admin/userbase.php");
         exit();
     }
 }

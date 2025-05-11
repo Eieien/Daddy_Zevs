@@ -73,7 +73,7 @@ function createProductCard(item){
 function displayProducts(type){
     document.getElementById("product-list").innerHTML = ""; // clear list 1st
 
-    fetch("./data/products-json.php")
+    fetch("./data/json/products-json.php")
         .then(response => response.json())
         .then(products => products.forEach((item) => {
 

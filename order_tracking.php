@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION["set_order"] == true) header("refresh: 10");
+    if($_SESSION["set_order"] == true) header("refresh: 20");
 ?>
 <!DOCTYPE html>
 <html lang="en">

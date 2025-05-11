@@ -104,8 +104,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // add order to db
         $conn->query(
-            "INSERT INTO orders (customer_id, status)
-            VALUES ('$customer_id', 0)");
+            "INSERT INTO orders (customer_id)
+            VALUES ('$customer_id')");
         $order_id = getOrderID();
 
         // add order items to db
@@ -113,9 +113,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $product_id = $item->product_id;
             $quantity = $item->quantity;
 
+            // gets price of product
+            $result = $conn->query(
+                "SELECT price FROM product
+                WHERE product_id = '$product_id' ");
+            $row = $result->fetch_object();
+            $subtotal = $row->price * $quantity;
+
             $conn->query(
-                "INSERT INTO orderitem (order_id, product_id, quantity)
-                VALUES ('$order_id', '$product_id', '$quantity')");
+                "INSERT INTO orderitem (order_id, product_id, quantity, subtotal_price)
+                VALUES ('$order_id', '$product_id', '$quantity', '$subtotal')");
         }
 
         // update total price

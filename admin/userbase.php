@@ -9,39 +9,55 @@
     <link rel="stylesheet" href="../styles/userbase.css?v=<?php echo time(); ?>">
 </head>
 <body>
-    <?php
-        include "admin_header.php";
-
-    ?>
+    <?php require "admin_header.php"; ?>
     <main class="content" style="width: 75vw;">
-        <?php
-            include "admin_nav.php";
-        ?>
+        <?php require "admin_nav.php"; ?>
 
-        <section>
+        <section id="user-list">
             <h1>Users</h1>
-
-            <?php
-                for( $i = 0; $i < 5; $i++ ){
-                    echo
-                    "<div class='user-card'>
-                        <img src='../images/icons/user.svg'>
-
-                        <div id='user-info'>
-                            <div id='name-email'>
-                                <h2>John Doe</h2>
-                                <span>Johndoe@gmail.com</span>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        </div>
-
-                        <div id='remove-button'>
-                            <button>Remove User</button>
-                        </div>
-                    </div>";  
-                }     
-            ?>
         </section>
+
+        <form action='../data/admin-data.php' method='post' id="del-user">
+            <input type="hidden" name="user-id">
+        </form>
     </main>
+
+    <script>
+        let user_list = document.getElementById("user-list");
+
+        fetch("../data/json/users-json.php")
+            .then(response => response.json())
+            .then(users => users.forEach((user) => {
+                let userCard = document.createElement('div');
+                userCard.className = "user-card";
+
+                if(!user.address) user.address = "No Address";
+
+                userCard.innerHTML =
+                `<img src='../images/icons/user.svg'>
+
+                <div id='user-info'>
+                    <div id='name-email'>
+                        <h2>${user.first_name} ${user.last_name}</h2>
+                        <span>${user.email}</span>
+                    </div>
+                    <p>${user.address}</p>
+                </div>
+
+                <div id='remove-button'>
+                    <button name="remove-user" onclick='removeUser(${user.customer_id})'>Remove User</button>
+                </div>`;
+
+                console.log(user.customer_id);
+
+                user_list.append(userCard);
+            }))
+            .catch(error => console.error('Error:', error));
+
+            function removeUser(id){
+                document.querySelector("input[name='user-id']").value = id;
+                document.getElementById("del-user").submit();
+            }
+    </script>
 </body>
 </html>
