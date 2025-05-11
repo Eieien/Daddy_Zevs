@@ -385,11 +385,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // submit feedback
-    if(isset($_POST["submit-feedback"])){
-        $_POST["comment"] = filter_input(INPUT_POST, "comment", FILTER_SANITIZE_SPECIAL_CHARS);
-        
+    if(isset($_POST["submit-feedback"])){ 
         $rating = (int)$_POST["rating"];
-        $comment = $_POST["comment"];
+        $comment = htmlspecialchars($_POST["comment"]);
 
         $stmt = $conn->prepare(
             "INSERT INTO feedback (customer_id, rating, comment) 
@@ -409,8 +407,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
 // USER NAV
+    // clicked favorites
     if(isset($_POST["nav-fav"])){
         $_SESSION["check_fav"] = true;
+        header(header: "location: ../menu.php#product-list");
+        exit();
+    }
+
+    // search check
+    if(isset($_POST["search-bar"])){
+        $_POST["search-bar"] = filter_input(INPUT_POST, "search-bar", FILTER_SANITIZE_SPECIAL_CHARS);
+        $_SESSION["search"] = $_POST["search-bar"];
         header(header: "location: ../menu.php#product-list");
         exit();
     }
@@ -446,9 +453,9 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 
             // check products and mark favorites
             while($item = $products->fetch_assoc()){
-                $id = $item["product_id"];
-                $check = isset($ticked[$id]);
-                $_SESSION["fav"][$id] = $check;
+                $x = $item["product_id"];
+                $check = isset($ticked[$x]);
+                $_SESSION["fav"][$x] = $check;
             }
 
             $stmt->close();
@@ -481,6 +488,50 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
         
         $_SESSION["fav"][$id] = $fav;
         echo $_SESSION["fav"][$id];
+    }
+
+    // search product function
+    if(isset($_GET["product_ID"]) && isset($_GET["search-input"]) && isset($_SESSION["email"])){
+        $id = (int)$_GET["product_ID"];
+        $search = htmlspecialchars($_GET["search-input"]);
+
+        if(empty($_SESSION["search_result"])){
+            // get number of products
+            $products = $conn->query(
+                "SELECT * FROM product");
+
+            // compares product names and description with search input
+            $stmt = $conn->prepare(
+            "SELECT * FROM product 
+            WHERE product_name LIKE ? OR description LIKE ?");
+            $like = "%".$search."%";
+            $stmt->bind_param("ss", $like, $like);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            $_SESSION["search_result"] = array();
+            $compare = array();
+
+            // stores search results in array
+            while($row = $result->fetch_assoc()){
+                $compare[$row["product_id"]] = true;
+            }
+
+            while($item = $products->fetch_assoc()){
+                $x = $item["product_id"];
+                $check = isset($compare[$x]);
+                $_SESSION["search_result"][$x] = $check;
+            }
+
+            $stmt->close();
+            $conn->close();
+        }
+
+        if($_SESSION["search_result"][$id]){
+            echo true;
+        } else {
+            echo false;
+        }
     }
 }
 ?>

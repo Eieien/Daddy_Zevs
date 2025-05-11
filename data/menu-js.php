@@ -43,6 +43,14 @@ function createProductCard(item){
     let item_json = JSON.stringify(item);
     productCard.querySelector("button[class='add-to-cart']").onclick = () => getProduct(item_json);
 
+    // for featured
+    <?php
+        if(isset($_SESSION["email"])){
+            echo
+            "if(item.product_id == 4) document.getElementById(\"feature-button\").onclick = () => getProduct(item_json);";
+        }
+    ?>
+
     let heart = productCard.querySelector("svg[class='add-to-favorite']");
     <?php
         if(isset($_SESSION["email"]))
@@ -52,8 +60,7 @@ function createProductCard(item){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = () => {
         var fav = Number(xhttp.responseText);
-        console.log(String(fav));
-        
+
         if(fav){
             heart.style.fill = "var(--accent_orange)";
             heart.querySelector("path").style.stroke = "var(--accent_orange)";
@@ -76,7 +83,6 @@ function displayProducts(type){
     fetch("./data/json/products-json.php")
         .then(response => response.json())
         .then(products => products.forEach((item) => {
-
             switch(type){
                 case 1:
                     if(item.category === "Bread") createProductCard(item);
@@ -108,16 +114,28 @@ function displayProducts(type){
                 case 10:
                     if(item.category === "Croissants") createProductCard(item);
                     break;
-                case 11:
-                    const xhttp = new XMLHttpRequest();
-                    xhttp.onload = () => {
-                        var fav = Number(xhttp.responseText);
+                case "favorite":
+                    const favRequest = new XMLHttpRequest();
+                    favRequest.onload = () => {
+                        var fav = Number(favRequest.responseText);
                         
                         if(fav) createProductCard(item);
                     }
-                    xhttp.open("GET", "./data/user-data.php?"+
+                    favRequest.open("GET", "./data/user-data.php?"+
                                 "product_id=" + item.product_id);
-                    xhttp.send();
+                    favRequest.send();
+                    break;
+                case "search":
+                    const searchRequest = new XMLHttpRequest();
+                    searchRequest.onload = () => {
+                        var result = Number(searchRequest.responseText);
+                        
+                        if(result) createProductCard(item);
+                    }
+                    searchRequest.open("GET", "./data/user-data.php?"+
+                                "product_ID=" + item.product_id +"&"+
+                                "search-input=" + searchInput);
+                    searchRequest.send();
                     break;
                 default:
                     createProductCard(item);
@@ -133,18 +151,22 @@ function favoritesActive(){
 }
 
 <?php
-    if(empty($_SESSION["check_fav"])){
-        echo "displayProducts();";
-    } else {
-        unset($_SESSION["check_fav"]);
+    if(isset($_SESSION["check_fav"])){
         echo 
         "favoritesActive();
-        displayProducts(11);";
+        displayProducts('favorite');";
+        unset($_SESSION["check_fav"]);
+    } else 
+    if(isset($_SESSION["search"])){
+        echo 
+        "let searchInput = '".$_SESSION["search"]."';
+        displayProducts('search');";
+        unset($_SESSION["search_result"]);  // empties prev search
+        unset($_SESSION["search"]);
+    } else {
+        echo "displayProducts();";
     }
 ?>
-
-let favorites = document.querySelector('a[onclick="displayProducts(11)"]');
-favorites.addEventListener('click', () => favoritesActive());
 
 function getProduct(item){
     document.querySelector("input[name='product-info']").value = item;
