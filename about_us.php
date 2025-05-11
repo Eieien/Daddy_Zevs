@@ -20,11 +20,16 @@
 </head>
 <body>
     <?php
-        if(empty($_SESSION["email"])){
-            include "./guest_nav.php";
+        if(isset($_SESSION["customer_id"])){
+            header("location: ./menu.php");
+            exit();
+        }
+        else if(isset($_SESSION["employee_id"])){
+            header("location: ./admin/userbase.php");
+            exit();
         }
         else{
-            include "./user_nav.php";
+            include "./guest_nav.php";
         }
     ?>
 
