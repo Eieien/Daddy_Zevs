@@ -13,10 +13,15 @@
 </head>
 <body>
     <?php
-        if(empty($_SESSION["email"])){
-            include "./guest_nav.php";
-        } else {
+        if(isset($_SESSION["customer_id"])){
             include "./user_nav.php";
+        }
+        else if(isset($_SESSION["employee_id"])){
+            header("location: ./admin/userbase.php");
+            exit();
+        }
+        else{
+            include "./guest_nav.php";
         }
     ?>
 
@@ -31,7 +36,7 @@
                 echo
                 "<div id='featured-banner'>
                     <div class='button-container'>
-                        <button>Check it out!</button>
+                        <button id='feature-button'>Check it out!</button>
                     </div>
                 </div>";
             }
@@ -65,7 +70,11 @@
                     </a>
                     <?php
                         if(isset($_SESSION["email"])){
+
                             echo "<a onclick='displayProducts(11)' class='btn'>";
+
+                            echo "<a href='#product-list' onclick=\"displayProducts('favorite')\" class='btn'>";
+
                         } else {
                             echo "<a href='./login.php' class='btn'>";
                         }

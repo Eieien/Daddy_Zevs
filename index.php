@@ -82,7 +82,7 @@
     ?>
 
     <script>
-        fetch("./data/products-json.php")
+        fetch("./data/json/products-json.php")
             .then(response => response.json())
             .then(products => products.forEach((item) => {
                 let productCard = document.createElement('li');

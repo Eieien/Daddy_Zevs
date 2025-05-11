@@ -1,3 +1,10 @@
+<?php
+    // session_start();
+    // if(empty($_SESSION['employee_id'])){
+    //     header("location: ../login.php");
+    //     exit();
+    // }
+?>
 <nav>
     <div class="left">
         <a href="#">
