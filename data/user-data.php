@@ -142,7 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $order = $result->fetch_assoc();
 
         $_SESSION['order_status'] = $order["status"]; // sets order status of user
-        $_SESSION['check_status'] = true;
+        $_SESSION['check_status'] = true; // status has been checked
 
         $conn->close();
         header("location: ../order_tracking.php");

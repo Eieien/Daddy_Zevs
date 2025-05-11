@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(isset($_SESSION["set_order"])) header("refresh: 10");
+    if($_SESSION["set_order"] == true) header("refresh: 10");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,57 +125,61 @@
         const stat3 = document.getElementById("stat3").querySelectorAll('path, circle');
         const stat4 = document.getElementById("stat4").querySelectorAll('path');
         const text = document.querySelectorAll('p');
+        let i;
 
         <?php
+            if(isset($_SESSION['set_order']) && empty($_SESSION['check_status'])){
+                // checks status using hidden form in nav
+                echo "document.getElementById('check-status').submit();";
+            } else {
+                unset($_SESSION['check_status']);
+            }
+            
             if(isset($_SESSION['order_status'])){
                 if($_SESSION['order_status'] == 0){
                     echo
-                    "for(let i = 0; i < stat1.length; i++) 
+                    "for(i = 0; i < stat1.length; i++) 
                         stat1[i].style.stroke = 'var(--accent_orange)';
                     text[0].style.color = 'var(--accent_orange)';";
                 }
                 if($_SESSION['order_status'] == 1){
                     echo
-                    "for(let i = 0; i < stat1.length; i++) 
+                    "for(i = 0; i < stat1.length; i++) 
                         stat1[i].style.stroke = 'var(--primary_blue)';
                     text[0].style.color = 'var(--primary_blue)';
-                    for(let i = 0; i < stat2.length; i++) 
+
+                    for(i = 0; i < stat2.length; i++) 
                         stat2[i].style.stroke = 'var(--accent_orange)';
                     text[1].style.color = 'var(--accent_orange)';";
                 }
                 if($_SESSION['order_status'] == 2){
                     echo
-                    "for(let i = 0; i < stat1.length; i++) 
+                    "for(i = 0; i < stat1.length; i++) 
                         stat1[i].style.stroke = 'var(--primary_blue)';
-                    text[0].style.color = 'var(--primary_blue)';
-                    for(let i = 0; i < stat2.length; i++) 
+                    for(i = 0; i < stat2.length; i++) 
                         stat2[i].style.stroke = 'var(--primary_blue)';
-                    text[1].style.color = 'var(--primary_blue)';
-                    for(let i = 0; i < stat3.length; i++) 
-                        stat3[i].style.stroke = 'var(--accent_orange)';
+                    for(i = 0; i < 2; i++) 
+                        text[i].style.color = 'var(--primary_blue)';
+
+                    for(i = 0; i < stat2.length; i++) 
+                        stat3[i].style.stroke = 'var(--accent_orange)';                
                     text[2].style.color = 'var(--accent_orange)';";
                 }
                 if($_SESSION['order_status'] == 3){
                     echo
-                    "for(let i = 0; i < stat1.length; i++) 
+                    "for(i = 0; i < stat1.length; i++) 
                         stat1[i].style.stroke = 'var(--primary_blue)';
-                    text[0].style.color = 'var(--primary_blue)';
-                    for(let i = 0; i < stat2.length; i++) 
+                    for(i = 0; i < stat2.length; i++) 
                         stat2[i].style.stroke = 'var(--primary_blue)';
-                    text[1].style.color = 'var(--primary_blue)';
-                    for(let i = 0; i < stat3.length; i++) 
+                    for(i = 0; i < stat2.length; i++) 
                         stat3[i].style.stroke = 'var(--primary_blue)';
-                    text[2].style.color = 'var(--primary_blue)';
-                    for(let i = 0; i < stat4.length; i++) 
+                    for(i = 0; i < 3; i++) 
+                        text[i].style.color = 'var(--primary_blue)';
+
+                    for(i = 0; i < stat4.length; i++) 
                         stat4[i].style.stroke = 'var(--accent_orange)';
                     text[3].style.color = 'var(--accent_orange)';";
                 }
-            }
-
-            if(isset($_SESSION['set_order']) && empty($_SESSION['check_status'])){
-                echo "document.getElementById('check-status').submit();";
-            } else {
-                unset($_SESSION['check_status']);
             }
         ?>
     </script>
