@@ -147,7 +147,7 @@ nav{
     h1{
         color: var(--primary_blue);
         font-size: 1.4rem;
-        font-weight: 600;
+        font-weight: 700;
     }
     ul{
         padding-left: 0;
@@ -161,7 +161,6 @@ nav{
             font-size: 1.1rem;
             font-weight: 500;
             a{
-                color: var(--text_dark_teal);
                 text-decoration: none;
             }
         }

@@ -1,5 +1,13 @@
 @import './constants.css';
 
+.productHighlight{
+    color: var(--primary_blue);
+}
+
+.feedbackHighlight, .userHighlight, .ordersHighlight{
+    color: var(--text_dark_teal);
+}
+
 main{
     display: grid;
     grid-template-columns: 200px 1fr;

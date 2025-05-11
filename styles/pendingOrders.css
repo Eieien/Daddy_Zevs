@@ -1,5 +1,13 @@
 @import './constants.css';
 
+.ordersHighlight{
+    color: var(--primary_blue);
+}
+
+.productHighlight, .feedbackHighlight, .userHighlight{
+    color: var(--text_dark_teal);
+}
+
 a{
     text-decoration: none;
 }
