@@ -73,7 +73,7 @@
 
                             echo "<a onclick='displayProducts(11)' class='btn'>";
 
-                            echo "<a href='#product-list' onclick=\"displayProducts('favorite')\" class='btn'>";
+                            echo "<a onclick=\"displayProducts('favorite')\" class='btn'>";
 
                         } else {
                             echo "<a href='./login.php' class='btn'>";
