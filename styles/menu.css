@@ -33,11 +33,14 @@
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 20px;
+    min-height: 120vh;
 
     .btn{
         color: var(--text_dark_teal);
+        font-weight: 600;
     }
     .active{
+        font-weight: 700;
         color: var(--primary_blue);
     }
 
@@ -60,7 +63,6 @@
 
         li{
             margin: 10px 0;
-            font-weight: 500;
             font-size: 1.2rem;
             cursor: pointer;
         }
@@ -75,9 +77,9 @@
             flex-direction: row;
             gap: 20px;
             a{
+                cursor: pointer;
                 text-decoration: none;
                 font-size: 1.1rem;
-                font-weight: 300;
             }
 
         }

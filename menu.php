@@ -57,15 +57,15 @@
             </div>
             <div class="product-selecton">
                 <div class="navigation-tab">
-                    <a href="./menu.php#product-list" class="btn active" onclick="displayProducts(0)">
+                    <a  class="btn active" onclick="displayProducts(0)">
                         Menu
                     </a>
-                    <a href="#product-list" class="btn" onclick="displayProducts(7)">
+                    <a  class="btn" onclick="displayProducts(7)">
                         Featured
                     </a>
                     <?php
                         if(isset($_SESSION["email"])){
-                            echo "<a href='#product-list' onclick='displayProducts(11)' class='btn'>";
+                            echo "<a onclick='displayProducts(11)' class='btn'>";
                         } else {
                             echo "<a href='./login.php' class='btn'>";
                         }
