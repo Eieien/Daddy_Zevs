@@ -11,16 +11,16 @@
     <h1>Settings</h1>
     <ul>
         <li>
-            <a href="./account.php">My Account</a>
+            <a href="./account.php" class="accountHighlight">My Account</a>
         </li>
         <li>
-            <a href="./address.php">My Address</a>
+            <a href="./address.php" class="addressHighlight">My Address</a>
         </li>
         <li>
-            <a href="./order_history.php">Order History</a>
+            <a href="./order_history.php" class="orderHighlight">Order History</a>
         </li>
         <li>
-            <a href="./feedback.php">Feedback</a>
+            <a href="./feedback.php" class="feedbackHighlight">Feedback</a>
         </li>
         <li>
             <a href="./logout.php">

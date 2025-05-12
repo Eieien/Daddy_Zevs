@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/settings.css?v=<?php echo time(); ?>">
     <title>Address</title>
+
+    <style>
+        .addressHighlight{
+            color: #3464DD;
+        }
+
+        .accountHighlight, .orderHighlight, .feedbackHighlight{
+            color: #0B2027;
+        }
+    </style>
 </head>
 <body>
     <?php include('./user_nav.php') ?>

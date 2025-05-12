@@ -26,7 +26,6 @@ main{
                 font-size: 1.1rem;
                 font-weight: 500;
                 a{
-                    color: var(--text_dark_teal);
                     text-decoration: none;
                 }
             }

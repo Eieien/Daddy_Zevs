@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/settings.css?v=<?php echo time(); ?>">
     <title>History</title>
+
+    <style>
+        .orderHighlight{
+            color: #3464DD;
+        }
+
+        .accountHighlight, .addressHighlight, .feedbackHighlight{
+            color: #0B2027;
+        }
+    </style>
 </head>
 <body>
     <?php include('./user_nav.php') ?>
