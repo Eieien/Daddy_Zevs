@@ -71,11 +71,7 @@ main{
             input{
                 cursor: pointer;
             }
-            
         }
-        
-
-
 
         .image-container{
             display: flex;

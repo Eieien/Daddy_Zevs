@@ -52,6 +52,49 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header("location: ../admin/pendingOrders.php");
         exit();
     }
+
+    // cancel product edit
+    if(isset($_POST["cancel-edit"])){
+        header("location: ../admin/listOfProducts.php");
+        exit();
+    } else
+    // submit product edit
+    if(isset($_POST["submit-edit"])){
+        $id = $_POST["product-id"];
+        $name = $_POST["product-name"];
+        $price = $_POST["product-price"];
+        $desc = $_POST["product-desc"];
+        $stock = $_POST["stock"];
+
+        if(!empty($name)){
+            $conn->query(
+            "UPDATE product
+            SET product_name = '$name'
+            WHERE product_id = '$id' ");
+        }
+        if(!empty($price)){
+            $conn->query(
+            "UPDATE product
+            SET price = '$price'
+            WHERE product_id = '$id' ");
+        }
+        if(!empty($desc)){
+            $conn->query(
+            "UPDATE product
+            SET description = '$desc'
+            WHERE product_id = '$id' ");
+        }
+        if(!empty($stock) || $stock == 0){
+            $conn->query(
+            "UPDATE product
+            SET stock = '$stock'
+            WHERE product_id = '$id' ");
+        }
+
+        $conn->close();
+        header("location: ../admin/listOfProducts.php");
+        exit();
+    }
 }
 
 // get requests

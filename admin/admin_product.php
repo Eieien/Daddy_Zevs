@@ -1,3 +1,18 @@
+<?php 
+    session_start();
+
+    if(isset($_GET["product-info"])){
+        $item_json = $_GET["product-info"];
+        $item = json_decode($item_json);
+
+        $id = $item->product_id;
+        $product = $item->product_name;
+        $description = $item->description;
+        $price = $item->price;
+        $image = $item->image;
+        $stock = $item->stock;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,60 +30,59 @@
     ?>
 
     <main class="content">
-        <a href="#"><div class="back">
+        <a href="./listOfProducts.php"><div class="back">
             <img src="../images/icons/Back to home.svg"> Go back
         </div></a>
         <div class="product-grid">
             <div id="product-detail">
                 <h3>Product Details</h3>
                 <div class="product-image-container">
-                    <img id="product-image" src="../images/products/2.svg">
+                    <img id="product-image" src=<?php echo ".".$image; ?>>
                 </div>
-                <h1 class="product-name">Boston Cream Donut</h1>
-                <h2 class="product-price">Php 25.00</h2>
+                <h1 class="product-name"><?php echo $product; ?></h1>
+                <h2 class="product-price"><?php echo "Php ".sprintf("%.2f", $price); ?></h2>
                 <p class="product-description">
-                    A yeast donut filled with creamy custard and tapped with a rich chocolate glaze
+                    <?php echo $description; ?>
                 </p>
             </div>
             <div id="product-form-container">
                 <div class="heading">
                     <div class="name-stock">
                         <h2>Edit Product</h2>
-                        <p>Stock: </p>
+                        <p>Stock: <?php echo $stock; ?></p>
                     </div>
                     <div class="delete">
                         <img src="../images/icons/Trash_Full.svg">
                         <p>Delete Product</p>
                     </div>
                 </div>
-                <form id="product-edit-form">
+                <form action="../data/admin-data.php" method="post" id="product-edit-form">
                     <!-- Just add values their values inside the input from the db -->
+                    <input name="product-id" type="hidden" value=<?php echo $id; ?> >
                     <div class="name-price">
                         <div>
                             <p>Product Name</p>
-                            <input type="text" placeholder="e.g. Bread"> 
+                            <input name="product-name" type="text" placeholder="e.g. Bread"> 
                         </div>
                         <div>
                             <p>Price (in php)</p>
-                            <input type="number" placeholder="e.g. 200php"> 
+                            <input name="product-price" type="number" min="0" placeholder="e.g. 200php"> 
                         </div>
                     </div>
                     <div>
                         <p>Product Description</p>
-                        <textarea class="description">
-                            
-                        </textarea>
+                        <textarea name="product-desc" class="description"></textarea>
                     </div>
                     <div>
-                        <p>Product Photo</p>
-                        <input type="image" placeholder="Place Image here">
+                        <!-- <p>Product Photo</p>
+                        <input type="file" accept="image/*" placeholder="Place Image here"> -->
+                        <p>Stock</p>
+                        <input name="stock" type="number" min="0" placeholder="e.g. Bread"> 
                     </div>
                     <div class="buttons-container">
-                        <button type="submit" class="cancel">Cancel</button>
-                        <button type="submit" class="submit">Submit</button>
-    
+                        <button name="cancel-edit" type="submit" class="cancel">Cancel</button>
+                        <button name="submit-edit" type="submit" class="submit">Submit</button>
                     </div>
-    
                 </form>
             </div>
 

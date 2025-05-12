@@ -12,6 +12,12 @@
     <?php
         include "admin_header.php";
     ?>
+
+    <!-- hidden form -->
+    <form action="./admin_product.php" method="get" id="product-form">
+        <input type='hidden' name='product-info'>
+    </form>
+
     <main class="content" style="width: 75vw;">
         <?php
             include "admin_nav.php";
@@ -25,86 +31,63 @@
                     <img src="../images/icons/Add-circle.svg">
                 </div>
             </div>
-            <div id="product-list">
-                <div class="product-card">
-                    <div class="out-of-stock-container">
-                        <div>Out of Stock?</div>
-                        <input type="checkbox">
-                    </div>
-    
-                    <div class="image-container">
-                        <img src="../images/products/1.svg">
-                    </div>
-                    
-                    <div class="details-container">
-                        <div class="product-name">
-                            Bacon and Egg Croissant
-                        </div>
-                        <div class="price-add">
-                            <div class="price">
-                                Php 25.00
-                            </div>
-                            <button class="edit">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="product-card">
-                    <div class="out-of-stock-container">
-                        <div>Out of Stock?</div>
-                        <input type="checkbox">
-                    </div>
-    
-                    <div class="image-container">
-                        <img src="../images/products/1.svg">
-                    </div>
-                    
-                    <div class="details-container">
-                        <div class="product-name">
-                            Bacon and Egg Croissant
-                        </div>
-                        <div class="price-add">
-                            <div class="price">
-                                Php 25.00
-                            </div>
-                            <button class="edit">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="product-card">
-                    <div class="out-of-stock-container">
-                        <div>Out of Stock?</div>
-                        <input type="checkbox">
-                    </div>
-    
-                    <div class="image-container">
-                        <img src="../images/products/1.svg">
-                    </div>
-                    
-                    <div class="details-container">
-                        <div class="product-name">
-                            Bacon and Egg Croissant
-                        </div>
-                        <div class="price-add">
-                            <div class="price">
-                                Php 25.00
-                            </div>
-                            <button class="edit">
-                                Edit
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-
-                
-            </div>
+            <div id="product-list"></div>
         </section>
     </main>
+
+    <script>
+        let product_list = document.getElementById("product-list");
+
+        fetch("../data/json/products-json.php")
+            .then(response => response.json())
+            .then(products => products.forEach((product) => {
+                let productCard = document.createElement("div");
+                productCard.className = "product-card";
+
+                productCard.innerHTML =
+                `<div class="out-of-stock-container" id=${product.product_id}>   
+                    <div id='stock-${product.product_id}'>Out of Stock?</div>
+                </div>
+
+                <div class="image-container">
+                    <img src=".${product.image}">
+                </div>
+                
+                <div class="details-container">
+                    <div class="product-name">
+                        ${product.product_name}
+                    </div>
+                    <div class="price-add">
+                        <div class="price">
+                            Php ${product.price}.00
+                        </div>
+                        <button class="edit">
+                            Edit
+                        </button>
+                    </div>
+                </div>`;
+
+                let item_json = JSON.stringify(product);
+                productCard.querySelector("button[class='edit']").onclick = () => getProduct(item_json);
+
+                product_list.append(productCard);
+
+                let stockContainer = document.getElementById(String(product.product_id));
+                let checkBox = document.createElement('input');
+                checkBox.type = "checkbox";
+                checkBox.disabled = true;
+                if(product.stock === 0){
+                    checkBox.checked = true;
+                    document.getElementById("stock-"+String(product.product_id)).style.fontWeight = "bold";
+                }
+                stockContainer.append(checkBox);
+            }))
+
+        function getProduct(item){
+            document.querySelector("input[name='product-info']").value = item;
+            document.getElementById("product-form").submit();
+        }
+    </script>
 </body>
 </html>
