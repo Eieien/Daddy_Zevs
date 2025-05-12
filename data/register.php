@@ -154,10 +154,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $_SESSION['set_order'] = false;
 
     // log out
-    if(isset($_POST["logout"]) && !$_SESSION['set_order']){
+    if(isset($_POST["logout"])){
+        // check if order
+        if($_SESSION["set_order"]){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>You cannot log out because order is in progress!</span>
+            </div>";
+
+            header("location: ../account.php");
+            exit();
+        }
+
         if($_SESSION["del-acc"]){
+            // delete all order history related data of user
+            $result = $conn->query(
+            "SELECT completedorder_id FROM completedorders WHERE customer_id = '$customer_id' ");
+            while($row = $result->fetch_assoc()){
+                $complete = $row["completedorder_id"];
+
+                $conn->query(
+                "DELETE FROM itemhistory 
+                WHERE completedorder_id = '$complete' ");
+            }
+            $conn->query(
+            "DELETE FROM completedorders 
+            WHERE customer_id = '$customer_id' ");
+
+            // delete all table data related to user
             $conn->query(
             "DELETE FROM favorites WHERE customer_id = '$customer_id' ");
+            $conn->query(
+            "DELETE FROM feedback WHERE customer_id = '$customer_id' ");
             $conn->query(
             "DELETE FROM customer WHERE customer_id = '$customer_id' ");
             $conn->close();
@@ -170,11 +198,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else if(isset($_POST["cancel"]) || $_SESSION['set_order']){
         unset($_SESSION["del-acc"]);
-        if(isset($_SESSION['customer_id'])) 
+        if(isset($_SESSION['customer_id'])){
             header("location: ../account.php");
-        else if(isset($_SESSION['employee_id'])) 
+            exit();
+        } else 
+        if(isset($_SESSION['employee_id'])){
             header("location: ../admin/userbase.php");
-        exit();
+            exit();
+        }
     }
 }
 ?>

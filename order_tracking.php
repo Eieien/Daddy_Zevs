@@ -1,6 +1,8 @@
 <?php
     session_start();
-    if($_SESSION["set_order"] == true) header("refresh: 20");
+    if($_SESSION["set_order"] == true && isset($_SESSION["order_status"])){
+        if($_SESSION["order_status"] != 3 && $_SESSION["order_status"] != -1) header("refresh: 10");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,18 +16,24 @@
 </head>
 <body>
     <div class="order-modal-container hidden">
-        <div id="rejected-card" class="modal-card">
+        <form action="./data/user-data.php" method="post" id="rejected-card" class="modal-card">
             <h2 class="rejected">Order has been Rejected!</h2>
             <p>Unfortunately, we had to remove your order due to an issue with the delivery address or item availability. We apologize for the inconvenience. Please try placing a new order</p>
-            <button class="close">Close</button>
-        </div>
-        <!-- <div id="delivered-card" class="modal-card">
+            <button name="rejected" class="close">Close</button>
+        </form>
+        <form action="./data/user-data.php" method="post" id="accepted-card" class="modal-card">
+            <h2 class="delivered">Order has been Accepted!</h2>
+            <p>Your order has been accepted and is being prepared for delivery. We’ll keep you updated on its progress. Thank you for choosing us!</p>
+            <button name="accepted" class="close">Close</button>
+        </form>
+        <form action="./data/user-data.php" method="post" id="delivered-card" class="modal-card">
             <h2 class="delivered">Order has been Delivered!</h2>
             <p>Thank you for your purchase! We hope everything arrived just the way you expected. If you have any questions or feedback, feel free to reach out.
-Enjoy your order, and we look forward to serving you again!</p>
-            <button class="close">Close</button> -->
-        </div>
+                Enjoy your order, and we look forward to serving you again!</p>
+            <button name="order-complete" class="close">Close</button>
+        </form>
     </div>
+    
     <?php include('./user_nav.php') ?>
     <div class="content">
         <div id="status">
@@ -38,7 +46,7 @@ Enjoy your order, and we look forward to serving you again!</p>
                         </svg>
                     </div>
                     <!-- <img src="#"> -->
-                    <p>Order Pending</p>
+                    <p class="pStat">Order Pending</p>
                 </div>
                 <hr>
                 <div class="icon_status">
@@ -49,7 +57,7 @@ Enjoy your order, and we look forward to serving you again!</p>
                             <path d="M7.53793 6.26493C7.71982 5.53737 7.81077 5.17359 8.08203 4.96179C8.35329 4.75 8.72827 4.75 9.47822 4.75H28.5218C29.2717 4.75 29.6467 4.75 29.918 4.96179C30.1892 5.17359 30.2802 5.53737 30.4621 6.26493L32.6287 14.9316C32.9147 16.0755 33.0577 16.6475 32.7574 17.0321C32.4572 17.4167 31.8676 17.4167 30.6884 17.4167H30.3052C28.6868 17.4167 27.8777 17.4167 27.3182 16.9427C26.7587 16.4687 26.6257 15.6706 26.3596 14.0743L26.3223 13.8503C26.2472 13.4001 26.2097 13.1749 26.125 13.1749C26.0403 13.1749 26.0028 13.4001 25.9277 13.8503L25.7889 14.6835C25.6211 15.6901 25.5372 16.1935 25.2764 16.5653C25.0791 16.8465 24.8127 17.0721 24.5029 17.2205C24.0932 17.4167 23.583 17.4167 22.5625 17.4167V17.4167C21.542 17.4167 21.0318 17.4167 20.6221 17.2205C20.3123 17.0721 20.0459 16.8465 19.8486 16.5653C19.5878 16.1935 19.5039 15.6901 19.3361 14.6835L19.1973 13.8503C19.1222 13.4001 19.0847 13.1749 19 13.1749C18.9153 13.1749 18.8778 13.4001 18.8027 13.8503L18.6639 14.6835C18.4961 15.6901 18.4122 16.1935 18.1514 16.5653C17.9541 16.8465 17.6877 17.0721 17.3779 17.2205C16.9682 17.4167 16.458 17.4167 15.4375 17.4167V17.4167C14.417 17.4167 13.9068 17.4167 13.4971 17.2205C13.1873 17.0721 12.9209 16.8465 12.7236 16.5653C12.4628 16.1935 12.3789 15.6901 12.2111 14.6835L12.0723 13.8503C11.9972 13.4001 11.9597 13.1749 11.875 13.1749C11.7903 13.1749 11.7528 13.4001 11.6777 13.8503L11.6404 14.0743C11.3743 15.6706 11.2413 16.4687 10.6818 16.9427C10.1223 17.4167 9.31317 17.4167 7.69483 17.4167H7.31155C6.13242 17.4167 5.54285 17.4167 5.24257 17.0321C4.94229 16.6475 5.08529 16.0755 5.37127 14.9316L7.53793 6.26493Z" stroke="#0B2027" stroke-width="2"/>
                         </svg>
                     </div>
-                    <p>Order is being made</p>
+                    <p class="pStat">Order is being made</p>
                 </div>
                 <hr>
                 <div class="icon_status">
@@ -60,7 +68,7 @@ Enjoy your order, and we look forward to serving you again!</p>
                             <path d="M8.41683 22.1667H17.9168V11.0834M17.9168 11.0834V14.25H6.8335V28.0834C6.8335 29.1879 7.72893 30.0834 8.8335 30.0834H11.5835M17.9168 11.0834H24.2502L31.7915 17.1165C32.0287 17.3062 32.1668 17.5935 32.1668 17.8973V20.5834M27.4168 14.25H25.8335V20.5834H32.1668M32.1668 20.5834V28.0834C32.1668 29.1879 31.2714 30.0834 30.1668 30.0834H29.0002M22.6668 30.0834H17.9168" stroke="#0B2027" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <p>Order is being delivered</p>
+                    <p class="pStat">Order is being delivered</p>
                 </div>
                 <hr>
                 <div class="icon_status">
@@ -72,7 +80,7 @@ Enjoy your order, and we look forward to serving you again!</p>
                         </svg>
 
                     </div>
-                    <p>Order has arrived</p>
+                    <p class="pStat">Order has arrived</p>
                 </div>
             </div>
         </div>
@@ -136,12 +144,34 @@ Enjoy your order, and we look forward to serving you again!</p>
 
         let modal = document.querySelector(".order-modal-container");
 
-        document.addEventListener("keydown", (event) => {
-            if(event.key === "a"){
-                document.body.style.overflow = "hidden";
-                modal.classList.remove("hidden");
+        <?php
+            // rejected
+            if($_SESSION['order_status'] == -1){
+                echo
+                "document.body.style.overflow = 'hidden';
+                modal.classList.remove('hidden');
+                document.getElementById('delivered-card').style.display = 'none';
+                document.getElementById('accepted-card').style.display = 'none';";
             }
-        })
+
+            // accepted
+            if($_SESSION['order_status'] == 1 && empty($_SESSION['accepted'])){
+                echo
+                "document.body.style.overflow = 'hidden';
+                modal.classList.remove('hidden');
+                document.getElementById('rejected-card').style.display = 'none';
+                document.getElementById('delivered-card').style.display = 'none';";
+            }
+
+            // complete
+            if($_SESSION['order_status'] == 3){
+                echo
+                "document.body.style.overflow = 'hidden';
+                modal.classList.remove('hidden');
+                document.getElementById('rejected-card').style.display = 'none';
+                document.getElementById('accepted-card').style.display = 'none';";
+            } else 
+        ?>
 
         modal.querySelector(".modal-card .close").addEventListener("click", () => {
             document.body.style.overflow = "";
@@ -153,7 +183,7 @@ Enjoy your order, and we look forward to serving you again!</p>
         const stat2 = document.getElementById("stat2").querySelectorAll('path');
         const stat3 = document.getElementById("stat3").querySelectorAll('path, circle');
         const stat4 = document.getElementById("stat4").querySelectorAll('path');
-        const text = document.querySelectorAll('p');
+        const text = document.querySelectorAll("p[class='pStat']");
         let i;
 
         <?php
@@ -187,7 +217,7 @@ Enjoy your order, and we look forward to serving you again!</p>
                         stat1[i].style.stroke = 'var(--primary_blue)';
                     for(i = 0; i < stat2.length; i++) 
                         stat2[i].style.stroke = 'var(--primary_blue)';
-                    for(i = 0; i < 2; i++) 
+                    for(i = 0; i <= 2; i++) 
                         text[i].style.color = 'var(--primary_blue)';
 
                     for(i = 0; i < stat2.length; i++) 
@@ -202,7 +232,7 @@ Enjoy your order, and we look forward to serving you again!</p>
                         stat2[i].style.stroke = 'var(--primary_blue)';
                     for(i = 0; i < stat2.length; i++) 
                         stat3[i].style.stroke = 'var(--primary_blue)';
-                    for(i = 0; i < 3; i++) 
+                    for(i = 0; i <= 3; i++) 
                         text[i].style.color = 'var(--primary_blue)';
 
                     for(i = 0; i < stat4.length; i++) 

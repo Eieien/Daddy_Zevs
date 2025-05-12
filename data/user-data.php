@@ -139,13 +139,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION["order"] = $_SESSION['cart']; // move cart items to order
         unset($_SESSION['cart']); // remove items in cart after checkout
+        $_SESSION['order_status'] = 0;
         $_SESSION['set_order'] = true;
         $conn->close();
         header("location: ../order_tracking.php");
         exit();
     }
 
-    // updates order status
+    // updates order status display
     if(isset($_POST["check-status"])){
         // get order status of order
         $result = $conn->query(
@@ -161,9 +162,60 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         exit();
     }
 
+    // check if order is rejected
+    if(isset($_POST["rejected"])){
+        unset($_SESSION['order']);
+        unset($_SESSION["accepted"]);
+
+        $order_id = getOrderID();
+        deletePrevOrders($order_id);
+
+        $_SESSION['set_order'] = false;
+        header("location: ../menu.php");
+        exit();
+    }
+
+    // check if order is accepted
+    if(isset($_POST["accepted"])){
+        $_SESSION["accepted"] = true;
+        header("location: ../order_tracking.php");
+        exit();
+    }
+
     // check if order is complete
     if(isset($_POST["order-complete"])){
+        unset($_SESSION['order']);
+        unset($_SESSION["accepted"]);
+
         $order_id = getOrderID();
+
+        // places order into completed orders
+        $conn->query(
+        "INSERT INTO completedorders (order_id, customer_id, order_date, total_price)
+        SELECT order_id, customer_id, order_date, total_price FROM orders 
+        WHERE order_id = '$order_id' ");
+
+        // get completedorder id
+        $result = $conn->query(
+        "SELECT completedorder_id FROM completedorders
+        WHERE order_id = '$order_id' ");
+        $row = $result->fetch_assoc();
+        $complete = $row["completedorder_id"];
+
+        // places order items into item history referencing completedorder
+        $result = $conn->query(
+        "SELECT * FROM orderitem
+        WHERE order_id = '$order_id' ");
+        while($row = $result->fetch_assoc()){
+            $product_id = $row["product_id"];
+            $quantity = $row["quantity"];
+            $subT = $row["subtotal_price"];
+
+            $conn->query(
+            "INSERT INTO itemhistory (completedorder_id, product_id, quantity, subtotal_price)
+            VALUES ('$complete', '$product_id', '$quantity', '$subT')"); 
+        }
+
         deletePrevOrders($order_id);
 
         $_SESSION['set_order'] = false;
@@ -322,6 +374,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $add2 = $_POST["add2"];
         $add3 = $_POST["add3"];
 
+        // check if there is an order
+        if($_SESSION["set_order"]){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>You cannot edit your address because order is in progress!</span>
+            </div>";
+
+            header("location: ../address.php");
+            exit();
+        }
+
         // check if fields are empty
         if(empty($add1) || empty($add2)|| empty($add3)){
             $_SESSION['server_message'] = 
@@ -359,6 +422,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // delete address
     if(isset($_POST["del-add"])){
+        // check if there is an order
+        if(isset($_SESSION["set_order"])){
+            $_SESSION['server_message'] = 
+            "<div id='server-msg'>
+                <span>You cannot delete your address because order is in progress!</span>
+            </div>";
+
+            header("location: ../address.php");
+            exit();
+        }
+
         $phone = $_SESSION["phone_no"];
         $address = $_SESSION["address"];
 
@@ -405,6 +479,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header("location: ../feedback.php");
         exit();
     }
+
+    // order history
+    if(isset($_POST["history-check"])){
+        $conn->query(
+        "SELECT * FROM completedorders
+            WHERE customer_id = '$customer_id' ");
+        
+        header("location: ../order_history.php");
+        exit();
+    }
+
+// order tracking stuff here
+    // <script>
+    //     fetch("./data/json/compOrders-json.php")
+    //         .then(response => response.json())
+    //         .then(orders => orders.forEach((order) => {
+    //             console.log(order.completedorder_id);
+
+    //             fetch("./data/json/itemHistory-json.php")
+    //                 .then(response => response.json())   
+    //                 .then(items => items.forEach((item) => {
+    //                     if(item.completedorder_id === order.completedorder_id){
+    //                         console.log(item.subtotal_price);
+    //                     }
+    //                 }))
+    //         }))
+    // </script>
 
 // USER NAV
     // clicked favorites

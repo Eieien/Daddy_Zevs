@@ -17,7 +17,9 @@
             <a href="./address.php" class="addressHighlight">My Address</a>
         </li>
         <li>
-            <a href="./order_history.php" class="orderHighlight">Order History</a>
+            <a href="#" onclick="checkHistory()" class="orderHighlight">
+                Order History
+            </a>
         </li>
         <li>
             <a href="./feedback.php" class="feedbackHighlight">Feedback</a>
@@ -74,4 +76,15 @@
         </li>
     </ul>
         
+    <!-- hidden form -->
+    <form action="./data/user-data.php" method="post" id="history-check">
+        <input type="hidden" name="history-check">
+    </form>
 </div>
+
+<script>
+    function checkHistory(){
+        document.querySelector("input[name='history-check']").value = true;
+        document.querySelector("form[id='history-check']").submit();
+    }
+</script>
