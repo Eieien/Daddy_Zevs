@@ -26,68 +26,198 @@
         <section id="setting">
             <h1>Order History</h1>
             <div id="order-history-list">
-                <div class="date-ordered">August 24, 2025</div>
-                <div id="order-card-list">
-                    <div class="order-card">
-                        <div class="image-container">
-                            <img class="product-image" src="./images/products/3.svg">
-
-                        </div>
-                        <div class="details-container">
-                            <div class="product-name">
-                                <h2>Croissant</h2>
-
+                <div class="order-details-container"> <!-- Details including the data and the list of orders -->
+                    <div class="order-list-container"> <!-- the list of orders -->
+                        <div class="date-ordered">August 24, 2025 <span>Time</span></div>
+                        <div class="order-card-list">
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
                             </div>
-                            <div class="description">
-                                A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
                             </div>
-                            <div class="quantity-price">
-                                <div class="quantity">x1</div>
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            
+                            <!-- Total Price -->
+                            <div class="total-price">
+                                <div class="total">Total</div>
                                 <div class="price">P25.00</div>
                             </div>
                         </div>
 
-                        <div class="image-container">
-                            <img class="product-image" src="./images/products/3.svg">
-
-                        </div>
-                        <div class="details-container">
-                            <div class="product-name">
-                                <h2>Croissant</h2>
-
-                            </div>
-                            <div class="description">
-                                A yeast donut filled with creamy custard and topped with a rich chocolate glaze
-                            </div>
-                            <div class="quantity-price">
-                                <div class="quantity">x1</div>
-                                <div class="price">P25.00</div>
-                            </div>
-                        </div>
-
-                        <div class="image-container">
-                            <img class="product-image" src="./images/products/3.svg">
-                        </div>
-                        <div class="details-container">
-                            <div class="product-name">
-                                <h2>Croissant</h2>
-
-                            </div>
-                            <div class="description">
-                                A yeast donut filled with creamy custard and topped with a rich chocolate glaze
-                            </div>
-                            <div class="quantity-price">
-                                <div class="quantity">x1</div>
-                                <div class="price">P25.00</div>
-                            </div>
-                        </div>
-
-                        <div class="quantity-price">
-                            <div class="price">P25.00</div>
-                        </div>
                     </div>
                 </div>
-                <div id="order-card-list"></div>
+
+                <div class="order-details-container"> <!-- Details including the data and the list of orders -->
+                    <div class="order-list-container"> <!-- the list of orders -->
+                        <div class="date-ordered">August 24, 2025 <span>Time</span></div>
+                        <div class="order-card-list">
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="order-card">
+                                <div class="image-container">
+                                    <img class="product-image" src="./images/products/3.svg">
+        
+                                </div>
+                                <div class="details-container">
+                                    <div class="product-name">
+                                        <h2>Croissant</h2>
+        
+                                    </div>
+                                    <div class="description">
+                                        A yeast donut filled with creamy custard and topped with a rich chocolate glaze
+                                    </div>
+                                    <div class="quantity-price">
+                                        <div class="quantity">x1</div>
+                                        <div class="price">P25.00</div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                            
+                            <!-- Total Price -->
+                            <div class="total-price">
+                                <div class="total">Total</div>
+                                <div class="price">P25.00</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+                
             </div>
         </section>
     </main>
