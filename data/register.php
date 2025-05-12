@@ -115,8 +115,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['email'] = $row['email'];
             $_SESSION["phone_no"] = $row['phone_no'];
             $_SESSION["address"] = $row['address'];
-
             $_SESSION['set_order'] = false;
+            
             $conn->close();
             header("location: ../menu.php");
             exit();
@@ -151,7 +151,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // debug purposes
-    $_SESSION['set_order'] = false;
+    // $_SESSION['set_order'] = false;
 
     // log out
     if(isset($_POST["logout"])){

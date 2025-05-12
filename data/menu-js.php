@@ -14,7 +14,7 @@ function createProductCard(item){
     productCard.id = item.product_id;
 
     productCard.innerHTML = 
-    `<div class="out-of-stock">
+    `<div class="out-of-stock" id='stock-${item.product_id}'>
         <div class="out-of-stock-block">
             <h1>Out Of Stock</h1>
         </div>
@@ -81,7 +81,10 @@ function createProductCard(item){
                 "product_id=" + item.product_id);
     xhttp.send();
 
-    document.getElementById("product-list").appendChild(productCard);
+    document.getElementById("product-list").append(productCard);
+
+    let stockBlock = document.getElementById("stock-"+String(item.product_id));
+    if(stockBlock && item.stock > 0) stockBlock.style.display = "none";
 }
     
 function displayProducts(type){

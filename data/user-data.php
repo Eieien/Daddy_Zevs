@@ -423,7 +423,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // delete address
     if(isset($_POST["del-add"])){
         // check if there is an order
-        if(isset($_SESSION["set_order"])){
+        if($_SESSION["set_order"]){
             $_SESSION['server_message'] = 
             "<div id='server-msg'>
                 <span>You cannot delete your address because order is in progress!</span>
@@ -489,23 +489,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header("location: ../order_history.php");
         exit();
     }
-
-// order tracking stuff here
-    // <script>
-    //     fetch("./data/json/compOrders-json.php")
-    //         .then(response => response.json())
-    //         .then(orders => orders.forEach((order) => {
-    //             console.log(order.completedorder_id);
-
-    //             fetch("./data/json/itemHistory-json.php")
-    //                 .then(response => response.json())   
-    //                 .then(items => items.forEach((item) => {
-    //                     if(item.completedorder_id === order.completedorder_id){
-    //                         console.log(item.subtotal_price);
-    //                     }
-    //                 }))
-    //         }))
-    // </script>
 
 // USER NAV
     // clicked favorites
