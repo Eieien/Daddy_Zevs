@@ -56,7 +56,7 @@
 
                             <div class='product-description'>
                                 <h1>$product</h1>
-                                <h3>".sprintf("%.2f", $price)."</h3>
+                                <h3>Php ".sprintf("%.2f", $price)."</h3>
                                 <p>$description</p>
                                 <div class='quantity-design'>
                                     <p>Quantity:</p> 

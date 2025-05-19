@@ -162,6 +162,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <span>You cannot log out because order is in progress!</span>
             </div>";
 
+            unset($_SESSION["del-acc"]);
             header("location: ../account.php");
             exit();
         }
