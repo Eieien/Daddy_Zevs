@@ -71,11 +71,11 @@
                 <div class="field-container">
                     <div>
                         <p>Last Name</p>
-                        <input type="text" name="lname" placeholder="e.g. Doe">
+                        <input type="text" name="lname" placeholder=<?php echo $_SESSION['fname']; ?>>
                     </div>
                     <div>
                         <p>First Name</p>
-                        <input type="text" name="fname" placeholder="e.g. John">
+                        <input type="text" name="fname" placeholder=<?php echo $_SESSION['lname']; ?>>
                     </div>
 
                 </div>
@@ -90,7 +90,7 @@
                 <div class="field-container">
                     <div>
                         <p>Email</p>
-                        <input type="email" name="email" placeholder="e.g. Johndoe25@gmail.com">
+                        <input type="email" name="email" placeholder=<?php echo $_SESSION['email']; ?>>
                     </div>
                 </div>
                 <div class="button-container">
@@ -107,7 +107,7 @@
                             <p>New Password</p>
                             <p id="toggle-real-password">show</p>
                         </div>
-                        <input id="new-password" type="password" name="password">
+                        <input id="new-password" type="password" name="password" value=<?php echo $_SESSION['password']; ?>>
                     </div>
                     <div>
                         <p>Confirm Password</p>
