@@ -20,7 +20,7 @@
                 <div class="statistic-card">
                     <div class="stat-detail">
                         <p>Users</p>
-                        <h2>69420</h2>
+                        <h2 id="user-amount">0</h2>
                     </div>
                     <div class="stat-icon">
                         <svg  viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +32,7 @@
                 <div class="statistic-card">
                     <div class="stat-detail">
                         <p>Sales</p>
-                        <h2>69420</h2>
+                        <h2 id="sale-amount">0</h2>
                     </div>
                     <div class="stat-icon">
                         <svg  viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
                 <div class="statistic-card">
                     <div class="stat-detail">
                         <p>Orders</p>
-                        <h2>69420</h2>
+                        <h2 id="order-amount">0</h2>
                     </div>
                     <div class="stat-icon">
                         <svg  viewBox="0 0 72 81" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +66,38 @@
     </main>
 
     <script>
+        let user_amount = 0;
+        let sale_amount = 0;
+        let order_amount = 0;
+
+        fetch("../data/json/users-json.php")
+            .then(response => response.json())
+            .then(users => {users.forEach(() => {
+                    user_amount++;
+                })
+                document.getElementById("user-amount").textContent = user_amount;
+            })
+            .catch(error => console.error('Error:', error));
+
+        fetch("../data/json/compOrders-json.php")
+            .then(response => response.json())
+            .then(sales => {sales.forEach(() => {
+                    sale_amount++;
+                })
+                document.getElementById("sale-amount").textContent = sale_amount;
+            })
+            .catch(error => console.error('Error:', error));
+
+        fetch("../data/json/orders-json.php")
+            .then(response => response.json())
+            .then(orders => {orders.forEach(() => {
+                    order_amount++;
+                })
+                document.getElementById("order-amount").textContent = order_amount;
+            })
+            .catch(error => console.error('Error:', error));
+
+
         let user_list = document.getElementById("user-list");
 
         fetch("../data/json/users-json.php")

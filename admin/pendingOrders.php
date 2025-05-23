@@ -30,8 +30,8 @@
                 <div id="pending-list" class="tab-pane active"></div>
 
                 <div id="accepted-list" class="tab-pane"></div>
-                <div id="completed-list" class="tab-pane"></div>
 
+                <div id="completed-list" class="tab-pane"></div>
             </div>
         </section>
     </main>
@@ -70,6 +70,7 @@
 
         let pendingList = document.getElementById("pending-list");
         let acceptedList = document.getElementById("accepted-list");
+        let completedList = document.getElementById("completed-list");
 
         fetch("../data/json/orders-json.php")
             .then(response => response.json())
@@ -86,7 +87,7 @@
                     <div class="card-background">
                         <div class="heading">
                             <div class="name">
-                                <h2>${order.first_name}</h2>
+                                <h2>${order.first_name} ${order.last_name}</h2>
                                 <h3>0${order.phone_no}</h3>
                             </div>
                         </div>
@@ -106,8 +107,6 @@
                     </div>`;
     
                     pendingList.append(orderCard);
-                    pending.appended(orderCard);
-                    pending.layout();
 
                     // if rejected
                     if(order.status < 0){
@@ -133,7 +132,7 @@
                     <div class="card-background">
                         <div class="heading">
                             <div class="name">
-                                <h2>${order.first_name}</h2>
+                                <h2>${order.first_name} ${order.last_name}</h2>
                                 <h3>0${order.phone_no}</h3>
                             </div>
                             <div class="status-dropdown">
@@ -261,6 +260,62 @@
                         }
                     }))
             }))
+
+        // completed orders
+        fetch("../data/json/compOrders-json.php")
+            .then(response => response.json())
+            .then(orders => orders.forEach((order) => {
+                let orderCard = document.createElement('div');
+                orderCard.className = "order-card";
+
+                orderCard.innerHTML =
+                `<p class="order-num">
+                    Order #${order.order_id}
+                </p>
+                <div class="card-background">
+                    <div class="heading">
+                        <div class="name">
+                            <h2>${order.first_name} ${order.last_name}</h2>
+                            <h3>0${order.phone_no}</h3>
+                        </div>
+                    </div>
+                    <div class="address">
+                        ${order.address}
+                    </div>
+                    <div class="product-list" id='${order.completedorder_id}'></div>
+                    <hr>
+                    <div class="total">
+                        <h3>Total</h3>
+                        <h2>P${order.total_price}</h2>
+                    </div>
+                </div>`;
+
+                completedList.append(orderCard);
+
+                // get order items
+                fetch("../data/json/itemHistory-json.php")
+                    .then(response => response.json())
+                    .then(orderItems => orderItems.forEach((item) => {
+                        if(item.completedorder_id === order.completedorder_id){
+                            let product_list = document.getElementById(String(order.completedorder_id));
+
+                            let quantity = document.createElement("div");
+                            quantity.className = "quantity";
+                            quantity.textContent = item.quantity+"x";
+
+                            let product_name = document.createElement("div");
+                            product_name.className = "product-name";
+                            product_name.textContent = item.product_name;
+
+                            let product_price = document.createElement("div");
+                            product_price.className = "product-price";
+                            product_price.textContent = "P"+item.price;
+
+                            product_list.append(quantity, product_name, product_price);
+                        }
+                    }))
+            }))
+
 
         function selectTab(event, tabId) {
             document.querySelectorAll('.tab-item').forEach(tab => {

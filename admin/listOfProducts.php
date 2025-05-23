@@ -46,7 +46,7 @@
                 productCard.className = "product-card";
 
                 productCard.innerHTML =
-                `<div class="out-of-stock-container" id=${product.product_id}>   
+                `<div class="out-of-stock-container">   
                     <div id='stock-${product.product_id}' class="hidden">Out of Stock?</div>
                 </div>
 
@@ -72,16 +72,6 @@
                 productCard.querySelector("button[class='edit']").onclick = () => getProduct(item_json);
 
                 product_list.append(productCard);
-
-                let stockContainer = document.getElementById(String(product.product_id));
-                let checkBox = document.createElement('input');
-                checkBox.type = "checkbox";
-                checkBox.disabled = true;
-                if(product.stock === 0){
-                    checkBox.checked = true;
-                    document.getElementById("stock-"+String(product.product_id)).style.fontWeight = "bold";
-                }
-                stockContainer.append(checkBox);
             }))
 
         function getProduct(item){

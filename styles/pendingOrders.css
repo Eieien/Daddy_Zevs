@@ -32,7 +32,7 @@ main{
             cursor: pointer;
         }
 
-        #pending-list, #accepted-list{
+        #pending-list, #accepted-list, #completed-list{
             margin-top: 20px;
 
             .order-card{
