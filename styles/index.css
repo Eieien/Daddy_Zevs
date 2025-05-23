@@ -202,3 +202,29 @@ margin-top: 16px;
     border-radius: 30px;
     padding: 5px 30px;
 }
+
+.scroll-top{
+    animation-name: appear;
+    animation-timeline: (y);
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+        display: none;
+        position: fixed;
+    }
+    3%{
+        opacity: 0;
+        display: none;
+    }
+    3.5%{
+        opacity: 1;
+        display: block;
+    }
+    100%{
+        opacity: 1;
+        display: block;
+        position: fixed;
+    }
+}
