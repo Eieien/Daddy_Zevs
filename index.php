@@ -82,7 +82,7 @@
         include "footer.php";
     ?>
 
-    <a href="#"><span class="scroll-top material-symbols-outlined" style="position: fixed; right: 0; top: 90%; width: 120px; color: #0B2027; font-size: 80px">
+    <a href="#"><span class="scroll-top material-symbols-outlined" style="position: fixed; right: 0; top: 90%; margin-right: 50px; color: #0B2027; font-size: 80px">
         arrow_circle_up</span></a>
 
     <script>
