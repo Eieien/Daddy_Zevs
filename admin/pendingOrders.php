@@ -22,12 +22,16 @@
             <div class="order-title">
                 <h1>Orders</h1>
                 <div class="order-nav">
-                    <div id="pending-order" class="active">Pending Orders</div>
-                    <div id="accepted-order">Accepted Orders</div>
+                    <div class="tab-item active" onclick="selectTab(event,'pending-list')">Pending Orders</div>
+                    <div class="tab-item" onclick="selectTab(event,'accepted-list')">Accepted Orders</div>
+                    <div class="tab-item" onclick="selectTab(event,'completed-list')">Completed Orders</div>
                 </div>
-                <div id="pending-list"></div>
 
-                <div id="accepted-list" class="hidden"></div>
+                <div id="pending-list" class="tab-pane active"></div>
+
+                <div id="accepted-list" class="tab-pane"></div>
+                <div id="completed-list" class="tab-pane"></div>
+
             </div>
         </section>
     </main>
@@ -42,19 +46,7 @@
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     
     <script>
-        var pending_masonry = document.getElementById("pending-list");
-        var pending = new Masonry(pending_masonry, {
-            itemSelector: ".order-card",
-            columnWidth: 380,
-            gutter: 16
-        });
-
-        var accepted_masonry = document.getElementById("accepted-list");
-        var accepted = new Masonry(accepted_masonry, {
-            itemSelector: ".order-card",
-            columnWidth: 380,
-            gutter: 16
-        })
+       
 
         let choice = document.getElementById("submit-ch");
         let choiceInput = document.getElementById("ch");
@@ -270,31 +262,21 @@
                     }))
             }))
 
+        function selectTab(event, tabId) {
+            document.querySelectorAll('.tab-item').forEach(tab => {
+                tab.classList.remove('active');
+            });
 
-        var pending_order_btn = document.getElementById("pending-order");
-        var accepted_order_btn = document.getElementById("accepted-order");
-        var pending_list = document.getElementById("pending-list");
-        var accepted_list = document.getElementById("accepted-list");
+            document.querySelectorAll('.tab-pane').forEach(content => {
+                content.classList.remove('active');
+            });
 
-        pending_order_btn.addEventListener("click", () => {
-            accepted_list.classList.add("hidden");
-            pending_list.classList.remove("hidden");
-            accepted_order_btn.classList.remove("active");
-            pending_order_btn.classList.add("active");
+            event.currentTarget.classList.add('active');
 
-            pending.layout();
-            
-        });
+            document.getElementById(tabId).classList.add('active');
+        }
 
-        accepted_order_btn.addEventListener("click", () => {
-            pending_list.classList.add("hidden");
-            accepted_list.classList.remove("hidden");
-            accepted_order_btn.classList.add("active");
-            pending_order_btn.classList.remove("active");
-            
-            accepted.layout();
-
-        })
+        
 
         document.querySelectorAll('.status-dropdown').forEach(dropdown => {
             const togglebtn = dropdown.querySelector('.dropdown-toggle');

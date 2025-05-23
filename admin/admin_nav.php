@@ -2,7 +2,7 @@
     <h1>Admin</h1>
     <ul>
         <li>
-            <a href="./userbase.php" class="userHighlight">Users</a>
+            <a href="./userbase.php" class="userHighlight">Dashboard</a>
         </li>
         <li>
             <a href="./pendingOrders.php" class="ordersHighlight">Orders</a>

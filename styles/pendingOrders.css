@@ -36,7 +36,7 @@ main{
             margin-top: 20px;
 
             .order-card{
-                width: 380px;
+                width: 100%;
                 
                 .order-num{
                     margin: 0;
@@ -50,7 +50,6 @@ main{
                     border-radius: 12px;
                     box-sizing: border-box;
                     margin-bottom: 16px;
-                    border: 1px solid var(--text_dark_teal);
                     .heading{
                         display: flex;
                         justify-content: space-between;
@@ -211,14 +210,17 @@ main{
             }
         }
        
-        #pending-list.hidden, #accepted-list.hidden{
+        #pending-list, #completed-list, #accepted-list{
             display: none;
         }
+        #pending-list.active, #completed-list.active, #accepted-list.active{
+            display: block;
+        }
 
-        #pending-order, #accepted-order{
+       .tab-item{
             font-size: 1.2rem;
         }
-        #pending-order.active, #accepted-order.active{
+        .tab-item.active{
             color: var(--primary_blue);
             font-weight: 600;
         }

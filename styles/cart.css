@@ -1,5 +1,54 @@
 @import 'constants.css';
 
+.idiot-modal-container{
+    background-color: #00000037;   
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+    position: absolute;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .modal-card{
+        background-color: var(--primary_white);
+        font-family: var(--primary_font);
+        padding: 20px;
+        border-radius: 16px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        width: 350px;
+        h1{
+            color: var(--accent_orange);
+        }
+
+        p{
+            margin: 0;
+            font-weight: 600;
+            color: var(--text_dark_teal);
+        }
+
+        .close{
+            cursor: pointer;
+            padding:5px 30px;
+            border: none;
+            color: var(--primary_white);
+            background-color:var(--primary_blue) ;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+    }
+}
+.idiot-modal-container.hidden{
+    display: none;
+}
+
 main{
     display: grid;
     grid-template-columns: 1fr 400px;
@@ -13,6 +62,11 @@ main{
 
         h1{
             color: var(--primary_blue);
+            margin: 0;
+        }
+
+        p{
+            margin: 0;
         }
 
         .item{

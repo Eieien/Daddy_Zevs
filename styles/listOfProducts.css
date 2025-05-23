@@ -67,7 +67,9 @@ main{
             display: flex;
             gap: 5px;
             color: var(--accent_orange);
-
+            .hidden{
+                display: none;
+            }
             input{
                 cursor: pointer;
             }

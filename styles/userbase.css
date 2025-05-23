@@ -20,8 +20,45 @@ main{
             color: var(--primary_blue);
             margin: 0;
         }
+
+        #website-statistics{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+
+            .statistic-card{
+                background-color: #ECEDE9;
+                padding: 30px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-radius: 10px;
+
+                h2, p{
+                    margin: 0;
+                }
+
+                h2{
+                    color: var(--text_dark_teal);
+                }
+                p{
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                    color: var(--primary_blue);
+                }
+                
+                svg{
+                    width: 70px;
+                    height: 70px;
+                }
+                path{
+                    stroke: var(--primary_blue);
+                }
+            }
+
+        }
         .user-card{
-            background-color: #e0e0de;
+            background-color: #ECEDE9;
             border-radius: 20px;
             display: grid;
             grid-template-columns: 50px 1fr 200px;

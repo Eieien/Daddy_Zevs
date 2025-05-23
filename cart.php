@@ -19,13 +19,22 @@
 </head>
 
 <body>
+    <div class="idiot-modal-container">
+        <div class="modal-card">
+            <h1>Your cart is empty...</h1>
+            <p>
+            You haven’t added anything yet. Start shopping and fill your cart with great finds!
+            </p>
+            <button class="close">Close</button>
+        </div>
+    </div>
     <?php
         include "./user_nav.php";
     ?>
-
     <main class="content">
         <div id="cart">
-            <h1>My Cart</h1><hr>
+            <h1>My Cart</h1>
+            <p>The current payment options that are only available is pay through cash</p><hr>
             <?php
                 $total = 0;
 
@@ -117,6 +126,17 @@
     ?>
 
     <script>
+        let modal = document.querySelector(".idiot-modal-container");
+        document.addEventListener('keydown', function(event){
+            if(event.key === 'a'){
+                modal.classList.remove("hidden");
+                document.body.style.overflow = "hidden";
+            }
+        })
+        modal.querySelector(".modal-card .close").addEventListener("click", () => {
+            document.body.style.overflow = "";
+            modal.classList.add("hidden");
+        })
         const checkboxes = document.querySelectorAll('input[type=checkbox]');
         const removeButton = document.getElementById("remove");
 

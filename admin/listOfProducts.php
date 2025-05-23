@@ -47,7 +47,7 @@
 
                 productCard.innerHTML =
                 `<div class="out-of-stock-container" id=${product.product_id}>   
-                    <div id='stock-${product.product_id}'>Out of Stock?</div>
+                    <div id='stock-${product.product_id}' class="hidden">Out of Stock?</div>
                 </div>
 
                 <div class="image-container">
