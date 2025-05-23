@@ -373,6 +373,12 @@ main{
                 gap: 10px;
                 margin-bottom: 50px;
 
+                .heading-container{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
                 .date-ordered{
                     font-size: 1.1rem;
                     font-weight: 700;
@@ -383,6 +389,12 @@ main{
                         font-weight: 600;
                         font-size: 1rem;
                     }
+                }
+
+                .reorder{
+                    color: var(--primary_blue);
+                    font-weight: 600;
+                    font-size: 1.2rem;
                 }
                 .order-list-container{
                     background-color: #D9D9D9;

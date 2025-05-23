@@ -62,7 +62,10 @@
                     orderListContainer.className = "order-list-container";
 
                     orderListContainer.innerHTML =
-                    `<div class="date-ordered">${orderCompDate}<span>${orderCompTime}</span></div>`;
+                    `<div class="heading-container">
+                        <div class="date-ordered">${orderCompDate}<span>${orderCompTime}</span></div>
+                        <div class="reorder">Reorder?</div>
+                    </div>`;
 
                     orderDetails.append(orderListContainer);
 
