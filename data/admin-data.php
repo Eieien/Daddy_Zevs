@@ -6,7 +6,21 @@ session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // removing users
     if(isset($_POST["user-id"])){
-        $id = $_POST["user-id"];
+        $customer_id = $_POST["user-id"];
+
+        // delete all order history related data of user
+        $result = $conn->query(
+        "SELECT completedorder_id FROM completedorders WHERE customer_id = '$customer_id' ");
+        while($row = $result->fetch_assoc()){
+            $complete = $row["completedorder_id"];
+
+            $conn->query(
+            "DELETE FROM itemhistory 
+            WHERE completedorder_id = '$complete' ");
+        }
+        $conn->query(
+        "DELETE FROM completedorders 
+        WHERE customer_id = '$customer_id' ");
 
         // delete all table data related to user
         $conn->query(
