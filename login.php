@@ -36,6 +36,20 @@
     <link rel="stylesheet" href="./styles/login.css?v=<?php echo time(); ?>">
 </head>
 <body>
+     <div class="modal-container">
+        <div class="modal-card">
+            <h1>Request Password Change</h1>
+            <p>
+                If you're having trouble accessing your account, please contact the administrator to reset your password.
+            <br><span>
+                Email: dzbadmin@gmail.com
+            </span>
+            <br>
+            We're here to help—reach out anytime!
+            </p>
+            <button class="close">Close</button>
+        </div>
+    </div>
     <main>
         <section id="banner">
             <div id="logo">
@@ -76,7 +90,7 @@
                             <input type="checkbox" name="remember-me" id="remember-me">
                             <label for="remember-me">Remember Me</label>
                         </span>
-                        <a href="#">Forgot Password?</a>
+                        <a id="forgot-password">Forgot Password?</a>
                     </div>
                     <input type="submit" name="log-in" value="Log In" class="submit-credentials">
                 </form>
@@ -132,6 +146,18 @@
     </main>
 
     <script>
+        let modal = document.querySelector(".modal-container");
+        let forgot_password_btn = document.getElementById("forgot-password");
+        forgot_password_btn.addEventListener("click", () => {
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+        })
+        
+        modal.querySelector(".modal-card .close").addEventListener("click", () => {
+            modal.classList.add("hidden");
+            document.body.style.overflow = "";
+        })
+
         const logInForm = document.getElementById("log-in-container");
         const logInTag = document.getElementById("log-in-tagline");
         const signUpForm = document.getElementById("sign-up-container");

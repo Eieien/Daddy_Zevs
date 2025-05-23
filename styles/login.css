@@ -1,4 +1,58 @@
 @import "./constants.css";
+.modal-container{
+    background-color: #00000037;   
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+    position: absolute;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .modal-card{
+        background-color: var(--primary_white);
+        font-family: var(--primary_font);
+        padding: 20px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        width: 350px;
+        h1{
+            margin: 0;
+            color: var(--primary_blue);
+        }
+
+        p{
+            margin: 0;
+            font-weight: 500;
+            color: var(--text_dark_teal);
+            span{
+                color: var(--primary_blue);
+                font-weight: 600;
+            }
+        }
+
+        .close{
+            cursor: pointer;
+            padding:5px 30px;
+            border: none;
+            color: var(--primary_white);
+            background-color:var(--primary_blue) ;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 20px;
+            width: 100%;
+        }
+    }
+}
+.modal-container.hidden{
+    display: none;
+}
 
 main{
     display: grid;
@@ -6,7 +60,7 @@ main{
     height: 100vh;
     margin: 0;
     font-family: var(--primary_font);
-
+    
     #banner{
         background-color: var(--primary_blue);
         display: flex;
@@ -128,6 +182,7 @@ main{
                 font-weight: 1000;
                 margin-top: 0;
             }
+
             #remember{
                 display: flex; 
                 justify-content: space-between;
@@ -135,7 +190,9 @@ main{
                 font-size: 15px;
 
                 a{ 
-                    color: #1d4d4a;
+                    color: var(--primary_blue);
+                    font-weight: 700;
+                    cursor: pointer;
                     text-align: end;
                 }
             }
