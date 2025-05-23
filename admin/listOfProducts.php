@@ -47,7 +47,7 @@
 
                 productCard.innerHTML =
                 `<div class="out-of-stock-container">   
-                    <div id='stock-${product.product_id}' class="hidden">Out of Stock?</div>
+                    <div id='stock-${product.product_id}' class="hidden"><b>Out of Stock</b></div>
                 </div>
 
                 <div class="image-container">
@@ -72,6 +72,10 @@
                 productCard.querySelector("button[class='edit']").onclick = () => getProduct(item_json);
 
                 product_list.append(productCard);
+
+                if(product.stock === 0){
+                    document.getElementById('stock-'+String(product.product_id)).classList.remove("hidden");
+                }
             }))
 
         function getProduct(item){

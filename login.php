@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="./styles/login.css?v=<?php echo time(); ?>">
 </head>
 <body>
-     <div class="modal-container">
+    <div class="modal-container hidden">
         <div class="modal-card">
             <h1>Request Password Change</h1>
             <p>

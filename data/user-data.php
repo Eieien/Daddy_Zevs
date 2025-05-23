@@ -92,16 +92,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // checkout
     if(isset($_POST["checkout"])){
-        // check if order is set or if no address
-        if($_SESSION['set_order'] || empty($_SESSION['address'])){
+        // check if no address
+        if(empty($_SESSION['address'])){
+            $_SESSION['empty'] = true;
             $_SESSION['server_message'] = 
-            "<div id='server-msg'>
-                <span>You have no address! Please set your address</span>
-            </div>";
+            "<h1>You have no address!</h1>
+            <p>Please set your address so that you can proceed to checkout</p>";
 
             header("location: ../cart.php");
             exit();
         }  
+
+        // check if cart is empty
+        if(empty($_SESSION['cart'])){
+            $_SESSION['empty'] = true;
+            $_SESSION['server_message'] = 
+            "<h1>Your cart is empty...</h1>
+            <p>
+            You haven’t added anything yet. Start shopping and fill your cart with great finds!
+            </p>";
+
+            header("location: ../cart.php");
+            exit();
+        }
         
         // delete prev orders if there are
         $order_id = getOrderID();
@@ -139,6 +152,93 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION["order"] = $_SESSION['cart']; // move cart items to order
         unset($_SESSION['cart']); // remove items in cart after checkout
+        $_SESSION['order_status'] = 0;
+        $_SESSION['set_order'] = true;
+        $conn->close();
+        header("location: ../order_tracking.php");
+        exit();
+    }
+
+    // reorder
+    if(isset($_POST["reorder"])){
+        // check if order is set
+        if($_SESSION['set_order']){
+            $_SESSION['server_message'] = 
+                "<div id='server-msg'>
+                    <span>You have an order in progress!</span>
+                </div>";
+
+            header("location: ../order_history.php");
+            exit();
+        }
+
+        // check if no address
+        if(empty($_SESSION['address'])){
+            $_SESSION['empty'] = true;
+            $_SESSION['server_message'] = 
+            "<h1>You have no address!</h1>
+            <p>Please set your address so that you can proceed to checkout</p>";
+
+            header("location: ../cart.php");
+            exit();
+        } 
+
+        $completed_id = (int)$_POST["reorder"];
+
+        $result = $conn->query(
+            "SELECT itemhistory.*, product.product_name, product.description, product.price, product.image, product.stock
+            FROM itemhistory
+            JOIN product ON itemhistory.product_id = product.product_id
+            WHERE completedorder_id = '$completed_id' "
+        );
+
+        $json_order = json_encode($result->fetch_all(MYSQLI_ASSOC), JSON_NUMERIC_CHECK);
+        header('Content-Type: application/json');
+        echo $_SESSION["order"];
+
+        // delete prev orders if there are
+        $order_id = getOrderID();
+        deletePrevOrders($order_id);
+
+        // add order to db
+        $conn->query(
+            "INSERT INTO orders (customer_id)
+            VALUES ('$customer_id')");
+        $order_id = getOrderID();
+
+        // add order items to db
+        $total = 0;
+        $_SESSION["order"] = json_decode($json_order);
+        foreach($_SESSION["order"] as $item){
+            $product_id = $item->product_id;
+            $quantity = $item->quantity;
+            $subtotal = $item->subtotal_price;
+
+            $stock = $item->stock;
+            if($stock == 0){
+                unset($_SESSION["order"]);
+                $_SESSION['server_message'] = 
+                "<div id='server-msg'>
+                    <span>One or more products is out of stock!</span>
+                </div>";
+
+                header("location: ../order_history.php");
+                exit();
+            }
+
+            $conn->query(
+                "INSERT INTO orderitem (order_id, product_id, quantity, subtotal_price)
+                VALUES ('$order_id', '$product_id', '$quantity', '$subtotal')");
+            $total += $subtotal;
+        }
+
+        // update total price
+        $conn->query(
+            "UPDATE orders
+            SET total_price = $total
+            WHERE customer_id = '$customer_id' ");
+        unset($_SESSION['cart']); // remove items in cart
+        $_SESSION['total_price'] = $total;
         $_SESSION['order_status'] = 0;
         $_SESSION['set_order'] = true;
         $conn->close();
@@ -489,6 +589,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header("location: ../order_history.php");
         exit();
     }
+
+
 
 // USER NAV
     // clicked favorites

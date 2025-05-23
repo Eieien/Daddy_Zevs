@@ -25,8 +25,18 @@
         <?php include('./setting_nav.php') ?>
         <section id="setting">
             <h1>Order History</h1>
+            <?php
+                if(isset($_SESSION['server_message'])){
+                    echo $_SESSION['server_message'];
+                    unset($_SESSION['server_message']);
+                }
+            ?>
             <div id="order-history-list"></div>
         </section>
+
+        <form action="./data/user-data.php" method="post" id="reorder-form">
+            <input type="hidden" name="reorder">
+        </form>
     </main>
 
     <script>
@@ -43,6 +53,11 @@
             hour12: true
         };
         let customerID = <?php echo $_SESSION["customer_id"]; ?>;
+
+        function reOrder(x){
+            document.querySelector("input[name='reorder']").value = x;
+            document.getElementById("reorder-form").submit();
+        }
 
         fetch("./data/json/compOrders-json.php")
             .then(response => response.json())
@@ -64,7 +79,7 @@
                     orderListContainer.innerHTML =
                     `<div class="heading-container">
                         <div class="date-ordered">${orderCompDate}<span>${orderCompTime}</span></div>
-                        <div class="reorder">Reorder?</div>
+                        <div class="reorder" onclick="reOrder(${order.completedorder_id})">Reorder?</div>
                     </div>`;
 
                     orderDetails.append(orderListContainer);

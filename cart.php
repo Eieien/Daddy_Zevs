@@ -19,12 +19,14 @@
 </head>
 
 <body>
-    <div class="idiot-modal-container">
+    <div id="empty-cart-popup" class="idiot-modal-container hidden">
         <div class="modal-card">
-            <h1>Your cart is empty...</h1>
-            <p>
-            You haven’t added anything yet. Start shopping and fill your cart with great finds!
-            </p>
+            <?php
+                if(isset($_SESSION['server_message'])){
+                    echo $_SESSION['server_message'];
+                    unset($_SESSION['server_message']);
+                }
+            ?>
             <button class="close">Close</button>
         </div>
     </div>
@@ -98,8 +100,8 @@
                     <h1 class="black">Total</h1>
                     <h1>Php <?php echo sprintf("%.2f", $total) ?></h1>
                 </div>
-                <?php if($total > 0 || $_SESSION['set_order']) 
-                echo "<form action='./data/user-data.php' method='post'>"; ?>
+                <?php if(!$_SESSION['set_order']){ echo 
+                "<form action='./data/user-data.php' method='post'>"; }?>
                     <button type="submit" id="checkout" name="checkout">Checkout</button>
                 </form>
 
@@ -126,6 +128,15 @@
     ?>
 
     <script>
+        <?Php
+            if(isset($_SESSION['empty'])){
+                echo
+                "document.getElementById('empty-cart-popup').classList.remove('hidden');";
+                unset($_SESSION['empty']);
+            }
+        ?>
+
+
         let modal = document.querySelector(".idiot-modal-container");
         document.addEventListener('keydown', function(event){
             if(event.key === 'a'){
