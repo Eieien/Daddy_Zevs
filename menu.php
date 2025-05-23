@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./styles/constants.css?v=<?php echo time(); ?>" >
     <link rel="stylesheet" href="./styles/header_footer.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./styles/menu.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_circle_up" />
     <title>Daddy Zev's Menu</title>
 </head>
 <body>
@@ -87,6 +88,9 @@
     </main>
 
     <?php include "./footer.php"; ?>
+
+    <a href="#"><span class="scroll-top material-symbols-outlined" style="position: fixed; right: 0; top: 90%; width: 120px; color: #0B2027; font-size: 80px">
+    arrow_circle_up</span></a>
 
     <!-- script -->
     <?php include "./data/menu-js.php"; ?>
