@@ -214,12 +214,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $quantity = $item->quantity;
             $subtotal = $item->subtotal_price;
 
+            $product = $item->product_name;
             $stock = $item->stock;
             if($stock == 0){
                 unset($_SESSION["order"]);
                 $_SESSION['server_message'] = 
                 "<div id='server-msg'>
-                    <span>One or more products is out of stock!</span>
+                    <span>$product is out of stock!</span>
                 </div>";
 
                 header("location: ../order_history.php");
